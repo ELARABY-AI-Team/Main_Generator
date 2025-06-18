@@ -1,0 +1,15 @@
+{
+    "mcu_list": [
+        "R5F11BBC",
+        "STM32F103C8T6",
+        "ATmega328P",
+        "PIC16F877A",
+        "ESP32",
+        "MSP430G2553",
+        "NXP LPC1768",
+        "ATSAMD21G18A",
+        "STM32F401RE",
+        "TM4C123GH6PM",
+        "STM32F407"
+    ]
+}
