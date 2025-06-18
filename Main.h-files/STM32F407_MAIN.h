@@ -1,6 +1,3 @@
-
-Confirm commit for API access
-
 /**
  * @file main.h
  * @brief Main header file for STM32F407 embedded project.
