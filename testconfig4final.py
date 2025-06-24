@@ -14,6 +14,7 @@ import requests
 import base64
 from tkinter import simpledialog
 import random
+import fitz  # PyMuPDF
 import time
 
 # Support for PyInstaller .exe path
@@ -33,7 +34,7 @@ GITHUB_USERNAME = "ELARABY-AI-Team"
 REPO_NAME = "Main_Generator"
 HEADERS_FOLDER = "Main_files"
 
-genai.configure(api_key=os.getenv('GEMINI_API_KEY', 'AIzaSyB4kW-XsrZSJOkekbkasW9M2QJ_VG0Iuzo'))
+genai.configure(api_key=os.getenv('GEMINI_API_KEY', 'AIzaSyB6pbuSfm0bzgffgcCLPvjGKcXk_aUWn_c'))
 model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
 
 class AdvancedSettingsDialog(tk.Toplevel):
@@ -49,7 +50,7 @@ class AdvancedSettingsDialog(tk.Toplevel):
         self.geometry("450x400")
         self.resizable(False, False)
         
-        # Main container with shadow effect
+        # Main container
         self.main_container = tk.Frame(self, bg='#3498db', padx=1, pady=1)
         self.main_container.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
@@ -87,8 +88,8 @@ class AdvancedSettingsDialog(tk.Toplevel):
         settings_container = tk.Frame(content_frame, bg='#ecf0f1', padx=20, pady=15)
         settings_container.pack(fill=tk.BOTH, expand=True)
         
-        # Voltage setting
-        self.voltage = tk.StringVar(value=self.initial_values.get('voltage', '3.3'))
+        # --- VOLTAGE SETTING (Default: 3.3V) ---
+        self.voltage = tk.StringVar(value=self.initial_values.get('voltage', '3.3'))  # Default: 3.3V
         voltage_frame = tk.LabelFrame(
             settings_container,
             text=" Operating Voltage ",
@@ -126,8 +127,8 @@ class AdvancedSettingsDialog(tk.Toplevel):
             activeforeground='#e74c3c'
         ).pack(side=tk.LEFT, padx=10, pady=5)
         
-        # Clock source setting
-        self.clock_source = tk.StringVar(value=self.initial_values.get('clock_source', 'Internal'))
+        # --- CLOCK SOURCE (Default: Internal) ---
+        self.clock_source = tk.StringVar(value=self.initial_values.get('clock_source', 'Internal'))  # Default: Internal
         clock_frame = tk.LabelFrame(
             settings_container,
             text=" Clock Source ",
@@ -165,8 +166,8 @@ class AdvancedSettingsDialog(tk.Toplevel):
             activeforeground='#e74c3c'
         ).pack(side=tk.LEFT, padx=10, pady=5)
         
-        # Register Mode setting
-        self.register_mode = tk.StringVar(value=self.initial_values.get('register_mode', 'Registers'))
+        # --- REGISTER MODE (Default: Registers) ---
+        self.register_mode = tk.StringVar(value=self.initial_values.get('register_mode', 'Registers'))  # Default: Registers
         register_frame = tk.LabelFrame(
             settings_container,
             text=" Register Mode ",
@@ -282,6 +283,7 @@ class AdvancedSettingsDialog(tk.Toplevel):
     def on_cancel(self):
         self.result = None
         self.destroy()
+    
 
 def check_github_for_header(mcu_name):
     if not GITHUB_TOKEN:
@@ -329,13 +331,21 @@ def upload_header_to_github(mcu_name, code):
     response = requests.put(url, headers=headers, json=data)
     return response.status_code in [200, 201]
 
-def load_settings():
+def load_settings(use_defaults=False):
+    if use_defaults:
+        return {
+            'voltage': '3.3',
+            'clock_source': 'Internal',
+            'register_mode': 'Registers'
+        }
+        
     try:
         if os.path.exists(SETTINGS_FILE):
             with open(SETTINGS_FILE, 'r') as f:
                 return json.load(f)
     except Exception as e:
         print(f"Error loading settings: {e}")
+        
     return {
         'voltage': '3.3',
         'clock_source': 'Internal',
@@ -391,6 +401,7 @@ class MainApp:
         self.last_saved_path = None
         self.last_generated_mcu = None
         self.settings = load_settings()
+        self.extracted_pdf_text = ""
         self.running = False  # Flag to control process execution
         self.current_thread = None  # Reference to current running thread
 
@@ -605,8 +616,26 @@ class MainApp:
         )
         self.copyright_label.pack(side=tk.TOP, fill=tk.X, pady=2)
 
+        self.mcu_combobox.grid(row=0, column=1, padx=5, pady=5, sticky=tk.W)
+        self.browse_pdf_btn = tk.Button(
+            self.settings_frame,
+            text="📄 Browse PDF",
+            command=self.browse_pdf_and_extract_text,
+            bg="#16a085",
+            fg="white",
+            font=("Segoe UI", 9, "bold"),
+            bd=0,
+            padx=10,
+            pady=4,
+            relief=tk.FLAT
+        )
+        self.browse_pdf_btn.grid(row=0, column=2, padx=5, pady=5)
+
+
+
     def show_advanced_settings(self):
-        dialog = AdvancedSettingsDialog(self.root, "Advanced Settings", self.settings)
+        dialog = AdvancedSettingsDialog(self.root, "Advanced Settings", load_settings(use_defaults=True))
+
         self.root.wait_window(dialog)  # Wait for the dialog to close
         
         if dialog.result:  # Only update if Save was clicked
@@ -684,9 +713,11 @@ class MainApp:
     def on_generate_click(self):
         selected = self.mcu_combobox.get()
         mcu_name = self.custom_mcu_entry.get().strip() if selected == "Custom..." else selected
+        
         if not mcu_name:
             messagebox.showerror("Input Error", "Please enter or select a microcontroller.")
             return
+            
         if selected == "Custom..." and self.mcu_manager.add_mcu(mcu_name):
             self.mcu_combobox['values'] = (*self.mcu_manager.mcu_list, "Custom...")
             self.mcu_combobox.set(mcu_name)
@@ -705,15 +736,35 @@ class MainApp:
             self.cancel_btn.config(state=tk.DISABLED)
             if success:
                 self.last_generated_mcu = mcu_name
-                # Enable both advanced and config buttons
                 self.advanced_btn.config(state=tk.NORMAL, fg="white")
                 self.generate_config_btn.config(state=tk.NORMAL, bg="#1520A6", fg="white")
                 self.display_code(code, "main")
             else:
                 messagebox.showerror("Error", msg)
 
-        self.current_thread = threading.Thread(target=self.run_generation, args=(mcu_name, callback), daemon=True)
+        self.current_thread = threading.Thread(
+            target=self.run_generation, 
+            args=(mcu_name, callback),
+            daemon=True
+        )
         self.current_thread.start()
+
+    def browse_pdf_and_extract_text(self):
+        file_path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
+        if file_path:
+            try:
+                doc = fitz.open(file_path)
+                full_text = ""
+                for page in doc:
+                    full_text += page.get_text()
+                doc.close()
+                self.extracted_pdf_text = full_text.strip()
+                messagebox.showinfo("PDF Loaded", "✅ PDF text extracted and stored successfully.")
+                # Enable generate button since we now have PDF content
+                self.generate_btn.config(state=tk.NORMAL)
+            except Exception as e:
+                messagebox.showerror("PDF Error", f"❌ Failed to extract text from PDF:\n{e}")
+
 
     def run_generation(self, mcu_name, callback):
         def progress(msg, val):
@@ -898,40 +949,40 @@ Output: A clean, production-ready `main.h` file."""
             
             # Generate config.h content (same for both modes)
             progress("Creating config.h...", 30)
-            config_h_prompt = f"""Create a clean, production-ready **config.h** header file for the {mcu_name} microcontroller.  
-This file must define only what is needed for `config.c`, and reuse all typedefs and macros from **main.h**.
+            config_h_prompt =  f"""Create a clean, production-ready **config.h** header file for the {mcu_name} microcontroller.  
+    This file must define only what is needed for `config.c`, and reuse all typedefs and macros from **main.h**.
 
----
+    ---
 
-### 🔗 Linking to main.h:
+    ### 🔗 Linking to main.h:
 
-- Add `#include "{mcu_name}_MAIN.h"` at the top (assumes main.h was already generated)
-- DO NOT redefine `tbyte`, `tword`, `tlong`, or bit macros like `SET_BIT()` — they already exist in main.h
-- Reuse GPIO and register safety macros such as `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
+    - Add `#include "{mcu_name}_MAIN.h"` at the top (assumes main.h was already generated)
+    - DO NOT redefine `tbyte`, `tword`, `tlong`, or bit macros like `SET_BIT()` — they already exist in main.h
+    - Reuse GPIO and register safety macros such as `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
 
----
+    ---
 
-### 🔧 Contents:
+    ### 🔧 Contents:
 
-1. Add standard include guard: `#ifndef CONFIG_H_`
-2. Wrap with `extern "C"` for C++ compatibility if needed
-3. Declare:
-   - `void mcu_config_Init(void);`
-   - `void WDI_Reset(void);`
-4. If needed:
-   - Declare `extern` config state/status variables
-   - Add `#define` for optional features (e.g., `ENABLE_WATCHDOG`)
-5. Define symbolic return/error codes (`CONFIG_OK`, `CONFIG_FAIL`)
+    1. Add standard include guard: `#ifndef CONFIG_H_`
+    2. Wrap with `extern "C"` for C++ compatibility if needed
+    3. Declare:
+    - `void mcu_config_Init(void);`
+    - `void WDI_Reset(void);`
+    4. If needed:
+    - Declare `extern` config state/status variables
+    - Add `#define` for optional features (e.g., `ENABLE_WATCHDOG`)
+    5. Define symbolic return/error codes (`CONFIG_OK`, `CONFIG_FAIL`)
 
----
+    ---
 
-### 📘 Notes:
+    ### 📘 Notes:
 
-- Keep it minimal and clean — no redundant includes or macro definitions
-- Match naming with `config.c`
-- Add short comments to explain what each part does
+    - Keep it minimal and clean — no redundant includes or macro definitions
+    - Match naming with `config.c`
+    - Add short comments to explain what each part does
 
-Output must be real code, ready to use, no placeholders or TODOs."""
+    Output must be real code, ready to use, no placeholders or TODOs."""
 
             response = model.generate_content(config_h_prompt)
             config_h_content = self.clean_code_output(response.text)
@@ -939,113 +990,130 @@ Output must be real code, ready to use, no placeholders or TODOs."""
             # Generate config.c content with mode-specific changes
             progress("Creating config.c...", 60)
             
+            # Check if PDF text is available
+            pdf_context = ""
+            if self.extracted_pdf_text:
+                pdf_context = f"\n\n### 📄 PDF Configuration Notes:\n{self.extracted_pdf_text}"
+                
             if register_mode.strip().lower() == "registers":
                 config_c_prompt = f"""Create a clean and production-ready **config.c** file for the {mcu_name} microcontroller.  
-This file must implement the functions declared in `config.h`, using the macros and typedefs from `{mcu_name}_main.h`.
+    This file must implement the functions declared in `config.h`, using the macros and typedefs from `{mcu_name}_MAIN.h`.
 
----
+    ---
 
-### 🔗 File Linkage:
+    ### 🔗 File Linkage:
 
-- Add `#include "config.h"` and `#include "{mcu_name}_MAIN.h"` at the top
-- Do not redefine macros like `SET_BIT`, `GPIO_SAFEGUARD_Init()`, or typedefs like `tword` — just use them
+    - Add `#include "config.h"` and `#include "{mcu_name}_MAIN.h"` at the top
+    - Do not redefine macros like `SET_BIT`, `GPIO_SAFEGUARD_Init()`, or typedefs like `tword` — just use them
 
----
+    ---
 
-### 🔧 Main Initialization Function:
+    ### 🔧 Main Initialization Function:
 
-Implement `void mcu_config_Init(void)` using the following sequence:
+    Implement `void mcu_config_Init(void)` using the following sequence:
 
-1. `safe_guards()` → should call `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
-2. `LVR_init()` → initialize Low Voltage Reset (LVR) threshold for operation at {voltage}V
-3. `LVR_Enable()` → enable LVR at correct voltage threshold
-4. `WDT_INIT()` → setup watchdog timer (≥ 8ms)
-5. `WDT_Enable()` → enable WDT with correct window config
-6. `CLC_Init()` → configure clock source using `{clock_source}`
+    1. `safe_guards()` → should call `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
+    2. `LVR_init()` → initialize Low Voltage Reset (LVR) threshold for operation at {voltage}V
+    3. `LVR_Enable()` → enable LVR at correct voltage threshold
+    4. `WDT_INIT()` → setup watchdog timer (≥ 8ms)
+    5. `WDT_Enable()` → enable WDT with correct window config
+    6. `CLC_Init()` → configure clock source using `{clock_source}`
 
-Implement `void WDI_Reset(void);` to refresh/reset the watchdog timer.
----
-
-### 🔒 Visibility Rules:
-Only the following functions must be marked static:
-
--safe_guards()
-
--LVR_init()
-
--LVR_Enable()
-
--WDT_INIT()
-
-The following functions must not be static:
-
--WDT_Enable()
-
--CLC_Init()
+    Implement `void WDI_Reset(void);` to refresh/reset the watchdog timer.
 
 
-### ⚠️ Safety Guidelines:
+    ---
 
-- Use error codes (`return 0` for success, `<0` for failure)
-- Add timeout checks when polling hardware
-- No magic numbers — use `#define` or values from main.h
-- Short inline comments where needed (e.g. for register access or safety logic)
+    ### 🔒 Visibility Rules:
+    Only the following functions must be marked static:
 
----
+    -safe_guards()
 
-### 📘 Comments:
+    -LVR_init()
 
-- Add short function headers
-- Keep it clean and readable — no unnecessary comments or placeholders
-- Only comment what’s important (e.g. timing-critical code, register logic)
+    -LVR_Enable()
 
-Output must be a complete, working C file — not pseudocode or partial implementation."""
+    -WDT_INIT()
+
+    The following functions must not be static:
+
+    -WDT_Enable()
+
+    -CLC_Init()
+
+
+    ### ⚠️ Safety Guidelines:
+
+    - Use error codes (`return 0` for success, `<0` for failure)
+    - Add timeout checks when polling hardware
+    - No magic numbers — use `#define` or values from main.h
+    - Short inline comments where needed (e.g. for register access or safety logic)
+
+    ---
+
+    ### 📘 Comments:
+
+    - Add short function headers
+    - Keep it clean and readable — no unnecessary comments or placeholders
+    - Only comment what's important (e.g. timing-critical code, register logic)
+
+    Output must be a complete, working C file — not pseudocode or partial implementation."""
             else:  # Option Bite mode
                 config_c_prompt = f"""Create a clean and production-ready **config.c** file for the {mcu_name} microcontroller.  
-This file must implement the functions declared in `config.h`, using the macros and typedefs from `{mcu_name}_main.h`.
+    This file must implement the functions declared in `config.h`, using the macros and typedefs from `{mcu_name}_MAIN.h`.
 
----
+    ---
 
-### 🔗 File Linkage:
+    ### 🔗 File Linkage:
 
-- Add `#include "config.h"` and `#include "{mcu_name}_MAIN.h"` at the top
-- Do not redefine macros like `SET_BIT`, `GPIO_SAFEGUARD_Init()`, or typedefs like `tword` — just use them
+    - Add `#include "config.h"` and `#include "{mcu_name}_MAIN.h"` at the top
+    - Do not redefine macros like `SET_BIT`, `GPIO_SAFEGUARD_Init()`, or typedefs like `tword` — just use them
 
----
+    ---
 
-### 🔧 Main Initialization Function:
+    ### 🔧 Main Initialization Function:
 
-Implement `void mcu_config_Init(void)` using the following sequence:
+    Implement `void mcu_config_Init(void)` using the following sequence:
 
-1. `safe_guards()` → should call `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
+    1. `safe_guards()` → should call `GPIO_SAFEGUARD_Init()` and `Registers_SAFEGUARD_Init()`
 
-Implement `void WDI_Reset(void);` to refresh/reset the watchdog timer.
----
+    Implement `void WDI_Reset(void);` to refresh/reset the watchdog timer.
 
-### 🔒 Visibility Rules:
-Only the following functions must be marked static:
+    ---
 
--safe_guards()
+    ### 🔒 Visibility Rules:
+    Only the following functions must be marked static:
 
-### ⚠️ Safety Guidelines:
+    -safe_guards()
 
-- Use error codes (`return 0` for success, `<0` for failure)
-- Add timeout checks when polling hardware
-- No magic numbers — use `#define` or values from main.h
-- Short inline comments where needed (e.g. for register access or safety logic)
+    ### ⚠️ Safety Guidelines:
 
----
+    - Use error codes (`return 0` for success, `<0` for failure)
+    - Add timeout checks when polling hardware
+    - No magic numbers — use `#define` or values from main.h
+    - Short inline comments where needed (e.g. for register access or safety logic)
 
-### 📘 Comments:
+    ---
 
-- Add short function headers
-- Keep it clean and readable — no unnecessary comments or placeholders
-- Only comment what’s important (e.g. timing-critical code, register logic)
+    ### 📘 Comments:
 
-Output must be a complete, working C file — not pseudocode or partial implementation."""
+    - Add short function headers
+    - Keep it clean and readable — no unnecessary comments or placeholders
+    - Only comment what's important (e.g. timing-critical code, register logic)
+
+    Output must be a complete, working C file — not pseudocode or partial implementation."""
 
             response = model.generate_content(config_c_prompt)
             config_c_content = self.clean_code_output(response.text)
+            
+            # If PDF was provided, add a comment at the top of config.c
+            if self.extracted_pdf_text:
+                pdf_note = f"""/*
+    * Configuration generated with PDF reference:
+    * {self.extracted_pdf_text[:200]}... (truncated)
+    */
+    """
+                config_c_content = pdf_note + config_c_content
             
             # Save files
             progress("Saving files...", 80)
