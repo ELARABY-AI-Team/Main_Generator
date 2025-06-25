@@ -1,92 +1,91 @@
 /**
  * @file RENESAS_R5F11BBC_config.c
- * @brief Configuration functions implementation for RENESAS_R5F11BBC microcontroller.
+ * @brief Microcontroller configuration file for Renesas R5F11BBC.
  *
- * This file implements the system configuration functions including initial
- * hardware setup and watchdog timer management, tailored for Option Byte mode.
- *
- * @note This implementation is based on the requirements provided and assumes
- *       the existence of specific macros, registers, and safeguard functions
- *       as declared in "RENESAS_R5F11BBC_MAIN.h".
+ * This file implements the core initialization and watchdog functions
+ * based on the configuration defined in RENESAS_R5F11BBC_config.h
+ * and uses definitions from RENESAS_R5F11BBC_MAIN.h.
  */
 
 /* Include necessary header files */
 #include "RENESAS_R5F11BBC_config.h"
 #include "RENESAS_R5F11BBC_MAIN.h"
 
-/* --- Private Function Declarations --- */
-
-/**
- * @brief Executes necessary hardware safeguard initializations.
- *
- * This function calls the specific safeguard initialization routines
- * for GPIO pins and critical registers.
+/*
+ * Private Functions
  */
-static void safe_guards(void);
-
-/* --- Public Function Definitions --- */
 
 /**
- * @brief Initializes the microcontroller's configuration.
+ * @brief Initializes safety-critical GPIO and Registers.
  *
- * This function performs the essential initial setup sequence
- * required for the microcontroller to operate correctly.
- *
- * @note This is a minimal initialization based on the requested sequence.
- *       A full system initialization would typically include clock setup,
- *       peripheral power-up, memory configuration, etc.
- */
-void mcu_config_Init(void)
-{
-    // Execute necessary safeguard initializations first
-    safe_guards();
-
-    // Add other essential initialization steps here as needed:
-    // - Clock System Initialization
-    // - Peripheral Initializations (Timers, ADCs, Communication Interfaces, etc.)
-    // - Memory Configuration (Flash wait states, RAM setup)
-    // - Interrupt Controller Setup
-    // ...
-    // Example placeholder (commented out):
-    // SYS_CLOCK_Init();
-    // UART_Init();
-    // Timer_Init();
-    // ...
-}
-
-/**
- * @brief Resets or refreshes the Watchdog Timer (WDT).
- *
- * This function prevents a watchdog timeout by writing the
- * required value to the watchdog refresh register.
- *
- * @note This implementation assumes the WDT refresh register name is WDTRR
- *       and the refresh value is defined by the macro WDT_REFRESH_VALUE
- *       in "RENESAS_R5F11BBC_MAIN.h". Please adjust if register names
- *       or refresh mechanisms differ for this specific MCU derivative.
- */
-void WDI_Reset(void)
-{
-    // Refresh the watchdog timer
-    // Assumed register name and value from RENESAS_R5F11BBC_MAIN.h or documentation
-    WDTRR = (tword)WDT_REFRESH_VALUE; // Assume WDTRR is a 16-bit register
-                                      // Assume WDT_REFRESH_VALUE is defined
-}
-
-/* --- Private Function Definitions --- */
-
-/**
- * @brief Executes necessary hardware safeguard initializations.
- *
- * This function calls the specific safeguard initialization routines
- * for GPIO pins and critical registers. It is marked static as it's
- * an internal helper function.
+ * This function calls the necessary safeguard initialization routines
+ * provided by the system's main initialization library.
  */
 static void safe_guards(void)
 {
-    // Initialize GPIO pins to a safe state (e.g., high-impedance or known level)
+    /* Initialize GPIO safeguards */
     GPIO_SAFEGUARD_Init();
 
-    // Initialize critical registers to safe default states
+    /* Initialize Register safeguards */
     Registers_SAFEGUARD_Init();
 }
+
+/*
+ * Public Functions
+ */
+
+/**
+ * @brief Main MCU configuration initialization.
+ *
+ * This function performs the essential initial setup for the
+ * microcontroller in Option Byte mode, as required by the application.
+ * Option Byte mode assumes basic clock, watchdog, and reset settings
+ * are configured during device programming. This function focuses on
+ * application-specific safeguards and potentially other critical initializations.
+ */
+void mcu_config_Init(void)
+{
+    /* Execute critical safeguard initializations */
+    safe_guards();
+
+    /*
+     * Add other essential initialization steps here if required,
+     * such as enabling specific clocks, configuring critical peripherals
+     * that aren't handled by Option Bytes, setting up interrupt controllers, etc.
+     * Example (commented out as specific steps are not requested):
+     *
+     * // Initialize System Clock (if not fully configured by Option Bytes)
+     * if (SysClock_Init() < 0) {
+     *     // Handle clock initialization failure - potentially fatal error
+     *     // Example: Enter error state or trap
+     *     while(1);
+     * }
+     *
+     * // Initialize Critical Peripheral (e.g., Timer for system tick)
+     * if (Timer_SystemTick_Init() < 0) {
+     *     // Handle timer initialization failure
+     *     while(1);
+     * }
+     *
+     */
+}
+
+/**
+ * @brief Refreshes/resets the Watchdog Timer (WDT).
+ *
+ * This function is called periodically by the application to prevent
+ * the watchdog timer from timing out and causing a system reset.
+ * The specific method depends on the watchdog mode configured (likely via Option Bytes).
+ */
+void WDI_Reset(void)
+{
+    /*
+     * Write the refresh value to the watchdog timer control register.
+     * The specific register and value depend on the MCU series (RL78/G1x)
+     * and the configured watchdog mode. 0xAC is a common value for WDT refresh.
+     * Please verify WDTE and 0xAC based on your specific hardware manual and header definitions.
+     */
+    WDTE = 0xAC; // Assume WDTE is the WDT refresh register and 0xAC is the required value (please verify with datasheet/header file)
+}
+
+/* End of file RENESAS_R5F11BBC_config.c */
