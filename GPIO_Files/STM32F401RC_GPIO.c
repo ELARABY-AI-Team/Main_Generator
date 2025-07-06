@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 * File Name      : STM32F410RC_GPIO.c
-* Description    : Generic MCAL GPIO driver implementation for STM32F410RC
+* Description    : MCAL GPIO driver implementation for STM32F410RC
 * Author         : Technology Inovation Software Team
 * Tester         :
 * Device(s)      : STM32F410RC
@@ -10,327 +10,302 @@
 ***********************************************************************************************************************/
 
 /**Includes ============================================================================*/
-#include "STM32F410RC_GPIO.h" // Assumed to define types, macros, register maps, and WDT_Reset()
-#include <stdint.h>           // For standard integer types (uint32_t etc.)
-
-// Assume WDT_Reset() function is defined elsewhere and linked
-// void WDT_Reset(void);
-
-// Assume the following types and enums are defined in "STM32F410RC_GPIO.h":
-// typedef unsigned char tbyte;
-// typedef enum { Port_0, Port_1, Port_2, /* Add other ports if needed */ Invalid_Port } tport; // Mapping to GPIOA, GPIOB, GPIOC...
-// typedef uint8_t tpin; // 0-15
-// typedef enum { input, output, alternate_function, analog, unknown_direction } t_direction; // Need states for MODER 00, 01, 10, 11
-// typedef enum { general_usage, communication_usage /* Add other usage types */ } t_usage;
-// typedef enum { push_pull, open_drain /* Add other connection types */ } t_output_conn; // Not used in function logic description based on prompt
-
-// Assume the following bit manipulation macros are defined in "STM32F410RC_GPIO.h":
-// #define SET_BIT(reg, bit)  ((*(volatile uint32_t*)(reg)) |= (1UL << (bit)))
-// #define CLR_BIT(reg, bit)  ((*(volatile uint32_t*)(reg)) &= ~(1UL << (bit)))
-// #define TOG_BIT(reg, bit)  ((*(volatile uint32_t*)(reg)) ^= (1UL << (bit)))
-// #define GET_BIT(reg, bit)  (((*(volatile uint32_t*)(reg)) >> (bit)) & 1UL)
-
-// Define MCU-specific register addresses and offsets for STM32F410RC (typical values, confirm with datasheet)
-// These would ideally be in a device-specific header file
-#define GPIOA_BASE 0x40020000UL
-#define GPIOB_BASE 0x40020400UL
-#define GPIOC_BASE 0x40020800UL
-// Add other ports if available/supported by the MCU (e.g., GPIOH_BASE 0x40021C00UL)
-
-#define MODER_OFFSET 0x00UL // GPIO port mode register
-#define OTYPER_OFFSET 0x04UL // GPIO port output type register
-#define OSPEEDR_OFFSET 0x08UL // GPIO port output speed register
-#define PUPDR_OFFSET 0x0CUL // GPIO port pull-up/pull-down register
-#define IDR_OFFSET 0x10UL // GPIO port input data register
-#define ODR_OFFSET 0x14UL // GPIO port output data register
-#define BSRR_OFFSET 0x18UL // GPIO port bit set/reset register (Note: Prompt requests SET_BIT/CLR_BIT on ODR)
-#define LCKR_OFFSET 0x1CUL // GPIO port configuration lock register
-#define AFR_OFFSET 0x20UL // GPIO alternate function registers (AFR[0] and AFR[1])
-
+#include "STM32F410RC_GPIO.h"
+// Assuming WDT_Reset() is defined in a global utility or WDT driver header
+// If not, provide a placeholder or include the correct header
+// #include "WDT.h" // Example include for WDT
 
 /**Static Variables ====================================================================*/
-// No static variables required by the prompt
 
 /**Functions ===========================================================================*/
 
-// Helper function to get GPIO base address based on port enum
-// Returns NULL for invalid port
-static volatile uint32_t* GPIO_Get_Base_Addr(tport port)
-{
-    switch (port)
-    {
-        case Port_0: return (volatile uint32_t*)GPIOA_BASE;
-        case Port_1: return (volatile uint32_t*)GPIOB_BASE;
-        case Port_2: return (volatile uint32_t*)GPIOC_BASE;
-        // Add cases for other supported ports (Port_3 etc.)
-        default: return (volatile uint32_t*)0; // Indicate invalid port
-    }
-}
+/* Helper macro to get the base address of a GPIO peripheral based on port enum */
+#define GET_GPIO_PORT_BASE(port) \
+    ((port) == Port_0 ? GPIOA_BASE_ADDRESS : \
+     (port) == Port_1 ? GPIOB_BASE_ADDRESS : \
+     (port) == Port_2 ? GPIOC_BASE_ADDRESS : \
+     (port) == Port_3 ? GPIOH_BASE_ADDRESS : \
+     0) // Should not happen with valid port enum
 
+/* Placeholder for WDT_Reset() if not defined elsewhere */
+#ifndef WDT_Reset
+#define WDT_Reset() ((void)0) // Define as empty if not provided externally
+#endif
 
-/* Implement the following functions using MCAL style, macros, and MCU logic awareness: */
-
-/**
- * @brief Sets the logic level of a specific GPIO pin.
- *        Uses the ODR register and standard bit manipulation macros.
- *        Does not assume 1 = HIGH; uses value & (1 << pin) to determine logic.
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- * @param value: A tbyte where the relevant bit (1 << pin) indicates the desired state.
- *               e.g., if pin is 5, value=0xFF sets high, value=0x00 sets low.
- */
+/***********************************************************************************************************************
+* Function Name: GPIO_Value_Set
+* Description  : Sets or Clears the output value of a specific GPIO pin.
+* Arguments    : port - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin  - The pin number within the port (0-15)
+*              : value - The desired value byte. The bit corresponding to 'pin' determines the output level.
+* Return Value : None
+***********************************************************************************************************************/
 void GPIO_Value_Set(tport port, tpin pin, tbyte value)
 {
-    WDT_Reset(); // Kick the watchdog
+    WDT_Reset();
 
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
+    /* Get the base address of the ODR register for the specified port */
+    volatile uint32_t* port_odr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_ODR_OFFSET);
 
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
+    switch(port)
     {
-        volatile uint32_t* odr_addr = port_base + ODR_OFFSET;
-
-        // Check the specific bit corresponding to the pin in the 'value' byte
-        if (value & (1 << pin))
-        {
-            SET_BIT(odr_addr, pin);
-        }
-        else
-        {
-            CLR_BIT(odr_addr, pin);
-        }
-    }
-    else
-    {
-        // Handle invalid port or pin, e.g., log an error or assert
-    }
-}
-
-/**
- * @brief Gets the current logic level of a specific GPIO pin from the Input Data Register (IDR).
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- * @return tbyte: The state of the pin (0 or 1). Returns 0 for invalid port/pin.
- */
-tbyte GPIO_Value_Get(tport port, tpin pin)
-{
-    WDT_Reset(); // Kick the watchdog
-
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
-    tbyte pin_value = 0; // Default to low or error value
-
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
-    {
-         volatile uint32_t* idr_addr = port_base + IDR_OFFSET;
-         pin_value = (tbyte)GET_BIT(idr_addr, pin);
-    }
-    else
-    {
-        // Handle invalid port or pin
-    }
-
-    return pin_value;
-}
-
-/**
- * @brief Toggles the current logic level of a specific GPIO pin in the Output Data Register (ODR).
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- */
-void GPIO_Value_Tog(tport port, tpin pin)
-{
-    WDT_Reset(); // Kick the watchdog
-
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
-
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
-    {
-        volatile uint32_t* odr_addr = port_base + ODR_OFFSET;
-        TOG_BIT(odr_addr, pin);
-    }
-    else
-    {
-        // Handle invalid port or pin
-    }
-}
-
-/**
- * @brief Gets the current direction configuration of a specific GPIO pin from the Mode Register (MODER).
- *        Interprets the 2-bit mode field for the pin.
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- * @return t_direction: The configured direction (input, output, alternate_function, analog, or unknown_direction).
- */
-t_direction GPIO_Direction_get(tport port, tpin pin)
-{
-    WDT_Reset(); // Kick the watchdog
-
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
-    t_direction direction = unknown_direction; // Default or error value
-
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
-    {
-        volatile uint32_t* moder_addr = port_base + MODER_OFFSET;
-        uint32_t mode_field = (*moder_addr >> (pin * 2)) & 0b11; // Extract 2-bit mode field
-
-        // Map 2-bit mode field to t_direction enum (STM32 MODER: 00=Input, 01=Output, 10=AF, 11=Analog)
-        switch (mode_field)
-        {
-            case 0b00: direction = input; break;
-            case 0b01: direction = output; break;
-            case 0b10: direction = alternate_function; break;
-            case 0b11: direction = analog; break;
-            default:   direction = unknown_direction; break; // Should not happen with 2 bits
-        }
-    }
-    else
-    {
-        // Handle invalid port or pin
-    }
-
-    return direction;
-}
-
-
-/**
- * @brief Initializes a specific GPIO pin as an output.
- *        Configures pull-up (disables), initial output value, output type (push-pull/open-drain via usage/POMx), and sets mode to Output.
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- * @param value: The initial logic level for the output pin (used with value & (1 << pin)).
- * @param usage: The intended usage (e.g., general_usage, communication_usage) affecting output type.
- *               communication_usage is assumed to configure Open-Drain (OTYPER bit set),
- *               general_usage configures Push-Pull (OTYPER bit cleared).
- * @param conn: The output connection type (push_pull, open_drain). Note: This parameter
- *              is not directly used in the function's logic *as described by the prompt*,
- *              which links usage to POMx. The implementation uses 'usage' to determine OTYPER.
- */
-void GPIO_Output_Init(tport port, tpin pin, tbyte value, t_usage usage, t_output_conn conn)
-{
-    // Note: Proper GPIO initialization usually requires enabling the GPIO peripheral clock first.
-    // This driver assumes the clock is already enabled or handled externally.
-
-    WDT_Reset(); // Kick the watchdog
-
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
-
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
-    {
-        volatile uint32_t* moder_addr = port_base + MODER_OFFSET;
-        volatile uint32_t* otyper_addr = port_base + OTYPER_OFFSET;
-        volatile uint32_t* pupdr_addr = port_base + PUPDR_OFFSET;
-        volatile uint32_t* odr_addr = port_base + ODR_OFFSET;
-
-        // Implement initialization steps as described in the prompt *within the do-while loop*
-        // The do-while loop waiting for direction change is unusual but requested.
-        do
-        {
-            // CLR_BIT(PUx, pin); // Disable pull-up/pull-down -> Set PUPDR to 00 (No Pull-up/Pull-down)
-            // PUPDR uses 2 bits per pin. Need to clear the 2 bits for the pin.
-            *pupdr_addr &= ~(0b11UL << (pin * 2)); // Clear PUPDR[2*pin+1:2*pin]
-
-            // if(value & (1 << pin)) -> SET_BIT(Px, pin); else -> CLR_BIT(Px, pin); // Set initial value in ODR
-            // Px refers to the Output Data Register (ODR) here
+        case Port_0: /* GPIOA */
+        case Port_1: /* GPIOB */
+        case Port_2: /* GPIOC */
+        case Port_3: /* GPIOH */
+            /* Check the bit corresponding to the pin in the value byte */
             if (value & (1 << pin))
             {
-                SET_BIT(odr_addr, pin);
+                SET_BIT(*port_odr_address, pin);
             }
             else
             {
-                CLR_BIT(odr_addr, pin);
+                CLR_BIT(*port_odr_address, pin);
             }
+            break;
 
-            // if usage == communication_usage -> SET_BIT(POMx, pin); else -> CLR_BIT(POMx, pin);
-            // Assuming POMx maps to OTYPER (Output Type Register), where bit 1 means Open-Drain, 0 means Push-Pull.
-            if (usage == communication_usage)
-            {
-                // Configure as Open-Drain (set OTYPER bit)
-                SET_BIT(otyper_addr, pin);
-            }
-            else // Assuming general_usage or other implies Push-Pull
-            {
-                // Configure as Push-Pull (clear OTYPER bit)
-                CLR_BIT(otyper_addr, pin);
-            }
-            // Note: The 'conn' parameter (push_pull/open_drain) is redundant if 'usage' also controls OTYPER.
-            // The prompt logic only mentions 'usage'.
-
-            // CLR_BIT(PMx, pin); // Set as output
-            // PMx refers to the Mode Register (MODER). Output mode is 01 (b01).
-            // MODER uses 2 bits per pin. Need to set MODER[2*pin+1:2*pin] to 01.
-            *moder_addr &= ~(0b11UL << (pin * 2)); // Clear MODER[2*pin+1:2*pin]
-            *moder_addr |= (0b01UL << (pin * 2));  // Set MODER[2*pin+1:2*pin] to 01 (Output mode)
-
-        } while (GPIO_Direction_get(port, pin) != output); // Busy-wait until direction is reported as output
-    }
-    else
-    {
-        // Handle invalid port or pin
+        default:
+            /* Handle invalid port */
+            break;
     }
 }
 
-/**
- * @brief Initializes a specific GPIO pin as an input.
- *        Configures pull-up (enables), output type (via usage/POMx - less relevant for input but included as per prompt logic), and sets mode to Input.
- *
- * @param port: The GPIO port (e.g., Port_0 for GPIOA).
- * @param pin: The pin number (0-15).
- * @param usage: The intended usage (e.g., general_usage, communication_usage) potentially affecting output type config
- *               (though less relevant for pure input). Included as per prompt logic linking usage to POMx/OTYPER.
- */
+/***********************************************************************************************************************
+* Function Name: GPIO_Value_Get
+* Description  : Reads the input value of a specific GPIO pin.
+* Arguments    : port - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin  - The pin number within the port (0-15)
+* Return Value : tbyte - The value of the pin (0 or 1)
+***********************************************************************************************************************/
+tbyte GPIO_Value_Get(tport port, tpin pin)
+{
+    WDT_Reset();
+
+    /* Get the base address of the IDR register for the specified port */
+    volatile uint32_t* port_idr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_IDR_OFFSET);
+    tbyte pin_value = 0; // Default return value
+
+    switch(port)
+    {
+        case Port_0: /* GPIOA */
+        case Port_1: /* GPIOB */
+        case Port_2: /* GPIOC */
+        case Port_3: /* GPIOH */
+            pin_value = GET_BIT(*port_idr_address, pin);
+            break;
+
+        default:
+            /* Handle invalid port */
+            break;
+    }
+    return pin_value;
+}
+
+/***********************************************************************************************************************
+* Function Name: GPIO_Value_Tog
+* Description  : Toggles the output value of a specific GPIO pin.
+* Arguments    : port - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin  - The pin number within the port (0-15)
+* Return Value : None
+***********************************************************************************************************************/
+void GPIO_Value_Tog(tport port, tpin pin)
+{
+    WDT_Reset();
+
+    /* Get the base address of the ODR register for the specified port */
+    volatile uint32_t* port_odr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_ODR_OFFSET);
+
+    switch(port)
+    {
+        case Port_0: /* GPIOA */
+        case Port_1: /* GPIOB */
+        case Port_2: /* GPIOC */
+        case Port_3: /* GPIOH */
+            TOG_BIT(*port_odr_address, pin);
+            break;
+
+        default:
+            /* Handle invalid port */
+            break;
+    }
+}
+
+/***********************************************************************************************************************
+* Function Name: GPIO_Direction_get
+* Description  : Gets the direction (Input/Output) of a specific GPIO pin.
+* Arguments    : port - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin  - The pin number within the port (0-15)
+* Return Value : t_direction - The direction of the pin (input or output).
+*                Note: Returns input for any mode other than General Purpose Output (MODER = 0b01).
+***********************************************************************************************************************/
+t_direction GPIO_Direction_get(tport port, tpin pin)
+{
+    WDT_Reset();
+
+    /* Get the base address of the MODER register for the specified port */
+    volatile uint32_t* port_moder_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_MODER_OFFSET);
+    t_direction direction = input; // Default return value (input mode is 00)
+
+    switch(port)
+    {
+        case Port_0: /* GPIOA */
+        case Port_1: /* GPIOB */
+        case Port_2: /* GPIOC */
+        case Port_3: /* GPIOH */
+            /* Read the two bits corresponding to the pin in the MODER register */
+            uint32_t moder_bits = (*port_moder_address >> (2 * pin)) & 0x03;
+
+            /* Interpret MODER bits: 00=Input, 01=Output, 10=Alternate, 11=Analog */
+            /* According to request's implied logic (0=output, 1=input for PMx bit): */
+            /* Map 0b01 (Output) to 'output' enum, anything else to 'input' enum for this function's purpose. */
+            if (moder_bits == 0b01) // General Purpose Output mode
+            {
+                direction = output;
+            }
+            else // Input (00), Alternate (10), Analog (11) are treated as 'input' by this function
+            {
+                 direction = input;
+            }
+            break;
+
+        default:
+            /* Handle invalid port - default direction is input */
+            break;
+    }
+    return direction;
+}
+
+/***********************************************************************************************************************
+* Function Name: GPIO_Output_Init
+* Description  : Initializes a specific GPIO pin as Output.
+* Arguments    : port  - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin   - The pin number within the port (0-15)
+*              : value - The initial output value byte. The bit corresponding to 'pin' sets the initial level.
+*              : usage - The intended usage (general_usage implies push-pull, communication_usage implies open-drain)
+*              : conn  - Not used in the requested logic (part of function signature)
+* Return Value : None
+***********************************************************************************************************************/
+void GPIO_Output_Init(tport port, tpin pin, tbyte value, t_usage usage, t_output_conn conn)
+{
+    /* Configure the pin and then wait until the direction is successfully set to output */
+    do
+    {
+        WDT_Reset(); // Reset WDT inside the loop
+
+        switch(port)
+        {
+            case Port_0: /* GPIOA */
+            case Port_1: /* GPIOB */
+            case Port_2: /* GPIOC */
+            case Port_3: /* GPIOH */
+            {
+                /* Get base addresses for required registers */
+                volatile uint32_t* port_moder_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_MODER_OFFSET);
+                volatile uint32_t* port_otyper_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_OTYPER_OFFSET);
+                volatile uint32_t* port_odr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_ODR_OFFSET);
+                volatile uint32_t* port_pupdr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_PUPDR_OFFSET);
+
+                /* 1. CLR_BIT(PUx, pin); // Disable pull-up/pull-down */
+                /* Translate to PUPDR register (2 bits per pin): Set bits 2*pin and 2*pin+1 to 00 (No pull-up/down) */
+                CLR_BIT(*port_pupdr_address, 2 * pin);
+                CLR_BIT(*port_pupdr_address, 2 * pin + 1);
+
+                /* 2. if(value & (1 << pin)) -> SET_BIT(Px, pin); else -> CLR_BIT(Px, pin); // Set initial value */
+                /* Translate to ODR register (1 bit per pin) */
+                if (value & (1 << pin))
+                {
+                    SET_BIT(*port_odr_address, pin);
+                }
+                else
+                {
+                    CLR_BIT(*port_odr_address, pin);
+                }
+
+                /* 3. if usage == communication_usage -> SET_BIT(POMx, pin); else -> CLR_BIT(POMx, pin); // Set output type */
+                /* Translate to OTYPER register (1 bit per pin): 0=Push-pull, 1=Open-drain */
+                if (usage == communication_usage)
+                {
+                    SET_BIT(*port_otyper_address, pin); // Set bit to 1 for Open-drain
+                }
+                else // general_usage or other
+                {
+                    CLR_BIT(*port_otyper_address, pin); // Clear bit to 0 for Push-pull
+                }
+
+                /* 4. CLR_BIT(PMx, pin); // Set as output */
+                /* Translate to MODER register (2 bits per pin): Set bits 2*pin and 2*pin+1 to 01 (General Purpose Output mode) */
+                CLR_BIT(*port_moder_address, 2 * pin + 1); // Clear bit 2*pin+1 (bit 1 of the pair)
+                SET_BIT(*port_moder_address, 2 * pin);     // Set bit 2*pin (bit 0 of the pair)
+                break;
+            }
+
+            default:
+                /* Handle invalid port */
+                break;
+        }
+    }
+    while(GPIO_Direction_get(port, pin) != output); // Wait until the direction is confirmed as output
+}
+
+/***********************************************************************************************************************
+* Function Name: GPIO_Input_Init
+* Description  : Initializes a specific GPIO pin as Input.
+* Arguments    : port  - The GPIO port (e.g., Port_0 for GPIOA)
+*              : pin   - The pin number within the port (0-15)
+*              : usage - The intended usage (communication_usage seems to affect output type based on description,
+*                        but applied to input init as per request)
+* Return Value : None
+***********************************************************************************************************************/
 void GPIO_Input_Init(tport port, tpin pin, t_usage usage)
 {
-     // Note: Proper GPIO initialization usually requires enabling the GPIO peripheral clock first.
-    // This driver assumes the clock is already enabled or handled externally.
-
-    WDT_Reset(); // Kick the watchdog
-
-    volatile uint32_t* port_base = GPIO_Get_Base_Addr(port);
-
-    if (port_base != (volatile uint32_t*)0 && pin < 16) // Validate port and pin
+    /* Configure the pin and then wait until the direction is successfully set to input */
+    do
     {
-        volatile uint32_t* moder_addr = port_base + MODER_OFFSET;
-        volatile uint32_t* otyper_addr = port_base + OTYPER_OFFSET; // OTYPER config included as per prompt linking usage to POMx
-        volatile uint32_t* pupdr_addr = port_base + PUPDR_OFFSET;
+        WDT_Reset(); // Reset WDT inside the loop
 
-        // Implement initialization steps as described in the prompt *within the do-while loop*
-        // The do-while loop waiting for direction change is unusual but requested.
-        do
+        switch(port)
         {
-            // SET_BIT(PUx, pin); // Enable pull-up -> Set PUPDR to 01 (Pull-up)
-            // PUPDR uses 2 bits per pin. Need to set PUPDR[2*pin+1:2*pin] to 01.
-            *pupdr_addr &= ~(0b11UL << (pin * 2)); // Clear PUPDR[2*pin+1:2*pin]
-            *pupdr_addr |= (0b01UL << (pin * 2));  // Set PUPDR[2*pin+1:2*pin] to 01 (Pull-up mode)
-
-            // if usage == communication_usage -> SET_BIT(POMx, pin); else -> CLR_BIT(POMx, pin);
-            // Assuming POMx maps to OTYPER. While OTYPER is primarily for outputs,
-            // the prompt's logic includes this for input init based on 'usage'.
-             if (usage == communication_usage)
+            case Port_0: /* GPIOA */
+            case Port_1: /* GPIOB */
+            case Port_2: /* GPIOC */
+            case Port_3: /* GPIOH */
             {
-                // Configure as Open-Drain (set OTYPER bit) - Unusual for input, but following prompt logic
-                SET_BIT(otyper_addr, pin);
-            }
-            else // Assuming general_usage or other implies Push-Pull
-            {
-                // Configure as Push-Pull (clear OTYPER bit) - Default value, less impact on input
-                CLR_BIT(otyper_addr, pin);
+                /* Get base addresses for required registers */
+                volatile uint32_t* port_moder_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_MODER_OFFSET);
+                volatile uint32_t* port_otyper_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_OTYPER_OFFSET); // Included as per request logic, though OTYPER is for output
+                volatile uint32_t* port_pupdr_address = (volatile uint32_t *)(GET_GPIO_PORT_BASE(port) + GPIO_PUPDR_OFFSET);
+
+                /* 1. SET_BIT(PUx, pin); // Enable pull-up */
+                /* Translate to PUPDR register (2 bits per pin): Set bits 2*pin and 2*pin+1 to 01 (Pull-up enabled) */
+                CLR_BIT(*port_pupdr_address, 2 * pin + 1); // Clear bit 2*pin+1 (bit 1 of the pair)
+                SET_BIT(*port_pupdr_address, 2 * pin);     // Set bit 2*pin (bit 0 of the pair)
+
+
+                /* 2. if usage == communication_usage -> SET_BIT(POMx, pin); else -> CLR_BIT(POMx, pin); */
+                /* Translate to OTYPER register (1 bit per pin): 0=Push-pull, 1=Open-drain */
+                /* Note: Configuring OTYPER for an input pin has no effect on pin behavior. Included as per request. */
+                if (usage == communication_usage)
+                {
+                    SET_BIT(*port_otyper_address, pin); // Set bit to 1 for Open-drain (ignored in input mode)
+                }
+                else // general_usage or other
+                {
+                    CLR_BIT(*port_otyper_address, pin); // Clear bit to 0 for Push-pull (ignored in input mode)
+                }
+
+                /* 3. SET_BIT(PMx, pin); // Set as input */
+                /* Translate to MODER register (2 bits per pin): Set bits 2*pin and 2*pin+1 to 00 (Input mode) */
+                CLR_BIT(*port_moder_address, 2 * pin);     // Clear bit 2*pin (bit 0 of the pair)
+                CLR_BIT(*port_moder_address, 2 * pin + 1); // Clear bit 2*pin+1 (bit 1 of the pair)
+                break;
             }
 
-            // SET_BIT(PMx, pin); // Set as input
-            // PMx refers to the Mode Register (MODER). Input mode is 00 (b00).
-            // MODER uses 2 bits per pin. Need to set MODER[2*pin+1:2*pin] to 00.
-            *moder_addr &= ~(0b11UL << (pin * 2)); // Clear MODER[2*pin+1:2*pin] (This effectively sets it to 00 for Input)
-
-        } while (GPIO_Direction_get(port, pin) != input); // Busy-wait until direction is reported as input
+            default:
+                /* Handle invalid port */
+                break;
+        }
     }
-    else
-    {
-        // Handle invalid port or pin
-    }
+    while(GPIO_Direction_get(port, pin) != input); // Wait until the direction is confirmed as input
 }
 
 /***********************************************************************************************************************
