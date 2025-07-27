@@ -1,0 +1,1074 @@
+Here is the extracted register information from the provided documentation for the STM32F401RC microcontroller, formatted as requested:
+
+---
+
+**General-purpose I/Os (GPIO) Registers (Applicable to GPIOx, where x = A..E and H)**
+
+**GPIOx_MODER**
+Address: 0x00
+Access: read-write
+Description: GPIO port mode register. Used to select the I/O direction mode for pins 0 to 15.
+Bits:
+- 2y:2y+1 (MODERy[1:0]): Port x configuration bits (y = 0..15)
+  - 00: Input (reset state)
+  - 01: General purpose output mode
+  - 10: Alternate function mode
+  - 11: Analog mode
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_OTYPER**
+Address: 0x04
+Access: read-write
+Description: GPIO port output type register. Used to configure the output type (push-pull or open-drain) for pins 0 to 15.
+Bits:
+- 31:16: Reserved
+- 15:0 (OTy): Port x configuration bits (y = 0..15)
+  - 0: Output push-pull (reset state)
+  - 1: Output open-drain
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_OSPEEDR**
+Address: 0x08
+Access: read-write
+Description: GPIO port output speed register. Used to configure the I/O output speed for pins 0 to 15.
+Bits:
+- 2y:2y+1 (OSPEEDRy[1:0]): Port x configuration bits (y = 0..15)
+  - 00: Low speed
+  - 01: Medium speed
+  - 10: High speed
+  - 11: Very high speed
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_PUPDR**
+Address: 0x0C
+Access: read-write
+Description: GPIO port pull-up/pull-down register. Used to select the pull-up/pull-down configuration for pins 0 to 15.
+Bits:
+- 2y:2y+1 (PUPDRy[1:0]): Port x configuration bits (y = 0..15)
+  - 00: No pull-up, pull-down
+  - 01: Pull-up
+  - 10: Pull-down
+  - 11: Reserved
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_IDR**
+Address: 0x10
+Access: read-only
+Description: GPIO port input data register. Captures the data present on the I/O pin.
+Bits:
+- 31:16: Reserved
+- 15:0 (IDRy): Port input data (y = 0..15)
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_ODR**
+Address: 0x14
+Access: read-write
+Description: GPIO port output data register. Stores the data to be output on the I/O pin.
+Bits:
+- 31:16: Reserved
+- 15:0 (ODRy): Port output data (y = 0..15)
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_BSRR**
+Address: 0x18
+Access: write-only
+Description: GPIO port bit set/reset register. Allows atomic bitwise write access to GPIOx_ODR.
+Bits:
+- 31:16 (BRy): Port x reset bit y (y = 0..15)
+  - 0: No action on the corresponding ODRx bit
+  - 1: Resets the corresponding ODRx bit
+- 15:0 (BSy): Port x set bit y (y = 0..15)
+  - 0: No action on the corresponding ODRx bit
+  - 1: Sets the corresponding ODRx bit
+Associated pin/function: GPIO pins (Port x, pin y), directly affects GPIOx_ODR
+
+**GPIOx_LCKR**
+Address: 0x1C
+Access: read-write (32-bit word only, requires specific write sequence)
+Description: GPIO port configuration lock register. Used to freeze the I/O configuration (GPIOx_MODER, GPIOx_OTYPER, GPIOx_OSPEEDR, GPIOx_PUPDR, GPIOx_AFRL and GPIOx_AFRH).
+Bits:
+- 31:17: Reserved
+- 16 (LCKK[16]): Lock key
+  - 0: Port configuration lock key not active
+  - 1: Port configuration lock key active
+- 15:0 (LCKy): Port x lock bit y (y = 0..15)
+  - 0: Port configuration not locked
+  - 1: Port configuration locked
+Associated pin/function: GPIO pins (Port x, pin y)
+
+**GPIOx_AFRL**
+Address: 0x20
+Access: read-write
+Description: GPIO alternate function low register. Selects one of sixteen alternate functions for I/O pins 0 to 7.
+Bits:
+- 31:0 (AFRLy): Alternate function selection for port x bit y (y = 0..7)
+  - 0000: AF0 (System function: JTAG/SWD, RTC_REFIN, MCO1/MCO2)
+  - 0001: AF1
+  - 0010: AF2
+  - 0011: AF3
+  - 0100: AF4
+  - 0101: AF5
+  - 0110: AF6
+  - 0111: AF7
+  - 1000: AF8
+  - 1001: AF9
+  - 1010: AF10
+  - 1011: AF11
+  - 1100: AF12
+  - 1101: AF13
+  - 1110: AF14
+  - 1111: AF15 (Cortex-M4 with FPU EVENTOUT)
+Associated pin/function: GPIO pins (Port x, pins 0-7)
+
+**GPIOx_AFRH**
+Address: 0x24
+Access: read-write
+Description: GPIO alternate function high register. Selects one of sixteen alternate functions for I/O pins 8 to 15.
+Bits:
+- 31:0 (AFRHy): Alternate function selection for port x bit y (y = 8..15)
+  - (Same AF selection as GPIOx_AFRL)
+Associated pin/function: GPIO pins (Port x, pins 8-15)
+
+---
+
+**Advanced-control Timer (TIM1) Registers**
+
+**TIMx_CR1** (TIM1 Control Register 1)
+Address: 0x00
+Access: read-write
+Description: TIM1 control register 1.
+Bits:
+- 15:10: Reserved
+- 9:8 (CKD[1:0]): Clock division
+  - 00: tDTS=tCK_INT
+  - 01: tDTS=2*tCK_INT
+  - 10: tDTS=4*tCK_INT
+  - 11: Reserved
+- 7 (ARPE): Auto-reload preload enable
+  - 0: TIMx_ARR register is not buffered
+  - 1: TIMx_ARR register is buffered
+- 6:5 (CMS[1:0]): Center-aligned mode selection
+  - 00: Edge-aligned mode
+  - 01: Center-aligned mode 1 (OC interrupt flags set only when counting down)
+  - 10: Center-aligned mode 2 (OC interrupt flags set only when counting up)
+  - 11: Center-aligned mode 3 (OC interrupt flags set when counting up or down)
+- 4 (DIR): Direction (read only when in Center-aligned mode or Encoder mode)
+  - 0: Counter used as upcounter
+  - 1: Counter used as downcounter
+- 3 (OPM): One pulse mode
+  - 0: Counter is not stopped at update event
+  - 1: Counter stops counting at the next update event
+- 2 (URS): Update request source
+  - 0: Any event generates update interrupt/DMA request
+  - 1: Only counter overflow/underflow generates update interrupt/DMA request
+- 1 (UDIS): Update disable
+  - 0: UEV enabled
+  - 1: UEV disabled
+- 0 (CEN): Counter enable
+  - 0: Counter disabled
+  - 1: Counter enabled
+Associated pin/function: Controls overall timer operation.
+
+**TIMx_CR2** (TIM1 Control Register 2)
+Address: 0x04
+Access: read-write
+Description: TIM1 control register 2.
+Bits:
+- 15: Reserved
+- 14 (OIS4): Output Idle state 4 (OC4 output)
+  - 0: OC4=0 after a dead-time when MOE=0
+  - 1: OC4=1 after a dead-time when MOE=0
+- 13 (OIS3N): Output Idle state 3 (OC3N output)
+  - 0: OC3N=0 after a dead-time when MOE=0
+  - 1: OC3N=1 after a dead-time when MOE=0
+- 12 (OIS3): Output Idle state 3 (OC3 output)
+  - (Same as OIS4 for OC3)
+- 11 (OIS2N): Output Idle state 2 (OC2N output)
+  - (Same as OIS3N for OC2N)
+- 10 (OIS2): Output Idle state 2 (OC2 output)
+  - (Same as OIS4 for OC2)
+- 9 (OIS1N): Output Idle state 1 (OC1N output)
+  - (Same as OIS3N for OC1N)
+- 8 (OIS1): Output Idle state 1 (OC1 output)
+  - (Same as OIS4 for OC1)
+- 7 (TI1S): TI1 selection
+  - 0: TIMx_CH1 pin is connected to TI1 input
+  - 1: TIMx_CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)
+- 6:4 (MMS[2:0]): Master mode selection (TRGO output)
+  - 000: Reset (UG bit)
+  - 001: Enable (Counter Enable signal)
+  - 010: Update (Update event)
+  - 011: Compare Pulse (CC1IF flag)
+  - 100: Compare (OC1REF signal)
+  - 101: Compare (OC2REF signal)
+  - 110: Compare (OC3REF signal)
+  - 111: Compare (OC4REF signal)
+- 3 (CCDS): Capture/compare DMA selection
+  - 0: CCx DMA request sent when CCx event occurs
+  - 1: CCx DMA requests sent when update event occurs
+- 2 (CCUS): Capture/compare control update selection
+  - 0: Updated by setting COMG bit only
+  - 1: Updated by setting COMG bit or TRGI rising edge
+- 1: Reserved
+- 0 (CCPC): Capture/compare preloaded control
+  - 0: Not preloaded
+  - 1: Preloaded, updated on Commutation event (COM)
+Associated pin/function: OC1, OC1N, OC2, OC2N, OC3, OC3N, OC4, OC4N (outputs), TIMx_CH1, TIMx_CH2, TIMx_CH3 (inputs for TI1S XOR), TRGO (output).
+
+**TIMx_SMCR** (TIM1 Slave Mode Control Register)
+Address: 0x08
+Access: read-write
+Description: TIM1 slave mode control register.
+Bits:
+- 15 (ETP): External trigger polarity
+  - 0: ETR non-inverted, active at high level or rising edge
+  - 1: ETR inverted, active at low level or falling edge
+- 14 (ECE): External clock enable
+  - 0: External clock mode 2 disabled
+  - 1: External clock mode 2 enabled (counter clocked by ETRF signal)
+- 13:12 (ETPS[1:0]): External trigger prescaler
+  - 00: Prescaler OFF
+  - 01: ETRP frequency divided by 2
+  - 10: ETRP frequency divided by 4
+  - 11: ETRP frequency divided by 8
+- 11:8 (ETF[3:0]): External trigger filter (defines sampling frequency and filter length)
+  - 0000: No filter, sampling at fDTS
+  - ... (various combinations of fSAMPLING and N)
+- 7 (MSM): Master/slave mode
+  - 0: No action
+  - 1: TRGI event delayed for synchronization
+- 6:4 (TS[2:0]): Trigger selection (selects input for counter synchronization)
+  - 000: Internal Trigger 0 (TIM5_TRGO)
+  - 001: Internal Trigger 1 (TIM2_TRGO)
+  - 010: Internal Trigger 2 (TIM3_TRGO)
+  - 011: Internal Trigger 3 (TIM4_TRGO)
+  - 100: TI1 Edge Detector (TI1F_ED)
+  - 101: Filtered Timer Input 1 (TI1FP1)
+  - 110: Filtered Timer Input 2 (TI2FP2)
+  - 111: External Trigger input (ETRF)
+- 3: Reserved
+- 2:0 (SMS[2:0]): Slave mode selection
+  - 000: Slave mode disabled
+  - 001: Encoder mode 1
+  - 010: Encoder mode 2
+  - 011: Encoder mode 3
+  - 100: Reset Mode
+  - 101: Gated Mode
+  - 110: Trigger Mode
+  - 111: External Clock Mode 1
+Associated pin/function: ETR (input), TI1 (input), TI2 (input), ITRx (internal triggers from other timers).
+
+**TIMx_DIER** (TIM1 DMA/Interrupt Enable Register)
+Address: 0x0C
+Access: read-write
+Description: TIM1 DMA/interrupt enable register. Enables various DMA requests and interrupts.
+Bits:
+- 15: Reserved
+- 14 (TDE): Trigger DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 13 (COMDE): COM DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 12 (CC4DE): Capture/Compare 4 DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 11 (CC3DE): Capture/Compare 3 DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 10 (CC2DE): Capture/Compare 2 DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 9 (CC1DE): Capture/Compare 1 DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 8 (UDE): Update DMA request enable
+  - 0: Disabled
+  - 1: Enabled
+- 7 (BIE): Break interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 6 (TIE): Trigger interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 5 (COMIE): COM interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 4 (CC4IE): Capture/Compare 4 interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 3 (CC3IE): Capture/Compare 3 interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 2 (CC2IE): Capture/Compare 2 interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 1 (CC1IE): Capture/Compare 1 interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+- 0 (UIE): Update interrupt enable
+  - 0: Disabled
+  - 1: Enabled
+
+**TIMx_SR** (TIM1 Status Register)
+Address: 0x10
+Access: read-write (cleared by writing '0' to flag bits)
+Description: TIM1 status register. Contains various interrupt and overcapture flags.
+Bits:
+- 15:13: Reserved
+- 12 (CC4OF): Capture/Compare 4 overcapture flag
+  - 0: No overcapture
+  - 1: Overcapture detected
+- 11 (CC3OF): Capture/Compare 3 overcapture flag
+  - (Same as CC4OF for CC3)
+- 10 (CC2OF): Capture/Compare 2 overcapture flag
+  - (Same as CC4OF for CC2)
+- 9 (CC1OF): Capture/Compare 1 overcapture flag
+  - (Same as CC4OF for CC1)
+- 8: Reserved
+- 7 (BIF): Break interrupt flag
+  - 0: No break event
+  - 1: An active level detected on break input
+- 6 (TIF): Trigger interrupt flag
+  - 0: No trigger event
+  - 1: Trigger interrupt pending
+- 5 (COMIF): COM interrupt flag
+  - 0: No COM event
+  - 1: COM interrupt pending
+- 4 (CC4IF): Capture/Compare 4 interrupt flag
+  - 0: No match/capture
+  - 1: Match/capture occurred
+- 3 (CC3IF): Capture/Compare 3 interrupt flag
+  - (Same as CC4IF for CC3)
+- 2 (CC2IF): Capture/Compare 2 interrupt flag
+  - (Same as CC4IF for CC2)
+- 1 (CC1IF): Capture/Compare 1 interrupt flag
+  - (Same as CC4IF for CC1)
+- 0 (UIF): Update interrupt flag
+  - 0: No update
+  - 1: Update interrupt pending
+
+**TIMx_EGR** (TIM1 Event Generation Register)
+Address: 0x14
+Access: write-only (bits cleared automatically)
+Description: TIM1 event generation register. Used to generate software events.
+Bits:
+- 15:8: Reserved
+- 7 (BG): Break generation
+  - 0: No action
+  - 1: A break event is generated
+- 6 (TG): Trigger generation
+  - 0: No action
+  - 1: The TIF flag is set
+- 5 (COMG): Capture/Compare control update generation
+  - 0: No action
+  - 1: Updates CCxE, CCxNE and OCxM bits if CCPC bit is set
+- 4 (CC4G): Capture/Compare 4 generation
+  - 0: No action
+  - 1: A capture/compare event is generated on channel 4
+- 3 (CC3G): Capture/Compare 3 generation
+  - (Same as CC4G for CC3)
+- 2 (CC2G): Capture/Compare 2 generation
+  - (Same as CC4G for CC2)
+- 1 (CC1G): Capture/Compare 1 generation
+  - (Same as CC4G for CC1)
+- 0 (UG): Update generation
+  - 0: No action
+  - 1: Reinitializes the counter and generates an update of the registers
+
+**TIMx_CCMR1** (TIM1 Capture/Compare Mode Register 1)
+Address: 0x18
+Access: read-write
+Description: Configures capture/compare mode for channel 1 and 2. Functionality varies based on channel direction (input/output).
+Bits:
+- **Output Compare Mode:**
+  - 15 (OC2CE): Output Compare 2 clear enable
+    - 0: OC2Ref is not affected by ETRF Input
+    - 1: OC2Ref is cleared as soon as a High level is detected on ETRF input
+  - 14:12 (OC2M[2:0]): Output Compare 2 mode (defines OC2REF behavior, similar to OC1M below)
+  - 11 (OC2PE): Output Compare 2 preload enable (similar to OC1PE below)
+  - 10 (OC2FE): Output Compare 2 fast enable (similar to OC1FE below)
+  - 9:8 (CC2S[1:0]): Capture/Compare 2 selection
+    - 00: CC2 channel is configured as output
+    - 01: CC2 channel is configured as input, IC2 is mapped on TI2
+    - 10: CC2 channel is configured as input, IC2 is mapped on TI1
+    - 11: CC2 channel is configured as input, IC2 is mapped on TRC
+  - 7 (OC1CE): Output Compare 1 clear enable (similar to OC2CE)
+  - 6:4 (OC1M[2:0]): Output Compare 1 mode (defines OC1REF behavior)
+    - 000: Frozen
+    - 001: Set channel 1 to active level on match
+    - 010: Set channel 1 to inactive level on match
+    - 011: Toggle
+    - 100: Force inactive level
+    - 101: Force active level
+    - 110: PWM mode 1
+    - 111: PWM mode 2
+  - 3 (OC1PE): Output Compare 1 preload enable
+    - 0: Preload register on TIMx_CCR1 disabled
+    - 1: Preload register on TIMx_CCR1 enabled
+  - 2 (OC1FE): Output Compare 1 fast enable
+    - 0: CC1 behaves normally
+    - 1: Active edge on trigger input acts like a compare match on CC1 output
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection (similar to CC2S for channel 1)
+- **Input Capture Mode:**
+  - 15:12 (IC2F[3:0]): Input capture 2 filter (defines sampling frequency and filter length, similar to IC1F below)
+  - 11:10 (IC2PSC[1:0]): Input capture 2 prescaler (defines prescaler ratio, similar to IC1PSC below)
+  - 9:8 (CC2S[1:0]): Capture/Compare 2 selection (same as Output Compare Mode description)
+  - 7:4 (IC1F[3:0]): Input capture 1 filter (defines sampling frequency and filter length)
+    - 0000: No filter, sampling is done at fDTS
+    - ... (various combinations of fSAMPLING and N)
+  - 3:2 (IC1PSC[1:0]): Input capture 1 prescaler (defines ratio of prescaler acting on CC1 input)
+    - 00: No prescaler
+    - 01: Capture is done once every 2 events
+    - 10: Capture is done once every 4 events
+    - 11: Capture is done once every 8 events
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection (same as Output Compare Mode description)
+Associated pin/function: TI1 (input), TI2 (input), TRC (internal input), ETRF (input)
+
+**TIMx_CCMR2** (TIM1 Capture/Compare Mode Register 2)
+Address: 0x1C
+Access: read-write
+Description: Configures capture/compare mode for channel 3 and 4. Functionality varies based on channel direction (input/output), similar to CCMR1.
+Bits:
+- **Output Compare Mode:**
+  - 15 (OC4CE): Output compare 4 clear enable (similar to OC1CE)
+  - 14:12 (OC4M[2:0]): Output compare 4 mode (similar to OC1M)
+  - 11 (OC4PE): Output compare 4 preload enable (similar to OC1PE)
+  - 10 (OC4FE): Output compare 4 fast enable (similar to OC1FE)
+  - 9:8 (CC4S[1:0]): Capture/Compare 4 selection (similar to CC1S for channel 4)
+  - 7 (OC3CE): Output compare 3 clear enable (similar to OC1CE)
+  - 6:4 (OC3M[2:0]): Output compare 3 mode (similar to OC1M)
+  - 3 (OC3PE): Output compare 3 preload enable (similar to OC1PE)
+  - 2 (OC3FE): Output compare 3 fast enable (similar to OC1FE)
+  - 1:0 (CC3S[1:0]): Capture/Compare 3 selection (similar to CC1S for channel 3)
+- **Input Capture Mode:**
+  - 15:12 (IC4F[3:0]): Input capture 4 filter (similar to IC1F)
+  - 11:10 (IC4PSC[1:0]): Input capture 4 prescaler (similar to IC1PSC)
+  - 9:8 (CC4S[1:0]): Capture/Compare 4 selection (same as Output Compare Mode description)
+  - 7:4 (IC3F[3:0]): Input capture 3 filter (similar to IC1F)
+  - 3:2 (IC3PSC[1:0]): Input capture 3 prescaler (similar to IC1PSC)
+  - 1:0 (CC3S[1:0]): Capture/Compare 3 selection (same as Output Compare Mode description)
+Associated pin/function: TI3 (input), TI4 (input)
+
+**TIMx_CCER** (TIM1 Capture/Compare Enable Register)
+Address: 0x20
+Access: read-write
+Description: TIM1 capture/compare enable register. Enables/disables output and sets polarity for all channels.
+Bits:
+- 15:14: Reserved
+- 13 (CC4P): Capture/Compare 4 output polarity (output) or TI4FP1 polarity (input)
+  - Output: 0: OC4 active high, 1: OC4 active low
+  - Input: Used with CC4NP for TI4FP1/TI3FP1 polarity (00: non-inverted/rising, 01: inverted/falling, 11: non-inverted/both)
+- 12 (CC4E): Capture/Compare 4 output enable (output) or capture enable (input)
+  - Output: 0: Off, 1: On
+  - Input: 0: Capture disabled, 1: Capture enabled
+- 11 (CC3NP): Capture/Compare 3 complementary output polarity (output) or TI3FP1 polarity (input) (similar to CC1NP below)
+- 10 (CC3NE): Capture/Compare 3 complementary output enable (similar to CC1NE below)
+- 9 (CC3P): Capture/Compare 3 output polarity (similar to CC1P below)
+- 8 (CC3E): Capture/Compare 3 output enable (similar to CC1E below)
+- 7 (CC2NP): Capture/Compare 2 complementary output polarity (similar to CC1NP below)
+- 6 (CC2NE): Capture/Compare 2 complementary output enable (similar to CC1NE below)
+- 5 (CC2P): Capture/Compare 2 output polarity (similar to CC1P below)
+- 4 (CC2E): Capture/Compare 2 output enable (similar to CC1E below)
+- 3 (CC1NP): Capture/Compare 1 complementary output polarity (output) or TI1FP1/TI2FP1 polarity (input)
+  - Output: 0: OC1N active high, 1: OC1N active low
+  - Input: Used with CC1P for TI1FP1/TI2FP1 polarity (00: non-inverted/rising, 01: inverted/falling, 11: non-inverted/both)
+- 2 (CC1NE): Capture/Compare 1 complementary output enable
+  - 0: Off (OC1N not active)
+  - 1: On (OC1N signal output)
+- 1 (CC1P): Capture/Compare 1 output polarity (output) or TI1FP1/TI2FP1 polarity (input)
+  - Output: 0: OC1 active high, 1: OC1 active low
+  - Input: Used with CC1NP for TI1FP1/TI2FP1 polarity (00: non-inverted/rising, 01: inverted/falling, 11: non-inverted/both)
+- 0 (CC1E): Capture/Compare 1 output enable (output) or capture enable (input)
+  - Output: 0: Off (OC1 not active)
+  - 1: On (OC1 signal output)
+  - Input: 0: Capture disabled, 1: Capture enabled
+Associated pin/function: OC1, OC1N, OC2, OC2N, OC3, OC3N, OC4, OC4N (outputs), TI1, TI2 (inputs)
+
+**TIMx_CNT** (TIM1 Counter Register)
+Address: 0x24
+Access: read-write
+Description: TIM1 counter value.
+Bits:
+- 15:0 (CNT[15:0]): Counter value
+
+**TIMx_PSC** (TIM1 Prescaler Register)
+Address: 0x28
+Access: read-write
+Description: TIM1 prescaler value. Determines the counter clock frequency.
+Bits:
+- 15:0 (PSC[15:0]): Prescaler value
+
+**TIMx_ARR** (TIM1 Auto-Reload Register)
+Address: 0x2C
+Access: read-write
+Description: TIM1 auto-reload value. The value the counter reloads to.
+Bits:
+- 15:0 (ARR[15:0]): Auto-reload value
+
+**TIMx_RCR** (TIM1 Repetition Counter Register)
+Address: 0x30
+Access: read-write
+Description: TIM1 repetition counter register. Sets update rate for compare registers.
+Bits:
+- 15:8: Reserved
+- 7:0 (REP[7:0]): Repetition counter value
+
+**TIMx_CCR1** (TIM1 Capture/Compare Register 1)
+Address: 0x34
+Access: read-write / read-only (depending on channel configuration)
+Description: Stores capture value (input mode) or compare value (output mode) for channel 1.
+Bits:
+- 15:0 (CCR1[15:0]): Capture/Compare 1 value
+
+**TIMx_CCR2** (TIM1 Capture/Compare Register 2)
+Address: 0x38
+Access: read-write / read-only (depending on channel configuration)
+Description: Stores capture value (input mode) or compare value (output mode) for channel 2.
+Bits:
+- 15:0 (CCR2[15:0]): Capture/Compare 2 value
+
+**TIMx_CCR3** (TIM1 Capture/Compare Register 3)
+Address: 0x3C
+Access: read-write / read-only (depending on channel configuration)
+Description: Stores capture value (input mode) or compare value (output mode) for channel 3.
+Bits:
+- 15:0 (CCR3[15:0]): Capture/Compare 3 value
+
+**TIMx_CCR4** (TIM1 Capture/Compare Register 4)
+Address: 0x40
+Access: read-write / read-only (depending on channel configuration)
+Description: Stores capture value (input mode) or compare value (output mode) for channel 4.
+Bits:
+- 15:0 (CCR4[15:0]): Capture/Compare 4 value
+
+**TIMx_BDTR** (TIM1 Break and Dead-Time Register)
+Address: 0x44
+Access: read-write (some bits are write-locked by LOCK bits)
+Description: TIM1 break and dead-time register. Configures break function and dead-time insertion.
+Bits:
+- 15 (MOE): Main output enable
+  - 0: OC and OCN outputs are disabled or forced to idle state
+  - 1: OC and OCN outputs are enabled
+- 14 (AOE): Automatic output enable
+  - 0: MOE can be set only by software
+  - 1: MOE can be set by software or automatically at the next update event
+- 13 (BKP): Break polarity
+  - 0: Break input BRK is active low
+  - 1: Break input BRK is active high
+- 12 (BKE): Break enable
+  - 0: Break inputs disabled
+  - 1: Break inputs enabled
+- 11 (OSSR): Off-state selection for Run mode
+  - 0: When inactive, OC/OCN outputs are disabled
+  - 1: When inactive, OC/OCN outputs are enabled with their inactive level
+- 10 (OSSI): Off-state selection for Idle mode
+  - 0: When inactive, OC/OCN outputs are disabled
+  - 1: When inactive, OC/OCN outputs are forced first with their idle level
+- 9:8 (LOCK[1:0]): Lock configuration
+  - 00: LOCK OFF
+  - 01: LOCK Level 1 (locks DTG, OISx, OISxN, BKE/BKP/AOE)
+  - 10: LOCK Level 2 (LOCK L1 + CCxP/CCxNP, OSSR, OSSI)
+  - 11: LOCK Level 3 (LOCK L2 + OCxM, OCxPE)
+- 7:0 (DTG[7:0]): Dead-time generator setup (defines dead-time duration)
+Associated pin/function: BRK (input), OCx/OCxN (outputs).
+
+**TIMx_DCR** (TIM1 DMA Control Register)
+Address: 0x48
+Access: read-write
+Description: TIM1 DMA control register. Configures base address and length for DMA transfers.
+Bits:
+- 15:13: Reserved
+- 12:8 (DBL[4:0]): DMA burst length (defines number of DMA transfers, 1 to 18)
+- 7:5: Reserved
+- 4:0 (DBA[4:0]): DMA base address (offset from TIMx_CR1 address)
+
+**TIMx_DMAR** (TIM1 DMA Address for Full Transfer)
+Address: 0x4C
+Access: read-write
+Description: TIM1 DMA register for burst accesses. Data register for DMA burst operations.
+Bits:
+- 31:0 (DMAB[31:0]): DMA register for burst accesses
+
+---
+
+**General-purpose Timers (TIM2 to TIM5) Registers**
+
+**TIMx_CR1** (TIMx Control Register 1, where x = 2..5)
+Address: 0x00
+Access: read-write
+Description: TIMx control register 1. (Same as TIM1_CR1, excluding complementary output features)
+Bits:
+- 15:10: Reserved
+- 9:8 (CKD[1:0]): Clock division
+- 7 (ARPE): Auto-reload preload enable
+- 6:5 (CMS[1:0]): Center-aligned mode selection
+- 4 (DIR): Direction
+- 3 (OPM): One-pulse mode
+- 2 (URS): Update request source
+- 1 (UDIS): Update disable
+- 0 (CEN): Counter enable
+
+**TIMx_CR2** (TIMx Control Register 2, where x = 2..5)
+Address: 0x04
+Access: read-write
+Description: TIMx control register 2. (Simpler than TIM1_CR2, no OISx/OISxN, CCUS, CCPC)
+Bits:
+- 15:8: Reserved
+- 7 (TI1S): TI1 selection
+  - 0: The TIMx_CH1 pin is connected to TI1 input
+  - 1: The TIMx_CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)
+- 6:4 (MMS[2:0]): Master mode selection (TRGO output, same options as TIM1)
+- 3 (CCDS): Capture/compare DMA selection
+- 2:0: Reserved
+
+**TIMx_SMCR** (TIMx Slave Mode Control Register, where x = 2..5)
+Address: 0x08
+Access: read-write
+Description: TIMx slave mode control register. (Same functionality as TIM1_SMCR, but ITRx mapping is specific per timer)
+Bits:
+- 15 (ETP): External trigger polarity
+- 14 (ECE): External clock enable
+- 13:12 (ETPS[1:0]): External trigger prescaler
+- 11:8 (ETF[3:0]): External trigger filter
+- 7 (MSM): Master/Slave mode
+- 6:4 (TS[2:0]): Trigger selection (ITRx mappings for TIM2-5: refer to Table 54 in RM0368)
+  - For TIM2: ITR0 (TIM1_TRGO), ITR1 (Reserved), ITR2 (TIM3_TRGO), ITR3 (TIM4_TRGO)
+  - For TIM3: ITR0 (TIM1_TRGO), ITR1 (TIM2_TRGO), ITR2 (TIM5_TRGO), ITR3 (TIM4_TRGO)
+  - For TIM4: ITR0 (TIM1_TRGO), ITR1 (TIM2_TRGO), ITR2 (TIM3_TRGO), ITR3 (Reserved)
+  - For TIM5: ITR0 (TIM2_TRGO), ITR1 (TIM3_TRGO), ITR2 (TIM4_TRGO), ITR3 (Reserved)
+  - Other TS options are standard (TI1F_ED, TI1FP1, TI2FP2, ETRF).
+- 3: Reserved
+- 2:0 (SMS[2:0]): Slave mode selection (same options as TIM1)
+Associated pin/function: ETR (input), TI1 (input), TI2 (input), ITRx (internal triggers from other timers).
+
+**TIMx_DIER** (TIMx DMA/Interrupt Enable Register, where x = 2..5)
+Address: 0x0C
+Access: read-write
+Description: TIMx DMA/interrupt enable register. (No COMDE, BIE, COMIE bits compared to TIM1)
+Bits:
+- 15: Reserved
+- 14 (TDE): Trigger DMA request enable
+- 13: Reserved
+- 12 (CC4DE): Capture/Compare 4 DMA request enable
+- 11 (CC3DE): Capture/Compare 3 DMA request enable
+- 10 (CC2DE): Capture/Compare 2 DMA request enable
+- 9 (CC1DE): Capture/Compare 1 DMA request enable
+- 8 (UDE): Update DMA request enable
+- 7: Reserved
+- 6 (TIE): Trigger interrupt enable
+- 5: Reserved
+- 4 (CC4IE): Capture/Compare 4 interrupt enable
+- 3 (CC3IE): Capture/Compare 3 interrupt enable
+- 2 (CC2IE): Capture/Compare 2 interrupt enable
+- 1 (CC1IE): Capture/Compare 1 interrupt enable
+- 0 (UIE): Update interrupt enable
+
+**TIMx_SR** (TIMx Status Register, where x = 2..5)
+Address: 0x10
+Access: read-write
+Description: TIMx status register. (No BIF, COMIF bits compared to TIM1)
+Bits:
+- 15:13: Reserved
+- 12 (CC4OF): Capture/Compare 4 overcapture flag
+- 11 (CC3OF): Capture/Compare 3 overcapture flag
+- 10 (CC2OF): Capture/Compare 2 overcapture flag
+- 9 (CC1OF): Capture/Compare 1 overcapture flag
+- 8:7: Reserved
+- 6 (TIF): Trigger interrupt flag
+- 5: Reserved
+- 4 (CC4IF): Capture/Compare 4 interrupt flag
+- 3 (CC3IF): Capture/Compare 3 interrupt flag
+- 2 (CC2IF): Capture/Compare 2 interrupt flag
+- 1 (CC1IF): Capture/Compare 1 interrupt flag
+- 0 (UIF): Update interrupt flag
+
+**TIMx_EGR** (TIMx Event Generation Register, where x = 2..5)
+Address: 0x14
+Access: write-only
+Description: TIMx event generation register. (No BG, COMG bits compared to TIM1)
+Bits:
+- 15:7: Reserved
+- 6 (TG): Trigger generation
+- 5: Reserved
+- 4 (CC4G): Capture/compare 4 generation
+- 3 (CC3G): Capture/compare 3 generation
+- 2 (CC2G): Capture/compare 2 generation
+- 1 (CC1G): Capture/compare 1 generation
+- 0 (UG): Update generation
+
+**TIMx_CCMR1** (TIMx Capture/Compare Mode Register 1, where x = 2..5)
+Address: 0x18
+Access: read-write
+Description: Configures capture/compare mode for channel 1 and 2. (Same as TIM1_CCMR1).
+Bits:
+- (Output Compare Mode) - all fields same as TIM1_CCMR1
+- (Input Capture Mode) - all fields same as TIM1_CCMR1
+
+**TIMx_CCMR2** (TIMx Capture/Compare Mode Register 2, where x = 2..5)
+Address: 0x1C
+Access: read-write
+Description: Configures capture/compare mode for channel 3 and 4. (Same as TIM1_CCMR2).
+Bits:
+- (Output Compare Mode) - all fields same as TIM1_CCMR2
+- (Input Capture Mode) - all fields same as TIM1_CCMR2
+
+**TIMx_CCER** (TIMx Capture/Compare Enable Register, where x = 2..5)
+Address: 0x20
+Access: read-write
+Description: TIMx capture/compare enable register. (No complementary output enable/polarity bits as these timers don't have complementary outputs, except for input polarity definition)
+Bits:
+- 15 (CC4NP): Capture/Compare 4 output Polarity (must be kept cleared in output mode)
+- 14: Reserved
+- 13 (CC4P): Capture/Compare 4 output Polarity (Output: 0: OC4 active high, 1: OC4 active low; Input: TI4FP1 polarity)
+- 12 (CC4E): Capture/Compare 4 output enable (Output: 0: Off, 1: On; Input: 0: Capture disabled, 1: Capture enabled)
+- 11 (CC3NP): Capture/Compare 3 output Polarity (must be kept cleared in output mode)
+- 10: Reserved
+- 9 (CC3P): Capture/Compare 3 output Polarity
+- 8 (CC3E): Capture/Compare 3 output enable
+- 7 (CC2NP): Capture/Compare 2 output Polarity (must be kept cleared in output mode)
+- 6: Reserved
+- 5 (CC2P): Capture/Compare 2 output Polarity
+- 4 (CC2E): Capture/Compare 2 output enable
+- 3 (CC1NP): Capture/Compare 1 output Polarity (must be kept cleared in output mode)
+- 2: Reserved
+- 1 (CC1P): Capture/Compare 1 output Polarity
+- 0 (CC1E): Capture/Compare 1 output enable
+Associated pin/function: OCx (outputs), TIx (inputs).
+
+**TIMx_CNT** (TIMx Counter Register, where x = 2..5)
+Address: 0x24
+Access: read-write
+Description: TIMx counter value. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (CNT[31:16]): High counter value (TIM2 and TIM5 only)
+- 15:0 (CNT[15:0]): Low counter value
+
+**TIMx_PSC** (TIMx Prescaler Register, where x = 2..5)
+Address: 0x28
+Access: read-write
+Description: TIMx prescaler value. (Same as TIM1_PSC)
+Bits:
+- 15:0 (PSC[15:0]): Prescaler value
+
+**TIMx_ARR** (TIMx Auto-Reload Register, where x = 2..5)
+Address: 0x2C
+Access: read-write
+Description: TIMx auto-reload value. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (ARR[31:16]): High auto-reload value (TIM2 and TIM5 only)
+- 15:0 (ARR[15:0]): Low auto-reload value
+
+**TIMx_CCR1** (TIMx Capture/Compare Register 1, where x = 2..5)
+Address: 0x34
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 1. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (CCR1[31:16]): High Capture/Compare 1 value (TIM2 and TIM5 only)
+- 15:0 (CCR1[15:0]): Low Capture/Compare 1 value
+
+**TIMx_CCR2** (TIMx Capture/Compare Register 2, where x = 2..5)
+Address: 0x38
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 2. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (CCR2[31:16]): High Capture/Compare 2 value (TIM2 and TIM5 only)
+- 15:0 (CCR2[15:0]): Low Capture/Compare 2 value
+
+**TIMx_CCR3** (TIMx Capture/Compare Register 3, where x = 2..5)
+Address: 0x3C
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 3. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (CCR3[31:16]): High Capture/Compare 3 value (TIM2 and TIM5 only)
+- 15:0 (CCR3[15:0]): Low Capture/Compare 3 value
+
+**TIMx_CCR4** (TIMx Capture/Compare Register 4, where x = 2..5)
+Address: 0x40
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 4. (32-bit for TIM2/5, 16-bit for TIM3/4)
+Bits:
+- 31:16 (CCR4[31:16]): High Capture/Compare 4 value (TIM2 and TIM5 only)
+- 15:0 (CCR4[15:0]): Low Capture/Compare 4 value
+
+**TIMx_DCR** (TIMx DMA Control Register, where x = 2..5)
+Address: 0x48
+Access: read-write
+Description: TIMx DMA control register. (Same as TIM1_DCR)
+Bits:
+- 15:13: Reserved
+- 12:8 (DBL[4:0]): DMA burst length
+- 7:5: Reserved
+- 4:0 (DBA[4:0]): DMA base address
+
+**TIMx_DMAR** (TIMx DMA Address for Full Transfer, where x = 2..5)
+Address: 0x4C
+Access: read-write
+Description: TIMx DMA register for burst accesses. (16-bit, unlike TIM1's 32-bit)
+Bits:
+- 15:0 (DMAB[15:0]): DMA register for burst accesses
+
+**TIM2_OR** (TIM2 Option Register)
+Address: 0x50
+Access: read-write
+Description: TIM2 option register.
+Bits:
+- 15:12: Reserved
+- 11:10 (ITR1_RMP): Internal trigger 1 remap
+  - 00: Reserved
+  - 01: PTP trigger output is connected to TIM2_ITR1
+  - 10: OTG FS SOF is connected to the TIM2_ITR1 input
+  - 11: OTG HS SOF is connected to the TIM2_ITR1 input
+- 9:0: Reserved
+Associated pin/function: PTP, OTG FS SOF, OTG HS SOF (inputs for TIM2_ITR1).
+
+**TIM5_OR** (TIM5 Option Register)
+Address: 0x50
+Access: read-write
+Description: TIM5 option register.
+Bits:
+- 15:8: Reserved
+- 7:6 (TI4_RMP): Timer Input 4 remap
+  - 00: TIM5 Channel4 is connected to the GPIO
+  - 01: the LSI internal clock is connected to the TIM5_CH4 input for calibration purposes
+  - 10: the LSE internal clock is connected to the TIM5_CH4 input for calibration purposes
+  - 11: the RTC wakeup interrupt is connected to TIM5_CH4 input for calibration purposes
+- 5:0: Reserved
+Associated pin/function: TIM5_CH4 (GPIO, LSI, LSE, RTC wakeup interrupt).
+
+---
+
+**General-purpose Timers (TIM9 to TIM11) Registers**
+
+**TIMx_CR1** (TIMx Control Register 1, where x = 9..11)
+Address: 0x00
+Access: read-write
+Description: TIMx control register 1. (Upcounting only, no CMS, DIR bits)
+Bits:
+- 15:10: Reserved
+- 9:8 (CKD[1:0]): Clock division
+- 7 (ARPE): Auto-reload preload enable
+- 6:4: Reserved
+- 3 (OPM): One-pulse mode
+- 2 (URS): Update request source
+- 1 (UDIS): Update disable
+- 0 (CEN): Counter enable
+
+**TIMx_SMCR** (TIMx Slave Mode Control Register, for TIM9 only)
+Address: 0x08
+Access: read-write
+Description: TIM9 slave mode control register. (Limited slave modes and trigger selection compared to TIM1/TIM2-5)
+Bits:
+- 15:8: Reserved
+- 7 (MSM): Master/Slave mode
+- 6:4 (TS[2:0]): Trigger selection (ITRx mappings for TIM9: refer to Table 57 in RM0368)
+  - 000: Internal Trigger 0 (TIM2_TRGO)
+  - 001: Internal Trigger 1 (TIM3_TRGO)
+  - 010: Internal Trigger 2 (TIM10_OC)
+  - 011: Internal Trigger 3 (TIM11_OC)
+  - 100: TI1 Edge Detector (TI1F_ED)
+  - 101: Filtered Timer Input 1 (TI1FP1)
+  - 110: Filtered Timer Input 2 (TI2FP2)
+  - 111: Reserved
+- 3: Reserved
+- 2:0 (SMS[2:0]): Slave mode selection
+  - 000: Slave mode disabled
+  - 001-011: Reserved
+  - 100: Reset mode
+  - 101: Gated mode
+  - 110: Trigger mode
+  - 111: External clock mode 1
+Associated pin/function: TI1 (input), TI2 (input), ITRx (internal triggers from other timers).
+
+**TIMx_DIER** (TIMx Interrupt Enable Register, for TIM9 only)
+Address: 0x0C
+Access: read-write
+Description: TIM9 interrupt enable register. (No DMA, COM, Break interrupts compared to TIM1)
+Bits:
+- 15:7: Reserved
+- 6 (TIE): Trigger interrupt enable
+- 5:3: Reserved
+- 2 (CC2IE): Capture/Compare 2 interrupt enable
+- 1 (CC1IE): Capture/Compare 1 interrupt enable
+- 0 (UIE): Update interrupt enable
+
+**TIMx_DIER** (TIMx Interrupt Enable Register, for TIM10/11)
+Address: 0x0C
+Access: read-write
+Description: TIM10/11 interrupt enable register. (Minimal, only CC1IE, UIE)
+Bits:
+- 15:2: Reserved
+- 1 (CC1IE): Capture/Compare 1 interrupt enable
+- 0 (UIE): Update interrupt enable
+
+**TIMx_SR** (TIMx Status Register, for TIM9 only)
+Address: 0x10
+Access: read-write
+Description: TIM9 status register. (No CC3/4OF, BIF, COMIF)
+Bits:
+- 15:11: Reserved
+- 10 (CC2OF): Capture/compare 2 overcapture flag
+- 9 (CC1OF): Capture/Compare 1 overcapture flag
+- 8:7: Reserved
+- 6 (TIF): Trigger interrupt flag
+- 5:3: Reserved
+- 2 (CC2IF): Capture/Compare 2 interrupt flag
+- 1 (CC1IF): Capture/compare 1 interrupt flag
+- 0 (UIF): Update interrupt flag
+
+**TIMx_SR** (TIMx Status Register, for TIM10/11)
+Address: 0x10
+Access: read-write
+Description: TIM10/11 status register. (Only CC1OF, CC1IF, UIF)
+Bits:
+- 15:10: Reserved
+- 9 (CC1OF): Capture/Compare 1 overcapture flag
+- 8:2: Reserved
+- 1 (CC1IF): Capture/compare 1 interrupt flag
+- 0 (UIF): Update interrupt flag
+
+**TIMx_EGR** (TIMx Event Generation Register, for TIM9 only)
+Address: 0x14
+Access: write-only
+Description: TIM9 event generation register. (No BG, COMG, CC3/4G)
+Bits:
+- 15:7: Reserved
+- 6 (TG): Trigger generation
+- 5:3: Reserved
+- 2 (CC2G): Capture/compare 2 generation
+- 1 (CC1G): Capture/compare 1 generation
+- 0 (UG): Update generation
+
+**TIMx_EGR** (TIMx Event Generation Register, for TIM10/11)
+Address: 0x14
+Access: write-only
+Description: TIM10/11 event generation register. (Only CC1G, UG)
+Bits:
+- 15:2: Reserved
+- 1 (CC1G): Capture/compare 1 generation
+- 0 (UG): Update generation
+
+**TIMx_CCMR1** (TIMx Capture/Compare Mode Register 1, for TIM9 only)
+Address: 0x18
+Access: read-write
+Description: Configures capture/compare mode for channel 1 and 2. (No OCxCE, simplified)
+Bits:
+- **Output Compare Mode:**
+  - 15: Reserved
+  - 14:12 (OC2M[2:0]): Output compare 2 mode
+  - 11 (OC2PE): Output compare 2 preload enable
+  - 10 (OC2FE): Output compare 2 fast enable
+  - 9:8 (CC2S[1:0]): Capture/Compare 2 selection
+    - 00: Output
+    - 01: Input, IC2 mapped on TI2
+    - 10: Input, IC2 mapped on TI1
+    - 11: Input, IC2 mapped on TRC
+  - 7: Reserved
+  - 6:4 (OC1M[2:0]): Output compare 1 mode
+  - 3 (OC1PE): Output compare 1 preload enable
+  - 2 (OC1FE): Output compare 1 fast enable
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection (similar to CC2S for channel 1)
+- **Input Capture Mode:**
+  - 15:12 (IC2F[3:0]): Input capture 2 filter
+  - 11:10 (IC2PSC[1:0]): Input capture 2 prescaler
+  - 9:8 (CC2S[1:0]): Capture/compare 2 selection (same as OC mode)
+  - 7:4 (IC1F[3:0]): Input capture 1 filter
+  - 3:2 (IC1PSC[1:0]): Input capture 1 prescaler
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection (same as OC mode)
+Associated pin/function: TI1 (input), TI2 (input)
+
+**TIMx_CCMR1** (TIMx Capture/Compare Mode Register 1, for TIM10/11)
+Address: 0x18
+Access: read-write
+Description: Configures capture/compare mode for channel 1. (Even simpler, only for Channel 1)
+Bits:
+- **Output Compare Mode:**
+  - 15:7: Reserved
+  - 6:4 (OC1M[2:0]): Output compare 1 mode
+  - 3 (OC1PE): Output compare 1 preload enable
+  - 2 (OC1FE): Output compare 1 fast enable
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection
+    - 00: CC1 channel is configured as output
+    - 01: CC1 channel is configured as input, IC1 is mapped on TI1
+    - 10: Reserved
+    - 11: Reserved
+- **Input Capture Mode:**
+  - 15:8: Reserved
+  - 7:4 (IC1F[3:0]): Input capture 1 filter
+  - 3:2 (IC1PSC[1:0]): Input capture 1 prescaler
+  - 1:0 (CC1S[1:0]): Capture/Compare 1 selection (same as OC mode)
+Associated pin/function: TI1 (input)
+
+**TIMx_CCER** (TIMx Capture/Compare Enable Register, for TIM9 only)
+Address: 0x20
+Access: read-write
+Description: TIM9 capture/compare enable register. (No complementary output enable/polarity bits for OC2, simplified for OC1)
+Bits:
+- 15:8: Reserved
+- 7 (CC2NP): Capture/Compare 2 output Polarity (must be kept cleared in output mode)
+- 6: Reserved
+- 5 (CC2P): Capture/Compare 2 output Polarity (Output: 0: OC2 active high, 1: OC2 active low; Input: TIxFP1 polarity)
+- 4 (CC2E): Capture/Compare 2 output enable (Output: 0: Off, 1: On; Input: 0: Capture disabled, 1: Capture enabled)
+- 3 (CC1NP): Capture/Compare 1 output Polarity (must be kept cleared in output mode)
+- 2: Reserved
+- 1 (CC1P): Capture/Compare 1 output Polarity (Output: 0: OC1 active high, 1: OC1 active low; Input: TIxFP1 polarity)
+- 0 (CC1E): Capture/Compare 1 output enable (Output: 0: Off, 1: On; Input: 0: Capture disabled, 1: Capture enabled)
+Associated pin/function: OC1, OC2 (outputs), TI1, TI2 (inputs)
+
+**TIMx_CCER** (TIMx Capture/Compare Enable Register, for TIM10/11)
+Address: 0x20
+Access: read-write
+Description: TIM10/11 capture/compare enable register. (Only for Channel 1)
+Bits:
+- 15:4: Reserved
+- 3 (CC1NP): Capture/Compare 1 output Polarity (must be kept cleared in output mode)
+- 2: Reserved
+- 1 (CC1P): Capture/Compare 1 output Polarity (Output: 0: OC1 active high, 1: OC1 active low; Input: TI1FP1 polarity)
+- 0 (CC1E): Capture/Compare 1 output enable (Output: 0: Off, 1: On; Input: 0: Capture disabled, 1: Capture enabled)
+Associated pin/function: OC1 (output), TI1 (input)
+
+**TIMx_CNT** (TIMx Counter Register, where x = 9..11)
+Address: 0x24
+Access: read-write
+Description: TIMx counter value. (16-bit counter)
+Bits:
+- 15:0 (CNT[15:0]): Counter value
+
+**TIMx_PSC** (TIMx Prescaler Register, where x = 9..11)
+Address: 0x28
+Access: read-write
+Description: TIMx prescaler value. (Same as TIM1_PSC)
+Bits:
+- 15:0 (PSC[15:0]): Prescaler value
+
+**TIMx_ARR** (TIMx Auto-Reload Register, where x = 9..11)
+Address: 0x2C
+Access: read-write
+Description: TIMx auto-reload value. (16-bit)
+Bits:
+- 15:0 (ARR[15:0]): Auto-reload value
+
+**TIMx_CCR1** (TIMx Capture/Compare Register 1, where x = 9..11)
+Address: 0x34
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 1. (16-bit)
+Bits:
+- 15:0 (CCR1[15:0]): Capture/Compare 1 value
+
+**TIMx_CCR2** (TIMx Capture/Compare Register 2, for TIM9 only)
+Address: 0x38
+Access: read-write / read-only
+Description: Stores capture value (input mode) or compare value (output mode) for channel 2. (16-bit)
+Bits:
+- 15:0 (CCR2[15:0]): Capture/Compare 2 value
+
+**TIM11_OR** (TIM11 Option Register)
+Address: 0x50
+Access: read-write
+Description: TIM11 option register.
+Bits:
+- 15:2: Reserved
+- 1:0 (TI1_RMP[1:0]): TIM11 Input 1 remapping capability
+  - 00, 01, 11: TIM11 Channel1 is connected to the GPIO
+  - 10: HSE_RTC clock (HSE divided by programmable prescaler) is connected to the TIM11_CH1 input for measurement purposes
+Associated pin/function: TIM11_CH1 (GPIO, HSE_RTC clock).
