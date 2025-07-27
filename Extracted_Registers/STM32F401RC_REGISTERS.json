@@ -1,0 +1,262 @@
+{
+    "GPIOx_MODER": {
+        "address": "0x00",
+        "description": "Port x configuration register (I/O direction mode) for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_OTYPER": {
+        "address": "0x04",
+        "description": "Port x output type register (output push-pull or open-drain) for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_OSPEEDR": {
+        "address": "0x08",
+        "description": "Port x output speed register (I/O output speed) for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_PUPDR": {
+        "address": "0x0C",
+        "description": "Port x pull-up/pull-down register (I/O pull-up or pull-down) for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_IDR": {
+        "address": "0x10",
+        "description": "Port x input data register, read-only register storing input data from I/O pins for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_ODR": {
+        "address": "0x14",
+        "description": "Port x output data register, storing data to be output on the I/O pin for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_BSRR": {
+        "address": "0x18",
+        "description": "Port x bit set/reset register, allowing atomic bitwise write access to GPIOx_ODR for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_LCKR": {
+        "address": "0x1C",
+        "description": "Port x configuration lock register, used to freeze the configuration of GPIO control registers for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_AFRL": {
+        "address": "0x20",
+        "description": "GPIO alternate function low register, selecting alternate functions for port x bits 0 through 7 for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "GPIOx_AFRH": {
+        "address": "0x24",
+        "description": "GPIO alternate function high register, selecting alternate functions for port x bits 8 through 15 for ports A through E and H.",
+        "assigned_pin": null
+    },
+    "TIMx_CR1": {
+        "address": "0x00",
+        "description": "Control register 1 for Advanced-control timer (TIM1) and General-purpose timers (TIM2-TIM5, TIM9-TIM11), configuring counter mode, clock division, and auto-reload preload.",
+        "assigned_pin": null
+    },
+    "TIM1_CR2": {
+        "address": "0x04",
+        "description": "Control register 2 for Advanced-control timer (TIM1), configuring output idle states, TI1 selection (XOR), master mode selection, and capture/compare DMA/preload control.",
+        "assigned_pin": null
+    },
+    "TIM1_SMCR": {
+        "address": "0x08",
+        "description": "Slave mode control register for Advanced-control timer (TIM1), configuring external trigger polarity/prescaler/filter, master/slave mode, and trigger selection.",
+        "assigned_pin": null
+    },
+    "TIM1_DIER": {
+        "address": "0x0C",
+        "description": "DMA and interrupt enable register for Advanced-control timer (TIM1).",
+        "assigned_pin": null
+    },
+    "TIM1_SR": {
+        "address": "0x10",
+        "description": "Status register for Advanced-control timer (TIM1), indicating various events and flags.",
+        "assigned_pin": null
+    },
+    "TIM1_EGR": {
+        "address": "0x14",
+        "description": "Event generation register for Advanced-control timer (TIM1), allows software to generate update, trigger, COM, and capture/compare events.",
+        "assigned_pin": null
+    },
+    "TIM1_CCMR1": {
+        "address": "0x18",
+        "description": "Capture/compare mode register 1 for Advanced-control timer (TIM1), configuring channel 1 and 2 in input or output modes.",
+        "assigned_pin": null
+    },
+    "TIM1_CCMR2": {
+        "address": "0x1C",
+        "description": "Capture/compare mode register 2 for Advanced-control timer (TIM1), configuring channel 3 and 4 in input or output modes.",
+        "assigned_pin": null
+    },
+    "TIM1_CCER": {
+        "address": "0x20",
+        "description": "Capture/compare enable register for Advanced-control timer (TIM1), configuring output/input enables and polarities for channels 1-4.",
+        "assigned_pin": null
+    },
+    "TIM1_CNT": {
+        "address": "0x24",
+        "description": "Counter register for Advanced-control timer (TIM1).",
+        "assigned_pin": null
+    },
+    "TIM1_PSC": {
+        "address": "0x28",
+        "description": "Prescaler register for Advanced-control timer (TIM1), controlling the counter clock frequency division.",
+        "assigned_pin": null
+    },
+    "TIM1_ARR": {
+        "address": "0x2C",
+        "description": "Auto-reload register for Advanced-control timer (TIM1), holding the auto-reload value for the counter.",
+        "assigned_pin": null
+    },
+    "TIM1_RCR": {
+        "address": "0x30",
+        "description": "Repetition counter register for Advanced-control timer (TIM1), controlling the update rate of compare registers for PWM signals.",
+        "assigned_pin": null
+    },
+    "TIM1_CCR1": {
+        "address": "0x34",
+        "description": "Capture/compare register 1 for Advanced-control timer (TIM1), holding the compare value or captured counter value for channel 1.",
+        "assigned_pin": null
+    },
+    "TIM1_CCR2": {
+        "address": "0x38",
+        "description": "Capture/compare register 2 for Advanced-control timer (TIM1), holding the compare value or captured counter value for channel 2.",
+        "assigned_pin": null
+    },
+    "TIM1_CCR3": {
+        "address": "0x3C",
+        "description": "Capture/compare register 3 for Advanced-control timer (TIM1), holding the compare value or captured counter value for channel 3.",
+        "assigned_pin": null
+    },
+    "TIM1_CCR4": {
+        "address": "0x40",
+        "description": "Capture/compare register 4 for Advanced-control timer (TIM1), holding the compare value or captured counter value for channel 4.",
+        "assigned_pin": null
+    },
+    "TIM1_BDTR": {
+        "address": "0x44",
+        "description": "Break and dead-time register for Advanced-control timer (TIM1), controlling output enable, automatic output enable, break polarity/enable, off-state selections, lock configuration, and dead-time generation.",
+        "assigned_pin": null
+    },
+    "TIM1_DCR": {
+        "address": "0x48",
+        "description": "DMA control register for Advanced-control timer (TIM1), configuring DMA burst length and base address.",
+        "assigned_pin": null
+    },
+    "TIM1_DMAR": {
+        "address": "0x4C",
+        "description": "DMA address register for Advanced-control timer (TIM1), used for burst accesses.",
+        "assigned_pin": null
+    },
+    "TIMx_CR2": {
+        "address": "0x04",
+        "description": "Control register 2 for General-purpose timers (TIM2-TIM5), configuring TI1 selection (XOR) and master mode selection.",
+        "assigned_pin": null
+    },
+    "TIMx_SMCR": {
+        "address": "0x08",
+        "description": "Slave mode control register for General-purpose timers (TIM2-TIM5), configuring external trigger polarity/prescaler/filter, master/slave mode, and trigger selection.",
+        "assigned_pin": null
+    },
+    "TIMx_DIER": {
+        "address": "0x0C",
+        "description": "DMA/Interrupt enable register for General-purpose timers (TIM2-TIM5, TIM9-TIM11).",
+        "assigned_pin": null
+    },
+    "TIMx_SR": {
+        "address": "0x10",
+        "description": "Status register for General-purpose timers (TIM2-TIM5, TIM9-TIM11), indicating various events and flags.",
+        "assigned_pin": null
+    },
+    "TIMx_EGR": {
+        "address": "0x14",
+        "description": "Event generation register for General-purpose timers (TIM2-TIM5, TIM9-TIM11), allows software to generate update, trigger, and capture/compare events.",
+        "assigned_pin": null
+    },
+    "TIMx_CCMR1": {
+        "address": "0x18",
+        "description": "Capture/compare mode register 1 for General-purpose timers (TIM2-TIM5, TIM9-TIM11), configuring channel 1 and 2 (for TIM9/TIM2-TIM5) or channel 1 only (for TIM10/TIM11) in input or output modes.",
+        "assigned_pin": null
+    },
+    "TIMx_CCMR2": {
+        "address": "0x1C",
+        "description": "Capture/compare mode register 2 for General-purpose timers (TIM2-TIM5), configuring channel 3 and 4 in input or output modes.",
+        "assigned_pin": null
+    },
+    "TIMx_CCER": {
+        "address": "0x20",
+        "description": "Capture/compare enable register for General-purpose timers (TIM2-TIM5, TIM9-TIM11), configuring output/input enables and polarities for channels.",
+        "assigned_pin": null
+    },
+    "TIMx_CNT": {
+        "address": "0x24",
+        "description": "Counter register for General-purpose timers (TIM2-TIM5, TIM9-TIM11).",
+        "assigned_pin": null
+    },
+    "TIMx_PSC": {
+        "address": "0x28",
+        "description": "Prescaler register for General-purpose timers (TIM2-TIM5, TIM9-TIM11), controlling the counter clock frequency division.",
+        "assigned_pin": null
+    },
+    "TIMx_ARR": {
+        "address": "0x2C",
+        "description": "Auto-reload register for General-purpose timers (TIM2-TIM5, TIM9-TIM11), holding the auto-reload value for the counter.",
+        "assigned_pin": null
+    },
+    "TIMx_CCR1": {
+        "address": "0x34",
+        "description": "Capture/compare register 1 for General-purpose timers (TIM2-TIM5, TIM9-TIM11), holding the compare value or captured counter value for channel 1.",
+        "assigned_pin": null
+    },
+    "TIMx_CCR2": {
+        "address": "0x38",
+        "description": "Capture/compare register 2 for General-purpose timers (TIM2-TIM5, TIM9), holding the compare value or captured counter value for channel 2.",
+        "assigned_pin": null
+    },
+    "TIMx_CCR3": {
+        "address": "0x3C",
+        "description": "Capture/compare register 3 for General-purpose timers (TIM2-TIM5), holding the compare value or captured counter value for channel 3.",
+        "assigned_pin": null
+    },
+    "TIMx_CCR4": {
+        "address": "0x40",
+        "description": "Capture/compare register 4 for General-purpose timers (TIM2-TIM5), holding the compare value or captured counter value for channel 4.",
+        "assigned_pin": null
+    },
+    "TIMx_DCR": {
+        "address": "0x48",
+        "description": "DMA control register for General-purpose timers (TIM2-TIM5), configuring DMA burst length and base address.",
+        "assigned_pin": null
+    },
+    "TIMx_DMAR": {
+        "address": "0x4C",
+        "description": "DMA address register for General-purpose timers (TIM2-TIM5), used for burst accesses.",
+        "assigned_pin": null
+    },
+    "TIM2_OR": {
+        "address": "0x50",
+        "description": "Option register for TIM2, configuring internal trigger 1 remap (PTP, OTG FS/HS SOF).",
+        "assigned_pin": null
+    },
+    "TIM5_OR": {
+        "address": "0x50",
+        "description": "Option register for TIM5, configuring Timer Input 4 remap (LSI, LSE, RTC wakeup interrupt).",
+        "assigned_pin": null
+    },
+    "TIM9_SMCR": {
+        "address": "0x08",
+        "description": "Slave mode control register for General-purpose timer (TIM9), configuring master/slave mode and trigger selection.",
+        "assigned_pin": null
+    },
+    "TIM9_CCR2": {
+        "address": "0x38",
+        "description": "Capture/compare register 2 for General-purpose timer (TIM9), holding the compare value or captured counter value for channel 2.",
+        "assigned_pin": null
+    },
+    "TIM11_OR": {
+        "address": "0x50",
+        "description": "Option register 1 for General-purpose timer (TIM11), remapping Timer Input 1 (HSE_RTC clock).",
+        "assigned_pin": null
+    }
+}
