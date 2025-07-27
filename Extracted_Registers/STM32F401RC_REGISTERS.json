@@ -1,0 +1,2041 @@
+{
+    "GPIOA_MODER": {
+        "address": "0x40020000",
+        "description": "GPIO port mode register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_OTYPER": {
+        "address": "0x40020004",
+        "description": "GPIO port output type register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_OSPEEDR": {
+        "address": "0x40020008",
+        "description": "GPIO port output speed register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_PUPDR": {
+        "address": "0x4002000C",
+        "description": "GPIO port pull-up/pull-down register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_IDR": {
+        "address": "0x40020010",
+        "description": "GPIO port input data register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_ODR": {
+        "address": "0x40020014",
+        "description": "GPIO port output data register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_BSRR": {
+        "address": "0x40020018",
+        "description": "GPIO port bit set/reset register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_LCKR": {
+        "address": "0x4002001C",
+        "description": "GPIO port configuration lock register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOA_AFRL": {
+        "address": "0x40020020",
+        "description": "GPIO alternate function low register for Port A (pins 0-7).",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ]
+    },
+    "GPIOA_AFRH": {
+        "address": "0x40020024",
+        "description": "GPIO alternate function high register for Port A (pins 8-15).",
+        "assigned_pin": [
+            "PA8",
+            "PA9",
+            "PA10",
+            "PA11",
+            "PA12",
+            "PA13",
+            "PA14",
+            "PA15"
+        ]
+    },
+    "GPIOB_MODER": {
+        "address": "0x40020400",
+        "description": "GPIO port mode register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_OTYPER": {
+        "address": "0x40020404",
+        "description": "GPIO port output type register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_OSPEEDR": {
+        "address": "0x40020408",
+        "description": "GPIO port output speed register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_PUPDR": {
+        "address": "0x4002040C",
+        "description": "GPIO port pull-up/pull-down register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_IDR": {
+        "address": "0x40020410",
+        "description": "GPIO port input data register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_ODR": {
+        "address": "0x40020414",
+        "description": "GPIO port output data register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_BSRR": {
+        "address": "0x40020418",
+        "description": "GPIO port bit set/reset register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_LCKR": {
+        "address": "0x4002041C",
+        "description": "GPIO port configuration lock register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOB_AFRL": {
+        "address": "0x40020420",
+        "description": "GPIO alternate function low register for Port B (pins 0-7).",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "GPIOB_AFRH": {
+        "address": "0x40020424",
+        "description": "GPIO alternate function high register for Port B (pins 8-15).",
+        "assigned_pin": [
+            "PB8",
+            "PB9",
+            "PB10",
+            "PB11",
+            "PB12",
+            "PB13",
+            "PB14",
+            "PB15"
+        ]
+    },
+    "GPIOC_MODER": {
+        "address": "0x40020800",
+        "description": "GPIO port mode register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_OTYPER": {
+        "address": "0x40020804",
+        "description": "GPIO port output type register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_OSPEEDR": {
+        "address": "0x40020808",
+        "description": "GPIO port output speed register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_PUPDR": {
+        "address": "0x4002080C",
+        "description": "GPIO port pull-up/pull-down register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_IDR": {
+        "address": "0x40020810",
+        "description": "GPIO port input data register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_ODR": {
+        "address": "0x40020814",
+        "description": "GPIO port output data register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_BSRR": {
+        "address": "0x40020818",
+        "description": "GPIO port bit set/reset register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_LCKR": {
+        "address": "0x4002081C",
+        "description": "GPIO port configuration lock register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOC_AFRL": {
+        "address": "0x40020820",
+        "description": "GPIO alternate function low register for Port C (pins 0-7).",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ]
+    },
+    "GPIOC_AFRH": {
+        "address": "0x40020824",
+        "description": "GPIO alternate function high register for Port C (pins 8-15).",
+        "assigned_pin": [
+            "PC8",
+            "PC9",
+            "PC10",
+            "PC11",
+            "PC12",
+            "PC13",
+            "PC14",
+            "PC15"
+        ]
+    },
+    "GPIOD_MODER": {
+        "address": "0x40020C00",
+        "description": "GPIO port mode register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_OTYPER": {
+        "address": "0x40020C04",
+        "description": "GPIO port output type register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_OSPEEDR": {
+        "address": "0x40020C08",
+        "description": "GPIO port output speed register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_PUPDR": {
+        "address": "0x40020C0C",
+        "description": "GPIO port pull-up/pull-down register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_IDR": {
+        "address": "0x40020C10",
+        "description": "GPIO port input data register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_ODR": {
+        "address": "0x40020C14",
+        "description": "GPIO port output data register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_BSRR": {
+        "address": "0x40020C18",
+        "description": "GPIO port bit set/reset register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_LCKR": {
+        "address": "0x40020C1C",
+        "description": "GPIO port configuration lock register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7",
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOD_AFRL": {
+        "address": "0x40020C20",
+        "description": "GPIO alternate function low register for Port D (pins 0-7).",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7"
+        ]
+    },
+    "GPIOD_AFRH": {
+        "address": "0x40020C24",
+        "description": "GPIO alternate function high register for Port D (pins 8-15).",
+        "assigned_pin": [
+            "PD8",
+            "PD9",
+            "PD10",
+            "PD11",
+            "PD12",
+            "PD13",
+            "PD14",
+            "PD15"
+        ]
+    },
+    "GPIOE_MODER": {
+        "address": "0x40021000",
+        "description": "GPIO port mode register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_OTYPER": {
+        "address": "0x40021004",
+        "description": "GPIO port output type register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_OSPEEDR": {
+        "address": "0x40021008",
+        "description": "GPIO port output speed register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_PUPDR": {
+        "address": "0x4002100C",
+        "description": "GPIO port pull-up/pull-down register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_IDR": {
+        "address": "0x40021010",
+        "description": "GPIO port input data register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_ODR": {
+        "address": "0x40021014",
+        "description": "GPIO port output data register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_BSRR": {
+        "address": "0x40021018",
+        "description": "GPIO port bit set/reset register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_LCKR": {
+        "address": "0x4002101C",
+        "description": "GPIO port configuration lock register for Port E.",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7",
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOE_AFRL": {
+        "address": "0x40021020",
+        "description": "GPIO alternate function low register for Port E (pins 0-7).",
+        "assigned_pin": [
+            "PE0",
+            "PE1",
+            "PE2",
+            "PE3",
+            "PE4",
+            "PE5",
+            "PE6",
+            "PE7"
+        ]
+    },
+    "GPIOE_AFRH": {
+        "address": "0x40021024",
+        "description": "GPIO alternate function high register for Port E (pins 8-15).",
+        "assigned_pin": [
+            "PE8",
+            "PE9",
+            "PE10",
+            "PE11",
+            "PE12",
+            "PE13",
+            "PE14",
+            "PE15"
+        ]
+    },
+    "GPIOH_MODER": {
+        "address": "0x40021C00",
+        "description": "GPIO port mode register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_OTYPER": {
+        "address": "0x40021C04",
+        "description": "GPIO port output type register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_OSPEEDR": {
+        "address": "0x40021C08",
+        "description": "GPIO port output speed register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_PUPDR": {
+        "address": "0x40021C0C",
+        "description": "GPIO port pull-up/pull-down register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_IDR": {
+        "address": "0x40021C10",
+        "description": "GPIO port input data register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_ODR": {
+        "address": "0x40021C14",
+        "description": "GPIO port output data register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_BSRR": {
+        "address": "0x40021C18",
+        "description": "GPIO port bit set/reset register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_LCKR": {
+        "address": "0x40021C1C",
+        "description": "GPIO port configuration lock register for Port H.",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7",
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "GPIOH_AFRL": {
+        "address": "0x40021C20",
+        "description": "GPIO alternate function low register for Port H (pins 0-7).",
+        "assigned_pin": [
+            "PH0",
+            "PH1",
+            "PH2",
+            "PH3",
+            "PH4",
+            "PH5",
+            "PH6",
+            "PH7"
+        ]
+    },
+    "GPIOH_AFRH": {
+        "address": "0x40021C24",
+        "description": "GPIO alternate function high register for Port H (pins 8-15).",
+        "assigned_pin": [
+            "PH8",
+            "PH9",
+            "PH10",
+            "PH11",
+            "PH12",
+            "PH13",
+            "PH14",
+            "PH15"
+        ]
+    },
+    "TIM1_CR1": {
+        "address": "0x40010000",
+        "description": "TIM1 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM1_CR2": {
+        "address": "0x40010004",
+        "description": "TIM1 control register 2.",
+        "assigned_pin": null
+    },
+    "TIM1_SMCR": {
+        "address": "0x40010008",
+        "description": "TIM1 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM1_DIER": {
+        "address": "0x4001000C",
+        "description": "TIM1 DMA/interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM1_SR": {
+        "address": "0x40010010",
+        "description": "TIM1 status register.",
+        "assigned_pin": null
+    },
+    "TIM1_EGR": {
+        "address": "0x40010014",
+        "description": "TIM1 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM1_CCMR1": {
+        "address": "0x40010018",
+        "description": "TIM1 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PA8",
+            "PE9",
+            "PA9",
+            "PE11"
+        ]
+    },
+    "TIM1_CCMR2": {
+        "address": "0x4001001C",
+        "description": "TIM1 capture/compare mode register 2 (channels 3 and 4).",
+        "assigned_pin": [
+            "PA10",
+            "PE13",
+            "PA11",
+            "PE14"
+        ]
+    },
+    "TIM1_CCER": {
+        "address": "0x40010020",
+        "description": "TIM1 capture/compare enable register.",
+        "assigned_pin": [
+            "PA8",
+            "PE9",
+            "PA9",
+            "PE11",
+            "PA10",
+            "PE13",
+            "PA11",
+            "PE14"
+        ]
+    },
+    "TIM1_CNT": {
+        "address": "0x40010024",
+        "description": "TIM1 counter register.",
+        "assigned_pin": null
+    },
+    "TIM1_PSC": {
+        "address": "0x40010028",
+        "description": "TIM1 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM1_ARR": {
+        "address": "0x4001002C",
+        "description": "TIM1 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM1_RCR": {
+        "address": "0x40010030",
+        "description": "TIM1 repetition counter register.",
+        "assigned_pin": null
+    },
+    "TIM1_CCR1": {
+        "address": "0x40010034",
+        "description": "TIM1 capture/compare register 1.",
+        "assigned_pin": [
+            "PA8",
+            "PE9"
+        ]
+    },
+    "TIM1_CCR2": {
+        "address": "0x40010038",
+        "description": "TIM1 capture/compare register 2.",
+        "assigned_pin": [
+            "PA9",
+            "PE11"
+        ]
+    },
+    "TIM1_CCR3": {
+        "address": "0x4001003C",
+        "description": "TIM1 capture/compare register 3.",
+        "assigned_pin": [
+            "PA10",
+            "PE13"
+        ]
+    },
+    "TIM1_CCR4": {
+        "address": "0x40010040",
+        "description": "TIM1 capture/compare register 4.",
+        "assigned_pin": [
+            "PA11",
+            "PE14"
+        ]
+    },
+    "TIM1_BDTR": {
+        "address": "0x40010044",
+        "description": "TIM1 break and dead-time register.",
+        "assigned_pin": null
+    },
+    "TIM1_DCR": {
+        "address": "0x40010048",
+        "description": "TIM1 DMA control register.",
+        "assigned_pin": null
+    },
+    "TIM1_DMAR": {
+        "address": "0x4001004C",
+        "description": "TIM1 DMA address for full transfer.",
+        "assigned_pin": null
+    },
+    "TIM2_CR1": {
+        "address": "0x40000000",
+        "description": "TIM2 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM2_CR2": {
+        "address": "0x40000004",
+        "description": "TIM2 control register 2.",
+        "assigned_pin": null
+    },
+    "TIM2_SMCR": {
+        "address": "0x40000008",
+        "description": "TIM2 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM2_DIER": {
+        "address": "0x4000000C",
+        "description": "TIM2 DMA/Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM2_SR": {
+        "address": "0x40000010",
+        "description": "TIM2 status register.",
+        "assigned_pin": null
+    },
+    "TIM2_EGR": {
+        "address": "0x40000014",
+        "description": "TIM2 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM2_CCMR1": {
+        "address": "0x40000018",
+        "description": "TIM2 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PA0",
+            "PA5",
+            "PA15",
+            "PA1",
+            "PB3"
+        ]
+    },
+    "TIM2_CCMR2": {
+        "address": "0x4000001C",
+        "description": "TIM2 capture/compare mode register 2 (channels 3 and 4).",
+        "assigned_pin": [
+            "PA2",
+            "PB10",
+            "PA3",
+            "PB11"
+        ]
+    },
+    "TIM2_CCER": {
+        "address": "0x40000020",
+        "description": "TIM2 capture/compare enable register.",
+        "assigned_pin": [
+            "PA0",
+            "PA5",
+            "PA15",
+            "PA1",
+            "PB3",
+            "PA2",
+            "PB10",
+            "PA3",
+            "PB11"
+        ]
+    },
+    "TIM2_CNT": {
+        "address": "0x40000024",
+        "description": "TIM2 counter register.",
+        "assigned_pin": null
+    },
+    "TIM2_PSC": {
+        "address": "0x40000028",
+        "description": "TIM2 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM2_ARR": {
+        "address": "0x4000002C",
+        "description": "TIM2 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM2_CCR1": {
+        "address": "0x40000034",
+        "description": "TIM2 capture/compare register 1.",
+        "assigned_pin": [
+            "PA0",
+            "PA5",
+            "PA15"
+        ]
+    },
+    "TIM2_CCR2": {
+        "address": "0x40000038",
+        "description": "TIM2 capture/compare register 2.",
+        "assigned_pin": [
+            "PA1",
+            "PB3"
+        ]
+    },
+    "TIM2_CCR3": {
+        "address": "0x4000003C",
+        "description": "TIM2 capture/compare register 3.",
+        "assigned_pin": [
+            "PA2",
+            "PB10"
+        ]
+    },
+    "TIM2_CCR4": {
+        "address": "0x40000040",
+        "description": "TIM2 capture/compare register 4.",
+        "assigned_pin": [
+            "PA3",
+            "PB11"
+        ]
+    },
+    "TIM2_DCR": {
+        "address": "0x40000048",
+        "description": "TIM2 DMA control register.",
+        "assigned_pin": null
+    },
+    "TIM2_DMAR": {
+        "address": "0x4000004C",
+        "description": "TIM2 DMA address for full transfer.",
+        "assigned_pin": null
+    },
+    "TIM2_OR": {
+        "address": "0x40000050",
+        "description": "TIM2 option register.",
+        "assigned_pin": null
+    },
+    "TIM3_CR1": {
+        "address": "0x40000400",
+        "description": "TIM3 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM3_CR2": {
+        "address": "0x40000404",
+        "description": "TIM3 control register 2.",
+        "assigned_pin": null
+    },
+    "TIM3_SMCR": {
+        "address": "0x40000408",
+        "description": "TIM3 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM3_DIER": {
+        "address": "0x4000040C",
+        "description": "TIM3 DMA/Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM3_SR": {
+        "address": "0x40000410",
+        "description": "TIM3 status register.",
+        "assigned_pin": null
+    },
+    "TIM3_EGR": {
+        "address": "0x40000414",
+        "description": "TIM3 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM3_CCMR1": {
+        "address": "0x40000418",
+        "description": "TIM3 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PA6",
+            "PB4",
+            "PC6",
+            "PA7",
+            "PB5",
+            "PC7"
+        ]
+    },
+    "TIM3_CCMR2": {
+        "address": "0x4000041C",
+        "description": "TIM3 capture/compare mode register 2 (channels 3 and 4).",
+        "assigned_pin": [
+            "PB0",
+            "PC8",
+            "PB1",
+            "PC9"
+        ]
+    },
+    "TIM3_CCER": {
+        "address": "0x40000420",
+        "description": "TIM3 capture/compare enable register.",
+        "assigned_pin": [
+            "PA6",
+            "PB4",
+            "PC6",
+            "PA7",
+            "PB5",
+            "PC7",
+            "PB0",
+            "PC8",
+            "PB1",
+            "PC9"
+        ]
+    },
+    "TIM3_CNT": {
+        "address": "0x40000424",
+        "description": "TIM3 counter register.",
+        "assigned_pin": null
+    },
+    "TIM3_PSC": {
+        "address": "0x40000428",
+        "description": "TIM3 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM3_ARR": {
+        "address": "0x4000042C",
+        "description": "TIM3 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM3_CCR1": {
+        "address": "0x40000434",
+        "description": "TIM3 capture/compare register 1.",
+        "assigned_pin": [
+            "PA6",
+            "PB4",
+            "PC6"
+        ]
+    },
+    "TIM3_CCR2": {
+        "address": "0x40000438",
+        "description": "TIM3 capture/compare register 2.",
+        "assigned_pin": [
+            "PA7",
+            "PB5",
+            "PC7"
+        ]
+    },
+    "TIM3_CCR3": {
+        "address": "0x4000043C",
+        "description": "TIM3 capture/compare register 3.",
+        "assigned_pin": [
+            "PB0",
+            "PC8"
+        ]
+    },
+    "TIM3_CCR4": {
+        "address": "0x40000440",
+        "description": "TIM3 capture/compare register 4.",
+        "assigned_pin": [
+            "PB1",
+            "PC9"
+        ]
+    },
+    "TIM3_DCR": {
+        "address": "0x40000448",
+        "description": "TIM3 DMA control register.",
+        "assigned_pin": null
+    },
+    "TIM3_DMAR": {
+        "address": "0x4000044C",
+        "description": "TIM3 DMA address for full transfer.",
+        "assigned_pin": null
+    },
+    "TIM4_CR1": {
+        "address": "0x40000800",
+        "description": "TIM4 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM4_CR2": {
+        "address": "0x40000804",
+        "description": "TIM4 control register 2.",
+        "assigned_pin": null
+    },
+    "TIM4_SMCR": {
+        "address": "0x40000808",
+        "description": "TIM4 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM4_DIER": {
+        "address": "0x4000080C",
+        "description": "TIM4 DMA/Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM4_SR": {
+        "address": "0x40000810",
+        "description": "TIM4 status register.",
+        "assigned_pin": null
+    },
+    "TIM4_EGR": {
+        "address": "0x40000814",
+        "description": "TIM4 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM4_CCMR1": {
+        "address": "0x40000818",
+        "description": "TIM4 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PB6",
+            "PD12",
+            "PB7",
+            "PD13"
+        ]
+    },
+    "TIM4_CCMR2": {
+        "address": "0x4000081C",
+        "description": "TIM4 capture/compare mode register 2 (channels 3 and 4).",
+        "assigned_pin": [
+            "PB8",
+            "PD14",
+            "PB9",
+            "PD15"
+        ]
+    },
+    "TIM4_CCER": {
+        "address": "0x40000820",
+        "description": "TIM4 capture/compare enable register.",
+        "assigned_pin": [
+            "PB6",
+            "PD12",
+            "PB7",
+            "PD13",
+            "PB8",
+            "PD14",
+            "PB9",
+            "PD15"
+        ]
+    },
+    "TIM4_CNT": {
+        "address": "0x40000824",
+        "description": "TIM4 counter register.",
+        "assigned_pin": null
+    },
+    "TIM4_PSC": {
+        "address": "0x40000828",
+        "description": "TIM4 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM4_ARR": {
+        "address": "0x4000082C",
+        "description": "TIM4 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM4_CCR1": {
+        "address": "0x40000834",
+        "description": "TIM4 capture/compare register 1.",
+        "assigned_pin": [
+            "PB6",
+            "PD12"
+        ]
+    },
+    "TIM4_CCR2": {
+        "address": "0x40000838",
+        "description": "TIM4 capture/compare register 2.",
+        "assigned_pin": [
+            "PB7",
+            "PD13"
+        ]
+    },
+    "TIM4_CCR3": {
+        "address": "0x4000083C",
+        "description": "TIM4 capture/compare register 3.",
+        "assigned_pin": [
+            "PB8",
+            "PD14"
+        ]
+    },
+    "TIM4_CCR4": {
+        "address": "0x40000840",
+        "description": "TIM4 capture/compare register 4.",
+        "assigned_pin": [
+            "PB9",
+            "PD15"
+        ]
+    },
+    "TIM4_DCR": {
+        "address": "0x40000848",
+        "description": "TIM4 DMA control register.",
+        "assigned_pin": null
+    },
+    "TIM4_DMAR": {
+        "address": "0x4000084C",
+        "description": "TIM4 DMA address for full transfer.",
+        "assigned_pin": null
+    },
+    "TIM5_CR1": {
+        "address": "0x40000C00",
+        "description": "TIM5 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM5_CR2": {
+        "address": "0x40000C04",
+        "description": "TIM5 control register 2.",
+        "assigned_pin": null
+    },
+    "TIM5_SMCR": {
+        "address": "0x40000C08",
+        "description": "TIM5 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM5_DIER": {
+        "address": "0x40000C0C",
+        "description": "TIM5 DMA/Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM5_SR": {
+        "address": "0x40000C10",
+        "description": "TIM5 status register.",
+        "assigned_pin": null
+    },
+    "TIM5_EGR": {
+        "address": "0x40000C14",
+        "description": "TIM5 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM5_CCMR1": {
+        "address": "0x40000C18",
+        "description": "TIM5 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PA0",
+            "PA1"
+        ]
+    },
+    "TIM5_CCMR2": {
+        "address": "0x40000C1C",
+        "description": "TIM5 capture/compare mode register 2 (channels 3 and 4).",
+        "assigned_pin": [
+            "PA2",
+            "PA3"
+        ]
+    },
+    "TIM5_CCER": {
+        "address": "0x40000C20",
+        "description": "TIM5 capture/compare enable register.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3"
+        ]
+    },
+    "TIM5_CNT": {
+        "address": "0x40000C24",
+        "description": "TIM5 counter register.",
+        "assigned_pin": null
+    },
+    "TIM5_PSC": {
+        "address": "0x40000C28",
+        "description": "TIM5 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM5_ARR": {
+        "address": "0x40000C2C",
+        "description": "TIM5 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM5_CCR1": {
+        "address": "0x40000C34",
+        "description": "TIM5 capture/compare register 1.",
+        "assigned_pin": [
+            "PA0"
+        ]
+    },
+    "TIM5_CCR2": {
+        "address": "0x40000C38",
+        "description": "TIM5 capture/compare register 2.",
+        "assigned_pin": [
+            "PA1"
+        ]
+    },
+    "TIM5_CCR3": {
+        "address": "0x40000C3C",
+        "description": "TIM5 capture/compare register 3.",
+        "assigned_pin": [
+            "PA2"
+        ]
+    },
+    "TIM5_CCR4": {
+        "address": "0x40000C40",
+        "description": "TIM5 capture/compare register 4.",
+        "assigned_pin": [
+            "PA3"
+        ]
+    },
+    "TIM5_DCR": {
+        "address": "0x40000C48",
+        "description": "TIM5 DMA control register.",
+        "assigned_pin": null
+    },
+    "TIM5_DMAR": {
+        "address": "0x40000C4C",
+        "description": "TIM5 DMA address for full transfer.",
+        "assigned_pin": null
+    },
+    "TIM5_OR": {
+        "address": "0x40000C50",
+        "description": "TIM5 option register.",
+        "assigned_pin": null
+    },
+    "TIM9_CR1": {
+        "address": "0x40010400",
+        "description": "TIM9 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM9_SMCR": {
+        "address": "0x40010408",
+        "description": "TIM9 slave mode control register.",
+        "assigned_pin": null
+    },
+    "TIM9_DIER": {
+        "address": "0x4001040C",
+        "description": "TIM9 Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM9_SR": {
+        "address": "0x40010410",
+        "description": "TIM9 status register.",
+        "assigned_pin": null
+    },
+    "TIM9_EGR": {
+        "address": "0x40010414",
+        "description": "TIM9 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM9_CCMR1": {
+        "address": "0x40010418",
+        "description": "TIM9 capture/compare mode register 1 (channels 1 and 2).",
+        "assigned_pin": [
+            "PA2",
+            "PE5",
+            "PA3",
+            "PE6"
+        ]
+    },
+    "TIM9_CCER": {
+        "address": "0x40010420",
+        "description": "TIM9 capture/compare enable register.",
+        "assigned_pin": [
+            "PA2",
+            "PE5",
+            "PA3",
+            "PE6"
+        ]
+    },
+    "TIM9_CNT": {
+        "address": "0x40010424",
+        "description": "TIM9 counter register.",
+        "assigned_pin": null
+    },
+    "TIM9_PSC": {
+        "address": "0x40010428",
+        "description": "TIM9 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM9_ARR": {
+        "address": "0x4001042C",
+        "description": "TIM9 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM9_CCR1": {
+        "address": "0x40010434",
+        "description": "TIM9 capture/compare register 1.",
+        "assigned_pin": [
+            "PA2",
+            "PE5"
+        ]
+    },
+    "TIM9_CCR2": {
+        "address": "0x40010438",
+        "description": "TIM9 capture/compare register 2.",
+        "assigned_pin": [
+            "PA3",
+            "PE6"
+        ]
+    },
+    "TIM10_CR1": {
+        "address": "0x40010800",
+        "description": "TIM10 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM10_DIER": {
+        "address": "0x4001080C",
+        "description": "TIM10 Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM10_SR": {
+        "address": "0x40010810",
+        "description": "TIM10 status register.",
+        "assigned_pin": null
+    },
+    "TIM10_EGR": {
+        "address": "0x40010814",
+        "description": "TIM10 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM10_CCMR1": {
+        "address": "0x40010818",
+        "description": "TIM10 capture/compare mode register 1 (channel 1).",
+        "assigned_pin": [
+            "PB8"
+        ]
+    },
+    "TIM10_CCER": {
+        "address": "0x40010820",
+        "description": "TIM10 capture/compare enable register.",
+        "assigned_pin": [
+            "PB8"
+        ]
+    },
+    "TIM10_CNT": {
+        "address": "0x40010824",
+        "description": "TIM10 counter register.",
+        "assigned_pin": null
+    },
+    "TIM10_PSC": {
+        "address": "0x40010828",
+        "description": "TIM10 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM10_ARR": {
+        "address": "0x4001082C",
+        "description": "TIM10 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM10_CCR1": {
+        "address": "0x40010834",
+        "description": "TIM10 capture/compare register 1.",
+        "assigned_pin": [
+            "PB8"
+        ]
+    },
+    "TIM11_CR1": {
+        "address": "0x40010C00",
+        "description": "TIM11 control register 1.",
+        "assigned_pin": null
+    },
+    "TIM11_DIER": {
+        "address": "0x40010C0C",
+        "description": "TIM11 Interrupt enable register.",
+        "assigned_pin": null
+    },
+    "TIM11_SR": {
+        "address": "0x40010C10",
+        "description": "TIM11 status register.",
+        "assigned_pin": null
+    },
+    "TIM11_EGR": {
+        "address": "0x40010C14",
+        "description": "TIM11 event generation register.",
+        "assigned_pin": null
+    },
+    "TIM11_CCMR1": {
+        "address": "0x40010C18",
+        "description": "TIM11 capture/compare mode register 1 (channel 1).",
+        "assigned_pin": [
+            "PB9"
+        ]
+    },
+    "TIM11_CCER": {
+        "address": "0x40010C20",
+        "description": "TIM11 capture/compare enable register.",
+        "assigned_pin": [
+            "PB9"
+        ]
+    },
+    "TIM11_CNT": {
+        "address": "0x40010C24",
+        "description": "TIM11 counter register.",
+        "assigned_pin": null
+    },
+    "TIM11_PSC": {
+        "address": "0x40010C28",
+        "description": "TIM11 prescaler register.",
+        "assigned_pin": null
+    },
+    "TIM11_ARR": {
+        "address": "0x40010C2C",
+        "description": "TIM11 auto-reload register.",
+        "assigned_pin": null
+    },
+    "TIM11_CCR1": {
+        "address": "0x40010C34",
+        "description": "TIM11 capture/compare register 1.",
+        "assigned_pin": [
+            "PB9"
+        ]
+    },
+    "TIM11_OR": {
+        "address": "0x40010C50",
+        "description": "TIM11 option register 1.",
+        "assigned_pin": null
+    }
+}
