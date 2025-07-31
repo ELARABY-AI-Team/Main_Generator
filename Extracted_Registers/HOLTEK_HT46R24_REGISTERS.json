@@ -1,0 +1,362 @@
+{
+    "Indirect_Addressing_Register_0": {
+        "address": "0x00",
+        "description": "Indirect addressing register 0, not physically implemented. Any read/write operation accesses RAM pointed by MP0.",
+        "assigned_pin": null
+    },
+    "MP0": {
+        "address": "0x01",
+        "description": "8-bit memory pointer register 0, used to access RAM indirectly via the Indirect addressing register 0.",
+        "assigned_pin": null
+    },
+    "Indirect_Addressing_Register_1": {
+        "address": "0x02",
+        "description": "Indirect addressing register 1, not physically implemented. Any read/write operation accesses RAM pointed by MP1.",
+        "assigned_pin": null
+    },
+    "MP1": {
+        "address": "0x03",
+        "description": "8-bit memory pointer register 1, used to access RAM indirectly via the Indirect addressing register 1.",
+        "assigned_pin": null
+    },
+    "BP": {
+        "address": "0x04",
+        "description": "Bank pointer register, used to select between data memory banks (Bank 0 or Bank 1).",
+        "assigned_pin": null
+    },
+    "ACC": {
+        "address": "0x05",
+        "description": "Accumulator register, closely related to ALU operations and capable of operating with immediate data.",
+        "assigned_pin": null
+    },
+    "PCL": {
+        "address": "0x06",
+        "description": "Lower-order byte of the Program Counter, readable and writeable. Moving data into PCL performs a short jump.",
+        "assigned_pin": null
+    },
+    "TBLP": {
+        "address": "0x07",
+        "description": "Read/write register indicating the table location for table read instructions (TABRDC, TABRDL).",
+        "assigned_pin": null
+    },
+    "TBLH": {
+        "address": "0x08",
+        "description": "Read-only register that stores the higher-order byte of the table word from table read instructions.",
+        "assigned_pin": null
+    },
+    "STATUS": {
+        "address": "0x0A",
+        "description": "8-bit register containing status flags: Carry (C), Auxiliary Carry (AC), Zero (Z), Overflow (OV), Power Down (PDF), and Watchdog Time-out (TO).",
+        "assigned_pin": null
+    },
+    "INTC0": {
+        "address": "0x0B",
+        "description": "Interrupt Control Register 0, controls master, external, Timer/Event Counter 0, and Timer/Event Counter 1 interrupts, and holds their request flags.",
+        "assigned_pin": [
+            "PA5"
+        ]
+    },
+    "TMR0H": {
+        "address": "0x0C",
+        "description": "High byte of the 16-bit Timer/Event Counter 0.",
+        "assigned_pin": [
+            "TMR0"
+        ]
+    },
+    "TMR0L": {
+        "address": "0x0D",
+        "description": "Low byte of the 16-bit Timer/Event Counter 0.",
+        "assigned_pin": [
+            "TMR0"
+        ]
+    },
+    "TMR0C": {
+        "address": "0x0E",
+        "description": "Control register for Timer/Event Counter 0, configuring its operation.",
+        "assigned_pin": null
+    },
+    "TMR1H": {
+        "address": "0x0F",
+        "description": "High byte of the 16-bit Timer/Event Counter 1.",
+        "assigned_pin": [
+            "PD1",
+            "TMR1"
+        ]
+    },
+    "TMR1L": {
+        "address": "0x10",
+        "description": "Low byte of the 16-bit Timer/Event Counter 1.",
+        "assigned_pin": [
+            "PD1",
+            "TMR1"
+        ]
+    },
+    "TMR1C": {
+        "address": "0x11",
+        "description": "Control register for Timer/Event Counter 1, configuring its operation.",
+        "assigned_pin": null
+    },
+    "PA": {
+        "address": "0x12",
+        "description": "Bidirectional 8-bit input/output data register for Port A.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ]
+    },
+    "PAC": {
+        "address": "0x13",
+        "description": "Control register for Port A, determining direction (CMOS output or Schmitt trigger input) and pull-high options.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ]
+    },
+    "PB": {
+        "address": "0x14",
+        "description": "Bidirectional 8-bit input/output data register for Port B.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "PBC": {
+        "address": "0x15",
+        "description": "Control register for Port B, determining direction (CMOS output or Schmitt trigger input), pull-high, or A/D input selection.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "PC": {
+        "address": "0x16",
+        "description": "Bidirectional 8-bit input/output data register for Port C.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ]
+    },
+    "PCC": {
+        "address": "0x17",
+        "description": "Control register for Port C, determining direction (CMOS output or Schmitt trigger input) and pull-high options.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ]
+    },
+    "PD": {
+        "address": "0x18",
+        "description": "Bidirectional 8-bit input/output data register for Port D.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7"
+        ]
+    },
+    "PDC": {
+        "address": "0x19",
+        "description": "Control register for Port D, determining direction (CMOS output or Schmitt trigger input), pull-high, and PWM output options.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5",
+            "PD6",
+            "PD7"
+        ]
+    },
+    "PWM0": {
+        "address": "0x1A",
+        "description": "Data register for Pulse Width Modulation channel 0.",
+        "assigned_pin": [
+            "PD0"
+        ]
+    },
+    "PWM1": {
+        "address": "0x1B",
+        "description": "Data register for Pulse Width Modulation channel 1.",
+        "assigned_pin": [
+            "PD1"
+        ]
+    },
+    "PWM2": {
+        "address": "0x1C",
+        "description": "Data register for Pulse Width Modulation channel 2.",
+        "assigned_pin": [
+            "PD2"
+        ]
+    },
+    "PWM3": {
+        "address": "0x1D",
+        "description": "Data register for Pulse Width Modulation channel 3.",
+        "assigned_pin": [
+            "PD3"
+        ]
+    },
+    "INTC1": {
+        "address": "0x1E",
+        "description": "Interrupt Control Register 1, controls A/D converter and I2C Bus interrupts, and holds their request flags.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PA6",
+            "PA7"
+        ]
+    },
+    "HADR": {
+        "address": "0x20",
+        "description": "I2C Bus slave address register for setting the device's slave address.",
+        "assigned_pin": [
+            "PA6",
+            "PA7"
+        ]
+    },
+    "HCR": {
+        "address": "0x21",
+        "description": "I2C Bus control register for configuring I2C operation.",
+        "assigned_pin": [
+            "PA6",
+            "PA7"
+        ]
+    },
+    "HSR": {
+        "address": "0x22",
+        "description": "I2C Bus status register for monitoring I2C operation.",
+        "assigned_pin": [
+            "PA6",
+            "PA7"
+        ]
+    },
+    "HDR": {
+        "address": "0x23",
+        "description": "I2C Bus data register for transmitting and receiving data.",
+        "assigned_pin": [
+            "PA6",
+            "PA7"
+        ]
+    },
+    "ADRL": {
+        "address": "0x24",
+        "description": "Lower-order byte of the 10-bit A/D conversion result.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "ADRH": {
+        "address": "0x25",
+        "description": "Higher-order byte of the 10-bit A/D conversion result.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "ADCR": {
+        "address": "0x26",
+        "description": "Control register for the A/D converter, configuring conversion start and channel selection.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ]
+    },
+    "ACSR": {
+        "address": "0x27",
+        "description": "A/D clock setting register for configuring the A/D conversion clock.",
+        "assigned_pin": null
+    },
+    "PF": {
+        "address": "0x28",
+        "description": "Bidirectional 8-bit input/output data register for Port F (48-pin package only).",
+        "assigned_pin": [
+            "PF0",
+            "PF1",
+            "PF2",
+            "PF3",
+            "PF4",
+            "PF5",
+            "PF6",
+            "PF7"
+        ]
+    },
+    "PFC": {
+        "address": "0x29",
+        "description": "Control register for Port F, determining direction (CMOS output or Schmitt trigger input) and pull-high options (48-pin package only).",
+        "assigned_pin": [
+            "PF0",
+            "PF1",
+            "PF2",
+            "PF3",
+            "PF4",
+            "PF5",
+            "PF6",
+            "PF7"
+        ]
+    }
+}
