@@ -1,0 +1,1513 @@
+{
+    "GPIO_P0_DR": {
+        "address": "0xFFF00",
+        "description": "Port 0 Data Register. Used for reading input data and writing output data for pins P0.0 to P0.7. Physical pins: P0.0, P0.1, P0.2, P0.3, P0.6, P0.7.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P0.6",
+            "P0.7"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P1_DR": {
+        "address": "0xFFF01",
+        "description": "Port 1 Data Register. Used for reading input data and writing output data for pins P1.0 to P1.7.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P2_DR": {
+        "address": "0xFFF02",
+        "description": "Port 2 Data Register. Used for reading input data and writing output data for pins P2.0 to P2.3.",
+        "assigned_pin": [
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P3_DR": {
+        "address": "0xFFF03",
+        "description": "Port 3 Data Register. Used for reading input data and writing output data for pins P3.0 to P3.2.",
+        "assigned_pin": [
+            "P3.0",
+            "P3.1",
+            "P3.2"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P4_DR": {
+        "address": "0xFFF04",
+        "description": "Port 4 Data Register. Used for reading input data and writing output data for pins P4.0 to P4.1.",
+        "assigned_pin": [
+            "P4.0",
+            "P4.1"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P5_DR": {
+        "address": "0xFFF05",
+        "description": "Port 5 Data Register. Used for reading input data and writing output data for pins P5.0 to P5.2.",
+        "assigned_pin": [
+            "P5.0",
+            "P5.1",
+            "P5.2"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P6_DR": {
+        "address": "0xFFF06",
+        "description": "Port 6 Data Register. Used for reading input data and writing output data for pins P6.0 to P6.1.",
+        "assigned_pin": [
+            "P6.0",
+            "P6.1"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P7_DR": {
+        "address": "0xFFF07",
+        "description": "Port 7 Data Register. Used for reading input data and writing output data for pins P7.0 to P7.2.",
+        "assigned_pin": [
+            "P7.0",
+            "P7.1",
+            "P7.2"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P12_DR": {
+        "address": "0xFFF0C",
+        "description": "Port 12 Data Register. Used for reading input data and writing output data for pin P12.0.",
+        "assigned_pin": [
+            "P12.0"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P13_DR": {
+        "address": "0xFFF0D",
+        "description": "Port 13 Data Register. Used for reading input data and writing output data for pin P13.0.",
+        "assigned_pin": [
+            "P13.0"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P14_DR": {
+        "address": "0xFFF0E",
+        "description": "Port 14 Data Register. Used for reading input data and writing output data for pin P14.0.",
+        "assigned_pin": [
+            "P14.0"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_P15_DR": {
+        "address": "0xFFF0F",
+        "description": "Port 15 Data Register. Used for reading input data and writing output data for pin P15.0.",
+        "assigned_pin": [
+            "P15.0"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIO_PM0_MODER": {
+        "address": "0xFFF20",
+        "description": "Port 0 Mode Register. Configures pins P0.0 to P0.7 as input or output mode.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P0.6",
+            "P0.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM1_MODER": {
+        "address": "0xFFF21",
+        "description": "Port 1 Mode Register. Configures pins P1.0 to P1.7 as input or output mode.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM2_MODER": {
+        "address": "0xFFF22",
+        "description": "Port 2 Mode Register. Configures pins P2.0 to P2.3 as input or output mode.",
+        "assigned_pin": [
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM3_MODER": {
+        "address": "0xFFF23",
+        "description": "Port 3 Mode Register. Configures pins P3.0 to P3.2 as input or output mode.",
+        "assigned_pin": [
+            "P3.0",
+            "P3.1",
+            "P3.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM4_MODER": {
+        "address": "0xFFF24",
+        "description": "Port 4 Mode Register. Configures pins P4.0 to P4.1 as input or output mode.",
+        "assigned_pin": [
+            "P4.0",
+            "P4.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM5_MODER": {
+        "address": "0xFFF25",
+        "description": "Port 5 Mode Register. Configures pins P5.0 to P5.2 as input or output mode.",
+        "assigned_pin": [
+            "P5.0",
+            "P5.1",
+            "P5.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM6_MODER": {
+        "address": "0xFFF26",
+        "description": "Port 6 Mode Register. Configures pins P6.0 to P6.1 as input or output mode.",
+        "assigned_pin": [
+            "P6.0",
+            "P6.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM7_MODER": {
+        "address": "0xFFF27",
+        "description": "Port 7 Mode Register. Configures pins P7.0 to P7.2 as input or output mode.",
+        "assigned_pin": [
+            "P7.0",
+            "P7.1",
+            "P7.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM12_MODER": {
+        "address": "0xFFF2C",
+        "description": "Port 12 Mode Register. Configures pin P12.0 as input or output mode.",
+        "assigned_pin": [
+            "P12.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM13_MODER": {
+        "address": "0xFFF2D",
+        "description": "Port 13 Mode Register. Configures pin P13.0 as input or output mode.",
+        "assigned_pin": [
+            "P13.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM14_MODER": {
+        "address": "0xFFF2E",
+        "description": "Port 14 Mode Register. Configures pin P14.0 as input or output mode.",
+        "assigned_pin": [
+            "P14.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PM15_MODER": {
+        "address": "0xFFF2F",
+        "description": "Port 15 Mode Register. Configures pin P15.0 as input or output mode.",
+        "assigned_pin": [
+            "P15.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC0_AFR": {
+        "address": "0xFFF10",
+        "description": "Port 0 Mode Control Register. Selects digital input buffer or analog input for pins P0.0 to P0.7.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P0.6",
+            "P0.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC1_AFR": {
+        "address": "0xFFF11",
+        "description": "Port 1 Mode Control Register. Selects digital input buffer or analog input for pins P1.0 to P1.7.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC2_AFR": {
+        "address": "0xFFF12",
+        "description": "Port 2 Mode Control Register. Selects digital input buffer or analog input for pins P2.0 to P2.3.",
+        "assigned_pin": [
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC3_AFR": {
+        "address": "0xFFF13",
+        "description": "Port 3 Mode Control Register. Selects digital input buffer or analog input for pins P3.0 to P3.2.",
+        "assigned_pin": [
+            "P3.0",
+            "P3.1",
+            "P3.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC4_AFR": {
+        "address": "0xFFF14",
+        "description": "Port 4 Mode Control Register. Selects digital input buffer or analog input for pins P4.0 to P4.1.",
+        "assigned_pin": [
+            "P4.0",
+            "P4.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC5_AFR": {
+        "address": "0xFFF15",
+        "description": "Port 5 Mode Control Register. Selects digital input buffer or analog input for pins P5.0 to P5.2.",
+        "assigned_pin": [
+            "P5.0",
+            "P5.1",
+            "P5.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC6_AFR": {
+        "address": "0xFFF16",
+        "description": "Port 6 Mode Control Register. Selects digital input buffer or analog input for pins P6.0 to P6.1.",
+        "assigned_pin": [
+            "P6.0",
+            "P6.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC7_AFR": {
+        "address": "0xFFF17",
+        "description": "Port 7 Mode Control Register. Selects digital input buffer or analog input for pins P7.0 to P7.2.",
+        "assigned_pin": [
+            "P7.0",
+            "P7.1",
+            "P7.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC12_AFR": {
+        "address": "0xFFF1C",
+        "description": "Port 12 Mode Control Register. Selects digital input buffer or analog input for pin P12.0.",
+        "assigned_pin": [
+            "P12.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC13_AFR": {
+        "address": "0xFFF1D",
+        "description": "Port 13 Mode Control Register. Selects digital input buffer or analog input for pin P13.0.",
+        "assigned_pin": [
+            "P13.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC14_AFR": {
+        "address": "0xFFF1E",
+        "description": "Port 14 Mode Control Register. Selects digital input buffer or analog input for pin P14.0.",
+        "assigned_pin": [
+            "P14.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PMC15_AFR": {
+        "address": "0xFFF1F",
+        "description": "Port 15 Mode Control Register. Selects digital input buffer or analog input for pin P15.0.",
+        "assigned_pin": [
+            "P15.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM0_PUPDR": {
+        "address": "0xFFF30",
+        "description": "Port 0 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P0.0 to P0.7.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P0.6",
+            "P0.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM1_PUPDR": {
+        "address": "0xFFF31",
+        "description": "Port 1 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P1.0 to P1.7.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM2_PUPDR": {
+        "address": "0xFFF32",
+        "description": "Port 2 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P2.0 to P2.3.",
+        "assigned_pin": [
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM3_PUPDR": {
+        "address": "0xFFF33",
+        "description": "Port 3 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P3.0 to P3.2.",
+        "assigned_pin": [
+            "P3.0",
+            "P3.1",
+            "P3.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM4_PUPDR": {
+        "address": "0xFFF34",
+        "description": "Port 4 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P4.0 to P4.1.",
+        "assigned_pin": [
+            "P4.0",
+            "P4.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM5_PUPDR": {
+        "address": "0xFFF35",
+        "description": "Port 5 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P5.0 to P5.2.",
+        "assigned_pin": [
+            "P5.0",
+            "P5.1",
+            "P5.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM6_PUPDR": {
+        "address": "0xFFF36",
+        "description": "Port 6 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P6.0 to P6.1.",
+        "assigned_pin": [
+            "P6.0",
+            "P6.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM7_PUPDR": {
+        "address": "0xFFF37",
+        "description": "Port 7 Input Mode Register. Configures input buffer type (e.g., pull-up) for pins P7.0 to P7.2.",
+        "assigned_pin": [
+            "P7.0",
+            "P7.1",
+            "P7.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM12_PUPDR": {
+        "address": "0xFFF3C",
+        "description": "Port 12 Input Mode Register. Configures input buffer type (e.g., pull-up) for pin P12.0.",
+        "assigned_pin": [
+            "P12.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM13_PUPDR": {
+        "address": "0xFFF3D",
+        "description": "Port 13 Input Mode Register. Configures input buffer type (e.g., pull-up) for pin P13.0.",
+        "assigned_pin": [
+            "P13.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM14_PUPDR": {
+        "address": "0xFFF3E",
+        "description": "Port 14 Input Mode Register. Configures input buffer type (e.g., pull-up) for pin P14.0.",
+        "assigned_pin": [
+            "P14.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_PIM15_PUPDR": {
+        "address": "0xFFF3F",
+        "description": "Port 15 Input Mode Register. Configures input buffer type (e.g., pull-up) for pin P15.0.",
+        "assigned_pin": [
+            "P15.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM0_OTYPER": {
+        "address": "0xFFF40",
+        "description": "Port 0 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P0.0 to P0.7.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P0.6",
+            "P0.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM1_OTYPER": {
+        "address": "0xFFF41",
+        "description": "Port 1 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P1.0 to P1.7.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM2_OTYPER": {
+        "address": "0xFFF42",
+        "description": "Port 2 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P2.0 to P2.3.",
+        "assigned_pin": [
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM3_OTYPER": {
+        "address": "0xFFF43",
+        "description": "Port 3 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P3.0 to P3.2.",
+        "assigned_pin": [
+            "P3.0",
+            "P3.1",
+            "P3.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM4_OTYPER": {
+        "address": "0xFFF44",
+        "description": "Port 4 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P4.0 to P4.1.",
+        "assigned_pin": [
+            "P4.0",
+            "P4.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM5_OTYPER": {
+        "address": "0xFFF45",
+        "description": "Port 5 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P5.0 to P5.2.",
+        "assigned_pin": [
+            "P5.0",
+            "P5.1",
+            "P5.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM6_OTYPER": {
+        "address": "0xFFF46",
+        "description": "Port 6 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P6.0 to P6.1.",
+        "assigned_pin": [
+            "P6.0",
+            "P6.1"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM7_OTYPER": {
+        "address": "0xFFF47",
+        "description": "Port 7 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pins P7.0 to P7.2.",
+        "assigned_pin": [
+            "P7.0",
+            "P7.1",
+            "P7.2"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM12_OTYPER": {
+        "address": "0xFFF4C",
+        "description": "Port 12 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pin P12.0.",
+        "assigned_pin": [
+            "P12.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM13_OTYPER": {
+        "address": "0xFFF4D",
+        "description": "Port 13 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pin P13.0.",
+        "assigned_pin": [
+            "P13.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM14_OTYPER": {
+        "address": "0xFFF4E",
+        "description": "Port 14 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pin P14.0.",
+        "assigned_pin": [
+            "P14.0"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIO_POM15_OTYPER": {
+        "address": "0xFFF4F",
+        "description": "Port 15 Output Mode Register. Configures output buffer type (e.g., normal or open-drain) for pin P15.0.",
+        "assigned_pin": [
+            "P15.0"
+        ],
+        "function": "gpio_config"
+    },
+    "RCC_OSMC": {
+        "address": "0xFFF8E",
+        "description": "Oscillation Mode Control Register. Controls the operation of the main and sub-oscillators.",
+        "assigned_pin": null,
+        "function": "clock_control"
+    },
+    "RCC_CSC": {
+        "address": "0xFFF88",
+        "description": "Clock Stop Control Register. Manages the stopping and starting of peripheral clocks.",
+        "assigned_pin": null,
+        "function": "clock_control"
+    },
+    "RCC_CKC": {
+        "address": "0xFFF89",
+        "description": "Clock Control Register. Selects the clock source for the CPU and peripherals.",
+        "assigned_pin": null,
+        "function": "clock_control"
+    },
+    "RCC_PRCR": {
+        "address": "0xFFF8A",
+        "description": "Protect Register. Enables or disables write access to specific protected registers, commonly clock and security related.",
+        "assigned_pin": null,
+        "function": "system_control"
+    },
+    "RCC_TRC": {
+        "address": "0xFFF6F",
+        "description": "TRIM Control Register. Adjusts the trimming values for internal oscillation circuits.",
+        "assigned_pin": null,
+        "function": "clock_config"
+    },
+    "RCC_LVIM": {
+        "address": "0xFFF5E",
+        "description": "Low Voltage Detection Interrupt Mask Register. Masks or unmasks the low voltage detection interrupt.",
+        "assigned_pin": null,
+        "function": "power_management"
+    },
+    "RCC_LVINM": {
+        "address": "0xFFF5D",
+        "description": "Low Voltage Detection Interrupt Flag Mask Register. Masks or unmasks the low voltage detection interrupt flag.",
+        "assigned_pin": null,
+        "function": "power_management"
+    },
+    "RCC_LVIS": {
+        "address": "0xFFF5B",
+        "description": "Low Voltage Reset Enable Register. Enables or disables the low voltage detection reset function.",
+        "assigned_pin": null,
+        "function": "power_management"
+    },
+    "TIM0_CR1": {
+        "address": "0xFFF60",
+        "description": "Timer Array Unit 0 Control Register 1. Contains bits for starting Timer Array Unit 0 channels (TS0).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM0_CR2": {
+        "address": "0xFFF61",
+        "description": "Timer Array Unit 0 Control Register 2. Contains bits for stopping Timer Array Unit 0 channels (TT0).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM0_CR3": {
+        "address": "0xFFF62",
+        "description": "Timer Array Unit 0 Control Register 3. Contains bits for enabling Timer Array Unit 0 channels (TE0).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM0_SR": {
+        "address": "0xFFF63",
+        "description": "Timer Array Unit 0 Status Register. Provides the status of Timer Array Unit 0 channels (TSR0).",
+        "assigned_pin": null,
+        "function": "timer_status"
+    },
+    "TIM0_GCR": {
+        "address": "0xFFF64",
+        "description": "Timer Array Unit 0 Global Mode Register. Configures global settings for TAU0 (TRGMR0).",
+        "assigned_pin": null,
+        "function": "timer_config"
+    },
+    "TIM0_CH0_CR": {
+        "address": "0xFFF65",
+        "description": "Timer Array Unit 0 Channel 0 Mode Register (TMR00). Configures operation mode for channel 0.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH1_CR": {
+        "address": "0xFFF66",
+        "description": "Timer Array Unit 0 Channel 1 Mode Register (TMR01). Configures operation mode for channel 1.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH2_CR": {
+        "address": "0xFFF67",
+        "description": "Timer Array Unit 0 Channel 2 Mode Register (TMR02). Configures operation mode for channel 2.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH3_CR": {
+        "address": "0xFFF68",
+        "description": "Timer Array Unit 0 Channel 3 Mode Register (TMR03). Configures operation mode for channel 3.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH4_CR": {
+        "address": "0xFFF69",
+        "description": "Timer Array Unit 0 Channel 4 Mode Register (TMR04). Configures operation mode for channel 4.",
+        "assigned_pin": [
+            "P3.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH5_CR": {
+        "address": "0xFFF6A",
+        "description": "Timer Array Unit 0 Channel 5 Mode Register (TMR05). Configures operation mode for channel 5.",
+        "assigned_pin": [
+            "P3.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH6_CR": {
+        "address": "0xFFF6B",
+        "description": "Timer Array Unit 0 Channel 6 Mode Register (TMR06). Configures operation mode for channel 6.",
+        "assigned_pin": [
+            "P3.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH7_CR": {
+        "address": "0xFFF6C",
+        "description": "Timer Array Unit 0 Channel 7 Mode Register (TMR07). Configures operation mode for channel 7.",
+        "assigned_pin": [
+            "P4.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH0_CCR": {
+        "address": "0xFFF6D",
+        "description": "Timer Array Unit 0 Channel 0 Control Register (TCR00). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH1_CCR": {
+        "address": "0xFFF6E",
+        "description": "Timer Array Unit 0 Channel 1 Control Register (TCR01). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH2_CCR": {
+        "address": "0xFFF6F",
+        "description": "Timer Array Unit 0 Channel 2 Control Register (TCR02). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH3_CCR": {
+        "address": "0xFFF70",
+        "description": "Timer Array Unit 0 Channel 3 Control Register (TCR03). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH4_CCR": {
+        "address": "0xFFF71",
+        "description": "Timer Array Unit 0 Channel 4 Control Register (TCR04). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P3.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH5_CCR": {
+        "address": "0xFFF72",
+        "description": "Timer Array Unit 0 Channel 5 Control Register (TCR05). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P3.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH6_CCR": {
+        "address": "0xFFF73",
+        "description": "Timer Array Unit 0 Channel 6 Control Register (TCR06). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P3.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CH7_CCR": {
+        "address": "0xFFF74",
+        "description": "Timer Array Unit 0 Channel 7 Control Register (TCR07). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P4.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM0_CCR0": {
+        "address": "0xFFF75",
+        "description": "Timer Array Unit 0 Channel 0 Capture/Compare Register (TDR00). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR1": {
+        "address": "0xFFF76",
+        "description": "Timer Array Unit 0 Channel 1 Capture/Compare Register (TDR01). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR2": {
+        "address": "0xFFF77",
+        "description": "Timer Array Unit 0 Channel 2 Capture/Compare Register (TDR02). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR3": {
+        "address": "0xFFF78",
+        "description": "Timer Array Unit 0 Channel 3 Capture/Compare Register (TDR03). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR4": {
+        "address": "0xFFF79",
+        "description": "Timer Array Unit 0 Channel 4 Capture/Compare Register (TDR04). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P3.0"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR5": {
+        "address": "0xFFF7A",
+        "description": "Timer Array Unit 0 Channel 5 Capture/Compare Register (TDR05). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P3.1"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR6": {
+        "address": "0xFFF7B",
+        "description": "Timer Array Unit 0 Channel 6 Capture/Compare Register (TDR06). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P3.2"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CCR7": {
+        "address": "0xFFF7C",
+        "description": "Timer Array Unit 0 Channel 7 Capture/Compare Register (TDR07). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P4.0"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM0_CNT0": {
+        "address": "0xFFF7D",
+        "description": "Timer Array Unit 0 Channel 0 Counter Register (TR00). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT1": {
+        "address": "0xFFF7E",
+        "description": "Timer Array Unit 0 Channel 1 Counter Register (TR01). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT2": {
+        "address": "0xFFF7F",
+        "description": "Timer Array Unit 0 Channel 2 Counter Register (TR02). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT3": {
+        "address": "0xFFF84",
+        "description": "Timer Array Unit 0 Channel 3 Counter Register (TR03). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT4": {
+        "address": "0xFFF85",
+        "description": "Timer Array Unit 0 Channel 4 Counter Register (TR04). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT5": {
+        "address": "0xFFF86",
+        "description": "Timer Array Unit 0 Channel 5 Counter Register (TR05). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT6": {
+        "address": "0xFFF87",
+        "description": "Timer Array Unit 0 Channel 6 Counter Register (TR06). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM0_CNT7": {
+        "address": "0xFFF88",
+        "description": "Timer Array Unit 0 Channel 7 Counter Register (TR07). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM1_CR1": {
+        "address": "0xFFFA0",
+        "description": "Timer Array Unit 1 Control Register 1. Contains bits for starting Timer Array Unit 1 channels (TS1).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM1_CR2": {
+        "address": "0xFFFA1",
+        "description": "Timer Array Unit 1 Control Register 2. Contains bits for stopping Timer Array Unit 1 channels (TT1).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM1_CR3": {
+        "address": "0xFFFA2",
+        "description": "Timer Array Unit 1 Control Register 3. Contains bits for enabling Timer Array Unit 1 channels (TE1).",
+        "assigned_pin": null,
+        "function": "timer_control"
+    },
+    "TIM1_SR": {
+        "address": "0xFFFA3",
+        "description": "Timer Array Unit 1 Status Register. Provides the status of Timer Array Unit 1 channels (TSR1).",
+        "assigned_pin": null,
+        "function": "timer_status"
+    },
+    "TIM1_GCR": {
+        "address": "0xFFFA4",
+        "description": "Timer Array Unit 1 Global Mode Register. Configures global settings for TAU1 (TRGMR1).",
+        "assigned_pin": null,
+        "function": "timer_config"
+    },
+    "TIM1_CH0_CR": {
+        "address": "0xFFFA5",
+        "description": "Timer Array Unit 1 Channel 0 Mode Register (TMR10). Configures operation mode for channel 0.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH1_CR": {
+        "address": "0xFFFA6",
+        "description": "Timer Array Unit 1 Channel 1 Mode Register (TMR11). Configures operation mode for channel 1.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH2_CR": {
+        "address": "0xFFFA7",
+        "description": "Timer Array Unit 1 Channel 2 Mode Register (TMR12). Configures operation mode for channel 2.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH3_CR": {
+        "address": "0xFFFA8",
+        "description": "Timer Array Unit 1 Channel 3 Mode Register (TMR13). Configures operation mode for channel 3.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH0_CCR": {
+        "address": "0xFFFA9",
+        "description": "Timer Array Unit 1 Channel 0 Control Register (TCR10). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH1_CCR": {
+        "address": "0xFFFAA",
+        "description": "Timer Array Unit 1 Channel 1 Control Register (TCR11). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH2_CCR": {
+        "address": "0xFFFAB",
+        "description": "Timer Array Unit 1 Channel 2 Control Register (TCR12). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CH3_CCR": {
+        "address": "0xFFFAC",
+        "description": "Timer Array Unit 1 Channel 3 Control Register (TCR13). Configures compare or capture operations.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_config"
+    },
+    "TIM1_CCR0": {
+        "address": "0xFFFAD",
+        "description": "Timer Array Unit 1 Channel 0 Capture/Compare Register (TDR10). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.0",
+            "P1.5"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM1_CCR1": {
+        "address": "0xFFFAE",
+        "description": "Timer Array Unit 1 Channel 1 Capture/Compare Register (TDR11). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.1",
+            "P5.0"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM1_CCR2": {
+        "address": "0xFFFAF",
+        "description": "Timer Array Unit 1 Channel 2 Capture/Compare Register (TDR12). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.2",
+            "P5.1"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM1_CCR3": {
+        "address": "0xFFFB0",
+        "description": "Timer Array Unit 1 Channel 3 Capture/Compare Register (TDR13). Stores captured value or compare value.",
+        "assigned_pin": [
+            "P0.3",
+            "P5.2"
+        ],
+        "function": "timer_capture_compare"
+    },
+    "TIM1_CNT0": {
+        "address": "0xFFFB1",
+        "description": "Timer Array Unit 1 Channel 0 Counter Register (TR10). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM1_CNT1": {
+        "address": "0xFFFB2",
+        "description": "Timer Array Unit 1 Channel 1 Counter Register (TR11). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM1_CNT2": {
+        "address": "0xFFFB3",
+        "description": "Timer Array Unit 1 Channel 2 Counter Register (TR12). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "TIM1_CNT3": {
+        "address": "0xFFFB4",
+        "description": "Timer Array Unit 1 Channel 3 Counter Register (TR13). Reads the current timer counter value.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "ADC_CR1": {
+        "address": "0xFFF80",
+        "description": "AD Converter Mode Register 0 (ADM0). Controls ADC operation mode, conversion settings.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7",
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "adc_config"
+    },
+    "ADC_CR2": {
+        "address": "0xFFF81",
+        "description": "AD Converter Mode Register 1 (ADM1). Controls ADC trigger source and interrupt settings.",
+        "assigned_pin": null,
+        "function": "adc_config"
+    },
+    "ADC_DR": {
+        "address": "0xFFF82",
+        "description": "AD Converter Register (ADCR). Stores the result of A/D conversion.",
+        "assigned_pin": [
+            "P0.0",
+            "P0.1",
+            "P0.2",
+            "P0.3",
+            "P1.0",
+            "P1.1",
+            "P1.2",
+            "P1.3",
+            "P1.4",
+            "P1.5",
+            "P1.6",
+            "P1.7",
+            "P2.0",
+            "P2.1",
+            "P2.2",
+            "P2.3"
+        ],
+        "function": "adc_data"
+    },
+    "ADC_TEST_REG": {
+        "address": "0xFFF85",
+        "description": "AD Test Register (ADTES). Used for ADC test functions.",
+        "assigned_pin": null,
+        "function": "adc_debug"
+    },
+    "USART_SPS0": {
+        "address": "0xFFF90",
+        "description": "Serial Array Unit 0 Clock Select Register. Configures the clock divisor for all SAU0 channels. Shared with SPI and I2C modes.",
+        "assigned_pin": null,
+        "function": "uart_config"
+    },
+    "USART0_CH0_CR1": {
+        "address": "0xFFF91",
+        "description": "Serial Array Unit 0 Channel 0 Mode Register (SMR00). Configures UART0 channel 0 operation mode (e.g., Rx). Shared with SPI0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_config"
+    },
+    "USART0_CH0_CR2": {
+        "address": "0xFFF92",
+        "description": "Serial Array Unit 0 Channel 0 Control Register (SCR00). Configures UART0 channel 0 control bits. Shared with SPI0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_config"
+    },
+    "USART0_DR": {
+        "address": "0xFFF93",
+        "description": "Serial Array Unit 0 Channel 0 Data Register (SDR00). Transmit/receive data for UART0. Shared with SPI0 and I2C0 data registers.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_data"
+    },
+    "USART0_CH1_CR1": {
+        "address": "0xFFF94",
+        "description": "Serial Array Unit 0 Channel 1 Mode Register (SMR01). Configures UART0 channel 1 operation mode (e.g., Tx). Shared with SPI0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_config"
+    },
+    "USART0_CH1_CR2": {
+        "address": "0xFFF95",
+        "description": "Serial Array Unit 0 Channel 1 Control Register (SCR01). Configures UART0 channel 1 control bits. Shared with SPI0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_config"
+    },
+    "USART0_DR_CH1": {
+        "address": "0xFFF96",
+        "description": "Serial Array Unit 0 Channel 1 Data Register (SDR01). Transmit/receive data for UART0. Often used in conjunction with SDR00. Shared with SPI0 and I2C0 data registers.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_data"
+    },
+    "USART1_CH0_CR1": {
+        "address": "0xFFF97",
+        "description": "Serial Array Unit 0 Channel 2 Mode Register (SMR02). Configures UART1 channel 0 operation mode (e.g., Rx). Shared with CSI10 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_config"
+    },
+    "USART1_CH0_CR2": {
+        "address": "0xFFF98",
+        "description": "Serial Array Unit 0 Channel 2 Control Register (SCR02). Configures UART1 channel 0 control bits. Shared with CSI10 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_config"
+    },
+    "USART1_DR": {
+        "address": "0xFFF99",
+        "description": "Serial Array Unit 0 Channel 2 Data Register (SDR02). Transmit/receive data for UART1. Shared with CSI10 data registers.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_data"
+    },
+    "USART1_CH1_CR1": {
+        "address": "0xFFF9A",
+        "description": "Serial Array Unit 0 Channel 3 Mode Register (SMR03). Configures UART1 channel 1 operation mode (e.g., Tx). Shared with CSI10 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_config"
+    },
+    "USART1_CH1_CR2": {
+        "address": "0xFFF9B",
+        "description": "Serial Array Unit 0 Channel 3 Control Register (SCR03). Configures UART1 channel 1 control bits. Shared with CSI10 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_config"
+    },
+    "USART1_DR_CH1": {
+        "address": "0xFFF9C",
+        "description": "Serial Array Unit 0 Channel 3 Data Register (SDR03). Transmit/receive data for UART1. Often used in conjunction with SDR02. Shared with CSI10 data registers.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4"
+        ],
+        "function": "uart_data"
+    },
+    "USART0_SR": {
+        "address": "0xFFF9D",
+        "description": "Serial Array Unit 0 Channel 0 Status Register (SSR00). Indicates UART0 transmission/reception status. Shared with SPI0 and I2C0 status.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_status"
+    },
+    "USART0_IER": {
+        "address": "0xFFF9E",
+        "description": "Serial Array Unit 0 Channel 0 Interrupt Register (SIR00). Sets interrupt flags for UART0. Shared with SPI0 and I2C0 interrupts.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1"
+        ],
+        "function": "uart_interrupt"
+    },
+    "USART_SISR0": {
+        "address": "0xFFF9F",
+        "description": "Serial Array Unit 0 Status Indication Register. Provides combined status for all SAU0 channels. Shared with SPI and I2C modes.",
+        "assigned_pin": null,
+        "function": "uart_status"
+    },
+    "USART_SCLMR0": {
+        "address": "0xFFFDC",
+        "description": "Serial Array Unit 0 Control Mode Register. Configures various control settings for SAU0. Shared with SPI and I2C modes.",
+        "assigned_pin": null,
+        "function": "uart_config"
+    },
+    "I2C0_CR1": {
+        "address": "0xFFFD0",
+        "description": "IIC Bus Control Register 0 (IICCTL0). Controls I2C operation including enable/disable and master/slave mode.",
+        "assigned_pin": [
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "i2c_config"
+    },
+    "I2C0_CR2": {
+        "address": "0xFFFD1",
+        "description": "IIC Bus Control Register 1 (IICCTL1). Controls I2C interrupt settings and clock control.",
+        "assigned_pin": [
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "i2c_config"
+    },
+    "I2C0_TLOWR": {
+        "address": "0xFFFD2",
+        "description": "IIC Bus Wait Time Low Register (IICWL). Sets the low period of the I2C clock (SCL).",
+        "assigned_pin": [
+            "P1.7"
+        ],
+        "function": "i2c_config"
+    },
+    "I2C0_THIGH": {
+        "address": "0xFFFD3",
+        "description": "IIC Bus Wait Time High Register (IICWH). Sets the high period of the I2C clock (SCL).",
+        "assigned_pin": [
+            "P1.7"
+        ],
+        "function": "i2c_config"
+    },
+    "I2C0_SLAVE_ADDR": {
+        "address": "0xFFFD4",
+        "description": "Slave Address Register (SVA). Stores the 7-bit slave address for I2C communication.",
+        "assigned_pin": null,
+        "function": "i2c_config"
+    },
+    "I2C0_TXDR": {
+        "address": "0xFFFD5",
+        "description": "Transmit Data Register (TXDT). Data register for I2C transmission.",
+        "assigned_pin": [
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "i2c_data"
+    },
+    "I2C0_RXDR": {
+        "address": "0xFFFD6",
+        "description": "Receive Data Register (RXDT). Data register for I2C reception.",
+        "assigned_pin": [
+            "P1.6",
+            "P1.7"
+        ],
+        "function": "i2c_data"
+    },
+    "I2C0_SR": {
+        "address": "0xFFFD7",
+        "description": "IIC Bus Status Register (IICS). Provides current status of the I2C bus.",
+        "assigned_pin": null,
+        "function": "i2c_status"
+    },
+    "SPI_SPS0": {
+        "address": "0xFFF90",
+        "description": "Serial Array Unit 0 Clock Select Register. Configures the clock divisor for all SAU0 channels. Shared with USART and I2C modes.",
+        "assigned_pin": null,
+        "function": "spi_config"
+    },
+    "SPI0_CH0_CR1": {
+        "address": "0xFFF91",
+        "description": "Serial Array Unit 0 Channel 0 Mode Register (SMR00). Configures SPI0 channel 0 operation mode. Shared with USART0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_config"
+    },
+    "SPI0_CH0_CR2": {
+        "address": "0xFFF92",
+        "description": "Serial Array Unit 0 Channel 0 Control Register (SCR00). Configures SPI0 channel 0 control bits. Shared with USART0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_config"
+    },
+    "SPI0_DR": {
+        "address": "0xFFF93",
+        "description": "Serial Array Unit 0 Channel 0 Data Register (SDR00). Transmit/receive data for SPI0. Shared with USART0 and I2C0 data registers.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_data"
+    },
+    "SPI0_CH1_CR1": {
+        "address": "0xFFF94",
+        "description": "Serial Array Unit 0 Channel 1 Mode Register (SMR01). Configures SPI0 channel 1 operation mode. Shared with USART0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_config"
+    },
+    "SPI0_CH1_CR2": {
+        "address": "0xFFF95",
+        "description": "Serial Array Unit 0 Channel 1 Control Register (SCR01). Configures SPI0 channel 1 control bits. Shared with USART0 and I2C0 channels.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_config"
+    },
+    "SPI0_DR_CH1": {
+        "address": "0xFFF96",
+        "description": "Serial Array Unit 0 Channel 1 Data Register (SDR01). Transmit/receive data for SPI0. Often used in conjunction with SDR00. Shared with USART0 and I2C0 data registers.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_data"
+    },
+    "SPI1_CH0_CR1": {
+        "address": "0xFFF97",
+        "description": "Serial Array Unit 0 Channel 2 Mode Register (SMR02). Configures SPI1 channel 0 operation mode. Shared with USART1 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_config"
+    },
+    "SPI1_CH0_CR2": {
+        "address": "0xFFF98",
+        "description": "Serial Array Unit 0 Channel 2 Control Register (SCR02). Configures SPI1 channel 0 control bits. Shared with USART1 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_config"
+    },
+    "SPI1_DR": {
+        "address": "0xFFF99",
+        "description": "Serial Array Unit 0 Channel 2 Data Register (SDR02). Transmit/receive data for SPI1. Shared with USART1 data registers.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_data"
+    },
+    "SPI1_CH1_CR1": {
+        "address": "0xFFF9A",
+        "description": "Serial Array Unit 0 Channel 3 Mode Register (SMR03). Configures SPI1 channel 1 operation mode. Shared with USART1 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_config"
+    },
+    "SPI1_CH1_CR2": {
+        "address": "0xFFF9B",
+        "description": "Serial Array Unit 0 Channel 3 Control Register (SCR03). Configures SPI1 channel 1 control bits. Shared with USART1 channels.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_config"
+    },
+    "SPI1_DR_CH1": {
+        "address": "0xFFF9C",
+        "description": "Serial Array Unit 0 Channel 3 Data Register (SDR03). Transmit/receive data for SPI1. Often used in conjunction with SDR02. Shared with USART1 data registers.",
+        "assigned_pin": [
+            "P1.3",
+            "P1.4",
+            "P1.5"
+        ],
+        "function": "spi_data"
+    },
+    "SPI0_SR": {
+        "address": "0xFFF9D",
+        "description": "Serial Array Unit 0 Channel 0 Status Register (SSR00). Indicates SPI0 transmission/reception status. Shared with USART0 and I2C0 status.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_status"
+    },
+    "SPI0_IER": {
+        "address": "0xFFF9E",
+        "description": "Serial Array Unit 0 Channel 0 Interrupt Register (SIR00). Sets interrupt flags for SPI0. Shared with USART0 and I2C0 interrupts.",
+        "assigned_pin": [
+            "P1.0",
+            "P1.1",
+            "P1.2"
+        ],
+        "function": "spi_interrupt"
+    },
+    "SPI_SISR0": {
+        "address": "0xFFF9F",
+        "description": "Serial Array Unit 0 Status Indication Register. Provides combined status for all SAU0 channels. Shared with USART and I2C modes.",
+        "assigned_pin": null,
+        "function": "spi_status"
+    },
+    "SPI_SCLMR0": {
+        "address": "0xFFFDC",
+        "description": "Serial Array Unit 0 Control Mode Register. Configures various control settings for SAU0. Shared with USART and I2C modes.",
+        "assigned_pin": null,
+        "function": "spi_config"
+    }
+}
