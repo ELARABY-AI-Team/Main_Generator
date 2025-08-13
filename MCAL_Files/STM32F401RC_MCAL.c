@@ -790,7 +790,7 @@ void MCU_Config_Init(t_sys_volt volt)
 void Go_to_sleep_mode(void)
 {
     WDT_Reset(); // All API bodies must include WDT_Reset()
-
+    __WFI();
     // Placeholder for entering sleep mode (e.g., WFI instruction for ARM Cortex-M)
     // For ARM Cortex-M: __WFI()
     // This is an intrinsic function, not a direct register access.
@@ -820,7 +820,7 @@ void Global_interrupt_Enable(void)
     // Placeholder for global interrupt enable.
     // This is typically done via intrinsic functions like __enable_irq()
     // or by clearing the PRIMASK/FAULTMASK register.
-    // __enable_irq(); // Placeholder for global interrupt enable
+    __enable_irq(); // Placeholder for global interrupt enable
 }
 
 /**
@@ -835,7 +835,7 @@ void Global_interrupt_Disable(void)
     // Placeholder for global interrupt disable.
     // This is typically done via intrinsic functions like __disable_irq()
     // or by setting the PRIMASK/FAULTMASK register.
-    // __disable_irq(); // Placeholder for global interrupt disable
+     __disable_irq(); // Placeholder for global interrupt disable
 }
 
 // =============================================================================
