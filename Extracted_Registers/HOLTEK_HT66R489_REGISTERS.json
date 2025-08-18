@@ -1,0 +1,990 @@
+{
+    "MP0": {
+        "address": "0x00",
+        "description": "Memory Pointer 0 register for indirect addressing.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "MP1L": {
+        "address": "0x01",
+        "description": "Memory Pointer 1 Low register for data table or look-up table read operations.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "MP1H": {
+        "address": "0x02",
+        "description": "Memory Pointer 1 High register for data table or look-up table read operations.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "MP2L": {
+        "address": "0x03",
+        "description": "Memory Pointer 2 Low register for EEPROM data access.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "MP2H": {
+        "address": "0x04",
+        "description": "Memory Pointer 2 High register for EEPROM data access.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "IAR0": {
+        "address": "0x05",
+        "description": "Indirect Addressing Register 0, returns result of indirect addressing using MP0.",
+        "assigned_pin": null,
+        "function": "indirect_addressing"
+    },
+    "IAR1": {
+        "address": "0x06",
+        "description": "Indirect Addressing Register 1, returns result of indirect addressing using MP1.",
+        "assigned_pin": null,
+        "function": "indirect_addressing"
+    },
+    "IAR2": {
+        "address": "0x07",
+        "description": "Indirect Addressing Register 2, returns result of indirect addressing using MP2.",
+        "assigned_pin": null,
+        "function": "indirect_addressing"
+    },
+    "GPIOA_DATA": {
+        "address": "0x08",
+        "description": "Port A Data Register, controls the input/output state of Port A pins.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIOB_DATA": {
+        "address": "0x09",
+        "description": "Port B Data Register, controls the input/output state of Port B pins.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIOC_DATA": {
+        "address": "0x0A",
+        "description": "Port C Data Register, controls the input/output state of Port C pins.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIOD_DATA": {
+        "address": "0x0B",
+        "description": "Port D Data Register, controls the input/output state of Port D pins.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "gpio_data"
+    },
+    "GPIOA_PULLUP": {
+        "address": "0x0C",
+        "description": "Port A Pull-high Control Register, enables/disables internal pull-up resistors for Port A pins.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOB_PULLUP": {
+        "address": "0x0D",
+        "description": "Port B Pull-high Control Register, enables/disables internal pull-up resistors for Port B pins.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOC_PULLUP": {
+        "address": "0x0E",
+        "description": "Port C Pull-high Control Register, enables/disables internal pull-up resistors for Port C pins.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOD_PULLUP": {
+        "address": "0x0F",
+        "description": "Port D Pull-high Control Register, enables/disables internal pull-up resistors for Port D pins.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "gpio_config"
+    },
+    "TBLP": {
+        "address": "0x10",
+        "description": "Table Pointer Low Register, used for indirectly addressing data table or look-up table read operations.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "TBHP": {
+        "address": "0x11",
+        "description": "Table Pointer High Register, used for indirectly addressing data table or look-up table read operations.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "TBLH": {
+        "address": "0x12",
+        "description": "Table High Register, stores the high byte of the look-up table data read from Flash Memory.",
+        "assigned_pin": null,
+        "function": "data_transfer"
+    },
+    "DPH": {
+        "address": "0x13",
+        "description": "Data Pointer High Register, used for data memory access.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "DPL": {
+        "address": "0x14",
+        "description": "Data Pointer Low Register, used for data memory access.",
+        "assigned_pin": null,
+        "function": "memory_pointer"
+    },
+    "ACC": {
+        "address": "0x15",
+        "description": "Accumulator Register, involved in all data transfer and arithmetic/logic operations.",
+        "assigned_pin": null,
+        "function": "cpu_register"
+    },
+    "PCL": {
+        "address": "0x16",
+        "description": "Program Counter Low Register, the lower byte of the 14-bit program counter.",
+        "assigned_pin": null,
+        "function": "cpu_register"
+    },
+    "STATUS": {
+        "address": "0x17",
+        "description": "Status Register, contains zero (Z), carry (C), auxiliary carry (AC), overflow (OV), power down (PDF), and watchdog time-out (TO) flags, and CPU operation status control bits.",
+        "assigned_pin": null,
+        "function": "status"
+    },
+    "INT_CR0": {
+        "address": "0x18",
+        "description": "Interrupt Control Register 0, enables/disables various interrupt sources.",
+        "assigned_pin": [
+            "PB2",
+            "PB1",
+            "PC6",
+            "PC5",
+            "PB0",
+            "PC7"
+        ],
+        "function": "interrupt_config"
+    },
+    "INT_CR1": {
+        "address": "0x19",
+        "description": "Interrupt Control Register 1, enables/disables various interrupt sources.",
+        "assigned_pin": [
+            "PB2",
+            "PB1",
+            "PC6",
+            "PC5",
+            "PB0",
+            "PC7"
+        ],
+        "function": "interrupt_config"
+    },
+    "INT_CR2": {
+        "address": "0x1A",
+        "description": "Interrupt Control Register 2, enables/disables various interrupt sources.",
+        "assigned_pin": [
+            "PB2",
+            "PB1",
+            "PC6",
+            "PC5",
+            "PB0",
+            "PC7"
+        ],
+        "function": "interrupt_config"
+    },
+    "INT_CR3": {
+        "address": "0x1B",
+        "description": "Interrupt Control Register 3, enables/disables various interrupt sources.",
+        "assigned_pin": [
+            "PB2",
+            "PB1",
+            "PC6",
+            "PC5",
+            "PB0",
+            "PC7"
+        ],
+        "function": "interrupt_config"
+    },
+    "INT_MFI0": {
+        "address": "0x1C",
+        "description": "Multi-function Interrupt Register 0, contains flags for various peripheral interrupts.",
+        "assigned_pin": null,
+        "function": "interrupt_status"
+    },
+    "INT_MFI1": {
+        "address": "0x1D",
+        "description": "Multi-function Interrupt Register 1, contains flags for various peripheral interrupts.",
+        "assigned_pin": null,
+        "function": "interrupt_status"
+    },
+    "INT_MFI2": {
+        "address": "0x1E",
+        "description": "Multi-function Interrupt Register 2, contains flags for various peripheral interrupts.",
+        "assigned_pin": null,
+        "function": "interrupt_status"
+    },
+    "INT_MFI3": {
+        "address": "0x1F",
+        "description": "Multi-function Interrupt Register 3, contains flags for various peripheral interrupts.",
+        "assigned_pin": null,
+        "function": "interrupt_status"
+    },
+    "ADC_CR0": {
+        "address": "0x20",
+        "description": "A/D Converter Control Register 0, configures ADC operation modes and trigger sources.",
+        "assigned_pin": [
+            "PB1",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6"
+        ],
+        "function": "adc_config"
+    },
+    "ADC_CR1": {
+        "address": "0x21",
+        "description": "A/D Converter Control Register 1, configures ADC channel selection and reference voltage.",
+        "assigned_pin": [
+            "PB1",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6"
+        ],
+        "function": "adc_config"
+    },
+    "ADC_CHER": {
+        "address": "0x22",
+        "description": "A/D Converter Channel Enable Register, enables/disables specific analog input channels.",
+        "assigned_pin": [
+            "PB1",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6"
+        ],
+        "function": "adc_config"
+    },
+    "ADC_DR_L": {
+        "address": "0x23",
+        "description": "A/D Converter Data Register Low, stores the lower byte of the A/D conversion result.",
+        "assigned_pin": null,
+        "function": "adc_data"
+    },
+    "ADC_DR_H": {
+        "address": "0x24",
+        "description": "A/D Converter Data Register High, stores the higher byte of the A/D conversion result.",
+        "assigned_pin": null,
+        "function": "adc_data"
+    },
+    "CTM_CNT_H": {
+        "address": "0x25",
+        "description": "Compact Type Timer Module (CTM) Counter High Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "CTM_CNT_L": {
+        "address": "0x26",
+        "description": "Compact Type Timer Module (CTM) Counter Low Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "CTM_COMPA": {
+        "address": "0x27",
+        "description": "Compact Type Timer Module (CTM) Comparator Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PB2"
+        ],
+        "function": "timer_compare"
+    },
+    "CTM_CR0": {
+        "address": "0x28",
+        "description": "Compact Type Timer Module (CTM) Control Register 0, configures CTM operating mode and clock source.",
+        "assigned_pin": [
+            "PB2"
+        ],
+        "function": "timer_config"
+    },
+    "CTM_CR1": {
+        "address": "0x29",
+        "description": "Compact Type Timer Module (CTM) Control Register 1, configures CTM output polarity and interrupt enable.",
+        "assigned_pin": [
+            "PB2"
+        ],
+        "function": "timer_config"
+    },
+    "STM_CNT_H": {
+        "address": "0x2A",
+        "description": "Standard Type Timer Module (STM) Counter High Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "STM_CNT_L": {
+        "address": "0x2B",
+        "description": "Standard Type Timer Module (STM) Counter Low Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "STM_COMPA": {
+        "address": "0x2C",
+        "description": "Standard Type Timer Module (STM) Comparator Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PB7"
+        ],
+        "function": "timer_compare"
+    },
+    "STM_CR0": {
+        "address": "0x2D",
+        "description": "Standard Type Timer Module (STM) Control Register 0, configures STM operating mode and clock source.",
+        "assigned_pin": [
+            "PB6",
+            "PB7"
+        ],
+        "function": "timer_config"
+    },
+    "STM_CR1": {
+        "address": "0x2E",
+        "description": "Standard Type Timer Module (STM) Control Register 1, configures STM output polarity and interrupt enable.",
+        "assigned_pin": [
+            "PB6",
+            "PB7"
+        ],
+        "function": "timer_config"
+    },
+    "PTM0_CNT_H": {
+        "address": "0x2F",
+        "description": "Periodic Type Timer Module 0 (PTM0) Counter High Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "PTM0_CNT_L": {
+        "address": "0x30",
+        "description": "Periodic Type Timer Module 0 (PTM0) Counter Low Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "PTM0_COMPA_H": {
+        "address": "0x31",
+        "description": "Periodic Type Timer Module 0 (PTM0) Comparator High Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PB0",
+            "PB1"
+        ],
+        "function": "timer_compare"
+    },
+    "PTM0_COMPA_L": {
+        "address": "0x32",
+        "description": "Periodic Type Timer Module 0 (PTM0) Comparator Low Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PB0",
+            "PB1"
+        ],
+        "function": "timer_compare"
+    },
+    "PTM0_CR0": {
+        "address": "0x33",
+        "description": "Periodic Type Timer Module 0 (PTM0) Control Register 0, configures PTM0 operating mode and clock source.",
+        "assigned_pin": [
+            "PB0",
+            "PB1"
+        ],
+        "function": "timer_config"
+    },
+    "PTM0_CR1": {
+        "address": "0x34",
+        "description": "Periodic Type Timer Module 0 (PTM0) Control Register 1, configures PTM0 output polarity and interrupt enable.",
+        "assigned_pin": [
+            "PB0",
+            "PB1"
+        ],
+        "function": "timer_config"
+    },
+    "PTM1_CNT_H": {
+        "address": "0x35",
+        "description": "Periodic Type Timer Module 1 (PTM1) Counter High Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "PTM1_CNT_L": {
+        "address": "0x36",
+        "description": "Periodic Type Timer Module 1 (PTM1) Counter Low Register.",
+        "assigned_pin": null,
+        "function": "timer_counter"
+    },
+    "PTM1_COMPA_H": {
+        "address": "0x37",
+        "description": "Periodic Type Timer Module 1 (PTM1) Comparator High Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PA5",
+            "PA6"
+        ],
+        "function": "timer_compare"
+    },
+    "PTM1_COMPA_L": {
+        "address": "0x38",
+        "description": "Periodic Type Timer Module 1 (PTM1) Comparator Low Register A, used for compare match or PWM output.",
+        "assigned_pin": [
+            "PA5",
+            "PA6"
+        ],
+        "function": "timer_compare"
+    },
+    "PTM1_CR0": {
+        "address": "0x39",
+        "description": "Periodic Type Timer Module 1 (PTM1) Control Register 0, configures PTM1 operating mode and clock source.",
+        "assigned_pin": [
+            "PA5",
+            "PA6"
+        ],
+        "function": "timer_config"
+    },
+    "PTM1_CR1": {
+        "address": "0x3A",
+        "description": "Periodic Type Timer Module 1 (PTM1) Control Register 1, configures PTM1 output polarity and interrupt enable.",
+        "assigned_pin": [
+            "PA5",
+            "PA6"
+        ],
+        "function": "timer_config"
+    },
+    "TM_PIN_CR": {
+        "address": "0x3B",
+        "description": "Timer Module Input/Output Pin Control Register, configures alternate functions for timer module pins.",
+        "assigned_pin": [
+            "PA5",
+            "PA6",
+            "PA7",
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB6",
+            "PB7"
+        ],
+        "function": "timer_config"
+    },
+    "SPI_SR": {
+        "address": "0x3C",
+        "description": "SPI Status Register, indicates SPI communication status and flags.",
+        "assigned_pin": [
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6"
+        ],
+        "function": "spi_status"
+    },
+    "SPI_CR0": {
+        "address": "0x3D",
+        "description": "SPI Control Register 0, configures SPI operating mode (master/slave), clock polarity/phase.",
+        "assigned_pin": [
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6"
+        ],
+        "function": "spi_config"
+    },
+    "SPI_CR1": {
+        "address": "0x3E",
+        "description": "SPI Control Register 1, configures SPI data order and enable/disable.",
+        "assigned_pin": [
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6"
+        ],
+        "function": "spi_config"
+    },
+    "SPI_DR": {
+        "address": "0x3F",
+        "description": "SPI Data Buffer Register, used for transmitting and receiving SPI data.",
+        "assigned_pin": null,
+        "function": "spi_data"
+    },
+    "I2C_SR": {
+        "address": "0x40",
+        "description": "I2C Status Register, indicates I2C bus status and communication flags.",
+        "assigned_pin": [
+            "PA4",
+            "PA5"
+        ],
+        "function": "i2c_status"
+    },
+    "I2C_CR": {
+        "address": "0x41",
+        "description": "I2C Control Register, configures I2C operating mode and enables/disables features.",
+        "assigned_pin": [
+            "PA4",
+            "PA5"
+        ],
+        "function": "i2c_config"
+    },
+    "I2C_DR": {
+        "address": "0x42",
+        "description": "I2C Communication Data Register, used for transmitting and receiving I2C data.",
+        "assigned_pin": null,
+        "function": "i2c_data"
+    },
+    "I2C_TMR": {
+        "address": "0x43",
+        "description": "I2C Time-out Control Register, configures time-out detection for I2C bus operations.",
+        "assigned_pin": [
+            "PA4",
+            "PA5"
+        ],
+        "function": "i2c_config"
+    },
+    "UART_SR": {
+        "address": "0x44",
+        "description": "UART Status Register, indicates UART transmit/receive status and error flags.",
+        "assigned_pin": [
+            "PB6",
+            "PB7"
+        ],
+        "function": "uart_status"
+    },
+    "UART_CR0": {
+        "address": "0x45",
+        "description": "UART Control Register 0, configures UART operating parameters like mode and data bits.",
+        "assigned_pin": [
+            "PB6",
+            "PB7"
+        ],
+        "function": "uart_config"
+    },
+    "UART_CR1": {
+        "address": "0x46",
+        "description": "UART Control Register 1, configures UART parity, stop bits, and interrupt enables.",
+        "assigned_pin": [
+            "PB6",
+            "PB7"
+        ],
+        "function": "uart_config"
+    },
+    "UART_TX_DR": {
+        "address": "0x47",
+        "description": "UART Transmit Data Register, holds data to be transmitted via UART.",
+        "assigned_pin": null,
+        "function": "uart_data"
+    },
+    "UART_RX_DR": {
+        "address": "0x48",
+        "description": "UART Receive Data Register, holds received data from UART.",
+        "assigned_pin": null,
+        "function": "uart_data"
+    },
+    "UART_BRG_H": {
+        "address": "0x49",
+        "description": "Baud Rate Generator High Register, controls the high byte of the UART baud rate.",
+        "assigned_pin": null,
+        "function": "uart_config"
+    },
+    "UART_BRG_L": {
+        "address": "0x4A",
+        "description": "Baud Rate Generator Low Register, controls the low byte of the UART baud rate.",
+        "assigned_pin": null,
+        "function": "uart_config"
+    },
+    "LCD_CR0": {
+        "address": "0x4B",
+        "description": "LCD Control Register 0, configures general LCD driver operation.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "lcd_config"
+    },
+    "LCD_CR1": {
+        "address": "0x4C",
+        "description": "LCD Control Register 1, configures specific LCD driver features.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "lcd_config"
+    },
+    "LCD_CST": {
+        "address": "0x4D",
+        "description": "LCD Constant Bias Current Control Register.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7",
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7",
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7",
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "lcd_config"
+    },
+    "LCD_DB0": {
+        "address": "0x4E",
+        "description": "LCD Data Buffer Register 0, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "LCD_DB1": {
+        "address": "0x4F",
+        "description": "LCD Data Buffer Register 1, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "LCD_DB2": {
+        "address": "0x50",
+        "description": "LCD Data Buffer Register 2, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "LCD_DB3": {
+        "address": "0x51",
+        "description": "LCD Data Buffer Register 3, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "LCD_DB4": {
+        "address": "0x52",
+        "description": "LCD Data Buffer Register 4, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "LCD_DB5": {
+        "address": "0x53",
+        "description": "LCD Data Buffer Register 5, stores segment data for LCD display.",
+        "assigned_pin": null,
+        "function": "lcd_data"
+    },
+    "EEPROM_ADDR_L": {
+        "address": "0x54",
+        "description": "EEPROM Address Register Low, specifies the lower byte of the EEPROM memory address for read/write operations.",
+        "assigned_pin": null,
+        "function": "eeprom_config"
+    },
+    "EEPROM_ADDR_H": {
+        "address": "0x55",
+        "description": "EEPROM Address Register High, specifies the higher byte of the EEPROM memory address for read/write operations.",
+        "assigned_pin": null,
+        "function": "eeprom_config"
+    },
+    "EEPROM_DATA_L": {
+        "address": "0x56",
+        "description": "EEPROM Data Register Low, holds the lower byte of data to be written to or read from EEPROM.",
+        "assigned_pin": null,
+        "function": "eeprom_data"
+    },
+    "EEPROM_DATA_H": {
+        "address": "0x57",
+        "description": "EEPROM Data Register High, holds the higher byte of data to be written to or read from EEPROM.",
+        "assigned_pin": null,
+        "function": "eeprom_data"
+    },
+    "EEPROM_CR0": {
+        "address": "0x58",
+        "description": "EEPROM Control Register 0, controls EEPROM read/write operations and write protection.",
+        "assigned_pin": null,
+        "function": "eeprom_config"
+    },
+    "EEPROM_CR1": {
+        "address": "0x59",
+        "description": "EEPROM Control Register 1, controls EEPROM interrupt enable.",
+        "assigned_pin": null,
+        "function": "eeprom_config"
+    },
+    "RCC_CLKSEL": {
+        "address": "0x5A",
+        "description": "System Clock Selection Register, selects the main system clock source (HXT, LXT, HIRC, LIRC).",
+        "assigned_pin": null,
+        "function": "clock_config"
+    },
+    "RCC_CLKDIV": {
+        "address": "0x5B",
+        "description": "System Clock Division Register, sets the division ratio for the system clock.",
+        "assigned_pin": null,
+        "function": "clock_config"
+    },
+    "RCC_PWRCON": {
+        "address": "0x5C",
+        "description": "Power Control Register, controls the system operation modes (Normal, Slow, IDLE, SLEEP).",
+        "assigned_pin": null,
+        "function": "power_config"
+    },
+    "LVD_CR": {
+        "address": "0x5D",
+        "description": "Low Voltage Detector Control Register, configures the LVD threshold and enable/disable.",
+        "assigned_pin": null,
+        "function": "lvd_config"
+    },
+    "RCC_RSTF": {
+        "address": "0x5E",
+        "description": "Reset Flag Register, indicates the source of the last MCU reset.",
+        "assigned_pin": null,
+        "function": "reset_status"
+    },
+    "WDT_CR": {
+        "address": "0x5F",
+        "description": "Watchdog Timer Control Register, configures the WDT enable, prescaler, and time-out period.",
+        "assigned_pin": null,
+        "function": "wdt_config"
+    },
+    "GPIOA_TRANSISTOR": {
+        "address": "0x60",
+        "description": "Port A Transistor Control Register, configures Port A output type (CMOS or N-channel open drain).",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOB_TRANSISTOR": {
+        "address": "0x61",
+        "description": "Port B Transistor Control Register, configures Port B output type (CMOS or N-channel open drain).",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOC_TRANSISTOR": {
+        "address": "0x62",
+        "description": "Port C Transistor Control Register, configures Port C output type (CMOS or N-channel open drain).",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOD_TRANSISTOR": {
+        "address": "0x63",
+        "description": "Port D Transistor Control Register, configures Port D output type (CMOS or N-channel open drain).",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOA_SOURCE_CURRENT": {
+        "address": "0x64",
+        "description": "Port A Source Current Control Register, sets the drive strength for Port A output pins.",
+        "assigned_pin": [
+            "PA0",
+            "PA1",
+            "PA2",
+            "PA3",
+            "PA4",
+            "PA5",
+            "PA6",
+            "PA7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOB_SOURCE_CURRENT": {
+        "address": "0x65",
+        "description": "Port B Source Current Control Register, sets the drive strength for Port B output pins.",
+        "assigned_pin": [
+            "PB0",
+            "PB1",
+            "PB2",
+            "PB3",
+            "PB4",
+            "PB5",
+            "PB6",
+            "PB7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOC_SOURCE_CURRENT": {
+        "address": "0x66",
+        "description": "Port C Source Current Control Register, sets the drive strength for Port C output pins.",
+        "assigned_pin": [
+            "PC0",
+            "PC1",
+            "PC2",
+            "PC3",
+            "PC4",
+            "PC5",
+            "PC6",
+            "PC7"
+        ],
+        "function": "gpio_config"
+    },
+    "GPIOD_SOURCE_CURRENT": {
+        "address": "0x67",
+        "description": "Port D Source Current Control Register, sets the drive strength for Port D output pins.",
+        "assigned_pin": [
+            "PD0",
+            "PD1",
+            "PD2",
+            "PD3",
+            "PD4",
+            "PD5"
+        ],
+        "function": "gpio_config"
+    }
+}
