@@ -1,0 +1,145 @@
+{
+  "MCU CONFIG": {
+    "functions": [
+      "void MCU_Config_Init(t_sys_volt volt)",
+      "void WDT_Reset(void)",
+      "void Go_to_sleep_mode(void)",
+      "void Global_interrupt_Enable(void)",
+      "void Global_interrupt_Disable(void)"
+    ]
+  },
+  "LVD": {
+    "functions": [
+      "void LVD_Init(void)",
+      "void LVD_Get(t_lvd_thrthresholdLevel lvd_thresholdLevel)",
+      "void LVD_Enable(void)",
+      "void LVD_Disable(void)",
+      "LVD_ClearFlag(t_lvd_channel lvd_channel)"
+    ]
+  },
+  "UART": {
+    "functions": [
+      "void UART_Init(t_uart_channel uart_channel, t_uart_baud_rate uart_baud_rate, t_uart_data_length uart_data_length, t_uart_stop_bit uart_stop_bit, t_uart_parity uart_parity)",
+      "void UART_Enable(t_uart_channel uart_channel)",
+      "void UART_Disable(t_uart_channel uart_channel)",
+      "void UART_Update(t_uart_channel uart_channel)",
+      "void UART_send_byte(t_uart_channel uart_channel, tbyte byte)",
+      "void UART_send_frame(t_uart_channel uart_channel, const char *data, int length)",
+      "void UART_send_string(t_uart_channel uart_channel, const char *str)",
+      "tbyte UART_Get_Byte(t_uart_channel uart_channel)",
+      "void UART_Get_frame(t_uart_channel uart_channel, char *buffer, int max_length)",
+      "tbyte UART_Get_string(t_uart_channel uart_channel, char *buffer, int max_length)",
+      "UART_ClearFlag(t_uart_channel uart_channel)"
+    ]
+  },
+  "I2C": {
+    "functions": [
+      "void I2C_Init(t_i2c_channel i2c_channel, t_i2c_clk_speed i2c_clk_speed, t_i2c_device_address i2c_device_address, t_i2c_ack i2c_ack, t_i2c_datalength i2c_datalength)",
+      "void I2C_Enable(t_i2c_channel i2c_channel)",
+      "void I2C_Disable(t_i2c_channel i2c_channel)",
+      "void I2C_Update(t_i2c_channel i2c_channel)",
+      "void I2C_send_byte(t_i2c_channel i2c_channel, tbyte byte)",
+      "void I2C_send_frame(t_i2c_channel i2c_channel, const char *data, int length)",
+      "void I2C_send_string(t_i2c_channel i2c_channel, const char *str)",
+      "tbyte I2C_Get_Byte(t_i2c_channel i2c_channel)",
+      "void I2C_Get_frame(t_i2c_channel i2c_channel, char *buffer, int max_length)",
+      "tbyte I2C_Get_string(t_i2c_channel i2c_channel, char *buffer, int max_length)",
+      "I2C_ClearFlag(t_i2c_channel i2c_channel)"
+    ]
+  },
+  "SPI": {
+    "functions": [
+      "void spi_Init(t_spi_channel spi_channel, t_spi_mode spi_mode, t_spi_cpol spi_cpol, t_spi_cpha spi_cpha, t_spi_dff spi_dff, t_spi_bit_order spi_bit_order)",
+      "void SPI_Enable(t_spi_channel spi_channel)",
+      "void SPI_Disable(t_spi_channel spi_channel)",
+      "void SPI_Update(void)",
+      "void SPI_Send_Byte(t_spi_channel spi_channel, tbyte byte)",
+      "void SPI_send_frame(t_spi_channel spi_channel, const char *data, int length)",
+      "void SPI_send_string(t_spi_channel spi_channel, const char *str)",
+      "tbyte SPI_Get_Byte(t_spi_channel spi_channel)",
+      "void SPI_Get_frame(t_spi_channel spi_channel, char *buffer, int max_length)",
+      "tbyte SPI_Get_string(t_spi_channel spi_channel, char *buffer, int max_length)",
+      "SPI_ClearFlag(t_spi_channel spi_channel)"
+    ]
+  },
+  "External Interrupt": {
+    "functions": [
+      "void External_INT_Init(t_external_int_channel external_int_channel, t_external_int_edge external_int_edge)",
+      "void External_INT_Enable(t_external_int_channel external_int_channel)",
+      "void External_INT_Disable(t_external_int_channel external_int_channel)",
+      "External_INT_ClearFlag(t_external_int_channel external_int_channel)"
+    ]
+  },
+  "GPIO": {
+    "functions": [
+      "void GPIO_Output_Init(t_port port, t_pin pin, tbyte value)",
+      "void GPIO_Input_Init(t_port port, t_pin pin)",
+      "t_direction GPIO_Direction_get(t_port port, t_pin pin)",
+      "void GPIO_Value_Set(t_port port, t_pin pin, t_byte value)",
+      "tbyte GPIO_Value_Get(t_port port, t_pin pin)",
+      "void GPIO_Value_Tog(t_port port, t_pin pin)"
+    ]
+  },
+  "PWM": {
+    "functions": [
+      "void PWM_Init(t_pwm_channel pwm_channel, tbyte pwm_khz_freq, tbyte pwm_duty)",
+      "void PWM_Strt(t_pwm_channel pwm_channel)",
+      "void PWM_Stop(t_pwm_channel pwm_channel)"
+    ]
+  },
+  "ICU": {
+    "functions": [
+      "void ICU_init(t_icu_channel icu_channel, t_icu_prescaller icu_prescaller, t_icu_edge icu_edge)",
+      "void ICU_Enable(t_icu_channel icu_channel)",
+      "void ICU_Disable(t_icu_channel icu_channel)",
+      "void ICU_Updatefrequency(t_icu_channel icu_channel)",
+      "ICU_GetFrequency(t_icu_channel icu_channel)",
+      "void ICU_Set_RemoteControlkeysbuffer(tbyte number_of_keys, tbyte key_digits_length)",
+      "void ICU_SetRemoteControlkeydigits(tbyte key_num, tbyte key_array_cell, tbyte key_cell_value)",
+      "void ICU_UpdateRemoteControlSignal(t_icu_channel icu_channel, tlong strt_bit_us_value, tlong one_bit_us_value, tlong zero_bit_us_value, tlong stop_bit_us_value)",
+      "tbyte ICU_GetRemoteControlkey(t_icu_channel icu_channel)",
+      "void ICU_setCallback(void (*callback)(void))",
+      "ICU_ClearFlag(t_icu_channel icu_channel)"
+    ]
+  },
+  "Timer": {
+    "functions": [
+      "void TIMER_Init(t_timer_channel timer_channel)",
+      "void TIMER_Set_us(t_timer_channel timer_channel, tword time)",
+      "void TIMER_Set_Time_ms(t_timer_channel timer_channel, tword time)",
+      "void TIMER_Set_Time_sec(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Set_Time_min(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Set_Time_hour(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Enable(t_timer_channel timer_channel)",
+      "void TIMER_Disable(t_timer_channel timer_channel)",
+      "TIMER_ClearFlag(t_timer_channel timer_channel)"
+    ]
+  },
+  "ADC": {
+    "functions": [
+      "void ADC_Init(t_adc_channel adc_channel, t_adc_mode_t adc_mode)",
+      "void ADC_Enable(void)",
+      "void ADC_Disable(void)",
+      "void ADC_Update()",
+      "tword ADC_Get(void)",
+      "ADC_ClearFlag()"
+    ]
+  },
+  "Internal_EEPROM": {
+    "functions": [
+      "void Internal_EEPROM_Init(void)",
+      "void Internal_EEPROM_Set(tbyte address, tbyte data)",
+      "tbyte Internal_EEPROM_Get(tbyte address)"
+    ]
+  },
+  "TT": {
+    "functions": [
+      "void TT_Init(t_tick_time tick_time_ms)",
+      "void TT_Start(void)",
+      "void TT_Dispatch_task(void)",
+      "void TT_ISR(void)",
+      "tbyte TT_Add_task(void (*task)(void), const tword period, const tword delay)",
+      "void TT_Delete_task(const tbyte task_index)"
+    ]
+  }
+}
