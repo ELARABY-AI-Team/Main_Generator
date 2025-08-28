@@ -1,0 +1,197 @@
+{
+  "MCU CONFIG": {
+    "functions": [
+      "void MCU_Config_Init(t_sys_volt volt)",
+      "void WDT_Reset(void)",
+      "void Go_to_sleep_mode(void)",
+      "void Global_interrupt_Enable(void)",
+      "void Global_interrupt_Disable(void)"
+    ]
+  },
+  "LVD": {
+    "functions": [
+      "void LVD_Init(void)",
+      "void LVD_Get(t_lvd_thrthresholdLevel lvd_thresholdLevel)",
+      "void LVD_Enable(void)",
+      "void LVD_Disable(void)"
+    ]
+  },
+  "UART": {
+    "functions": [
+      "void UART_Init(t_uart_channel uart_channel, t_uart_baud_rate uart_baud_rate, t_uart_data_length uart_data_length, t_uart_stop_bit uart_stop_bit, t_uart_parity uart_parity)",
+      "void UART_Enable(t_uart_channel uart_channel)",
+      "void UART_Disable(t_uart_channel uart_channel)",
+      "void UART_send_byte(t_uart_channel uart_channel, tbyte byte)",
+      "void UART_send_frame(t_uart_channel uart_channel, const char *data, int length)",
+      "void UART_send_string(t_uart_channel uart_channel, const char *str)",
+      "tbyte UART_Get_Byte(t_uart_channel uart_channel)",
+      "void UART_Get_frame(t_uart_channel uart_channel, char *buffer, int max_length)",
+      "tbyte UART_Get_string(t_uart_channel uart_channel, char *buffer, int max_length)"
+    ]
+  },
+  "I2C": {
+    "functions": [
+      "void I2C_Init(t_i2c_channel i2c_channel, t_i2c_clk_speed i2c_clk_speed, t_i2c_device_address i2c_device_address, t_i2c_ack i2c_ack, t_i2c_datalength i2c_datalength)",
+      "void I2C_Enable(t_i2c_channel i2c_channel)",
+      "void I2C_Disable(t_i2c_channel i2c_channel)",
+      "void I2C_send_byte(t_i2c_channel i2c_channel, tbyte byte)",
+      "void I2C_send_frame(t_i2c_channel i2c_channel, const char *data, int length)",
+      "void I2C_send_string(t_i2c_channel i2c_channel, const char *str)",
+      "tbyte I2C_Get_Byte(t_i2c_channel i2c_channel)",
+      "void I2C_Get_frame(t_i2c_channel i2c_channel, char *buffer, int max_length)",
+      "tbyte I2C_Get_string(t_i2c_channel i2c_channel, char *buffer, int max_length)"
+    ]
+  },
+  "SPI (CSI)": {
+    "functions": [
+      "void spi_Init(t_spi_channel spi_channel, t_spi_mode spi_mode, t_spi_cpol spi_cpol, t_spi_cpha spi_cpha, t_spi_dff spi_dff, t_spi_bit_order spi_bit_order)",
+      "void SPI_Enable(t_spi_channel spi_channel)",
+      "void SPI_Disable(t_spi_channel spi_channel)",
+      "void SPI_Send_Byte(t_spi_channel spi_channel, tbyte byte)",
+      "void SPI_send_frame(t_spi_channel spi_channel, const char *data, int length)",
+      "tbyte SPI_Get_Byte(t_spi_channel spi_channel)",
+      "void SPI_Get_frame(t_spi_channel spi_channel, char *buffer, int max_length)",
+      "tbyte SPI_Get_string(t_spi_channel spi_channel, char *buffer, int max_length)"
+    ]
+  },
+  "External Interrupt": {
+    "functions": [
+      "void External_INT_Init(t_external_int_channel external_int_channel, t_external_int_edge external_int_edge)",
+      "void External_INT_Enable(t_external_int_channel external_int_channel)",
+      "void External_INT_Disable(t_external_int_channel external_int_channel)"
+    ]
+  },
+  "GPIO": {
+    "functions": [
+      "void GPIO_Output_Init(t_port port, t_pin pin, tbyte value)",
+      "void GPIO_Input_Init(t_port port, t_pin pin)",
+      "t_direction GPIO_Direction_get(t_port port, t_pin pin)",
+      "void GPIO_Value_Set(t_port port, t_pin pin, t_byte value)",
+      "tbyte GPIO_Value_Get(t_port port, t_pin pin)",
+      "void GPIO_Value_Tog(t_port port, t_pin pin)"
+    ]
+  },
+  "PWM": {
+    "functions": [
+      "void PWM_Init(t_pwm_channel pwm_channel, tbyte pwm_khz_freq, tbyte pwm_duty)",
+      "void PWM_Strt(t_pwm_channel pwm_channel)",
+      "void PWM_Stop(t_pwm_channel pwm_channel)"
+    ]
+  },
+  "ICU": {
+    "functions": [
+      "void ICU_init(t_icu_channel icu_channel, t_icu_prescaller icu_prescaller, t_icu_edge icu_edge)",
+      "void ICU_Enable(t_icu_channel icu_channel)",
+      "void ICU_Disable(t_icu_channel icu_channel)",
+      "ICU_GetFrequency(t_icu_channel icu_channel)",
+      "void ICU_setCallback(void (*callback)(void))"
+    ]
+  },
+  "Timer": {
+    "functions": [
+      "void TIMER_Init(t_timer_channel timer_channel)",
+      "void TIMER_Set_us(t_timer_channel timer_channel, tword time)",
+      "void TIMER_Set_Time_ms(t_timer_channel timer_channel, tword time)",
+      "void TIMER_Set_Time_sec(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Set_Time_min(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Set_Time_hour(t_timer_channel timer_channel, tbyte time)",
+      "void TIMER_Enable(t_timer_channel timer_channel)",
+      "void TIMER_Disable(t_timer_channel timer_channel)"
+    ]
+  },
+  "ADC": {
+    "functions": [
+      "void ADC_Init(t_adc_channel adc_channel, t_adc_mode_t adc_mode)",
+      "void ADC_Enable(t_adc_channel adc_channel)",
+      "void ADC_Disable(t_adc_channel adc_channel)",
+      "tword ADC_Get_POLLING(t_adc_channel adc_channel)",
+      "tword ADC_Get_INTERRUPT(t_adc_channel adc_channel)"
+    ]
+  },
+  "Internal_EEPROM": {
+    "functions": [
+      "void Internal_EEPROM_Init(void)",
+      "void Internal_EEPROM_Set(tbyte address, tbyte data)",
+      "tbyte Internal_EEPROM_Get(tbyte address)"
+    ]
+  },
+  "TT": {
+    "functions": [
+      "void TT_Init(t_tick_time tick_time_ms)",
+      "void TT_Start(void)",
+      "void TT_Dispatch_task(void)",
+      "void TT_ISR(void)",
+      "tbyte TT_Add_task(void (*task)(void), const tword period, const tword delay)",
+      "void TT_Delete_task(const tbyte task_index)"
+    ]
+  },
+  "MCAL_OUTPUT_BUZZER": {
+    "functions": [
+      "void BUZZER_OUTPUT_Init(tbyte buzzer_number)",
+      "void BUZZER_OUTPUT_Start(tbyte NUMBER_BUZZER)",
+      "void BUZZER_OUTPUT_Stop(tbyte NUMBER_BUZZER)"
+    ]
+  },
+  "WDT": {
+    "functions": [
+      "void WDT_Init(void)",
+      "void WDT_Reset(void)"
+    ]
+  },
+  "DAC": {
+    "functions": [
+      "void DAC_Init(dac_channel_t channel)",
+      "void DAC_Enable(dac_channel_t channel)",
+      "void DAC_Disable(dac_channel_t channel)",
+      "void DAC_Set_ConversionValue(dac_channel_t channel, uint8_t regvalue)"
+    ]
+  },
+  "I2S": {
+    "functions": [
+      "void I2S_Init(t_i2s_channel channel, I2S_Mode_t mode, I2S_Standard_t standard, I2S_DataFormat_t data_format, I2S_ChannelMode_t channel_mode, uint32_t sample_rate, uint32_t mclk_freq, uint32_t dma_buffer_size)",
+      "void I2S_Enable(t_i2s_channel channel)",
+      "void I2S_Transmit(t_i2s_channel channel, const void *data, size_t length)",
+      "void I2S_Receive(t_i2s_channel channel, void *buffer, size_t length)"
+    ]
+  },
+  "MQTT Protocol": {
+    "functions": [
+      "void MQTT_Init(void)",
+      "void MQTT_Subscribe_Topic(void *handler_args, esp_event_base_t base, tslong event_id, void *event_data)",
+      "void MQTT_Publish_Message(const tsbyte *message)",
+      "void AZURE_IoT_Hub_Client_Init(void)",
+      "void AZURE_Connection_Enable(void)"
+    ]
+  },
+  "HTTP Protocol": {
+    "functions": [
+      "void HTTP_Get_Device_ID(char *device_id, size_t size)",
+      "void HTTP_Server_Init(void)",
+      "void HTTP_Server_Start(void)",
+      "void HTTP_Server_Stop(void)",
+      "void HTTP_Reset_SSID_PASSWORD(void)",
+      "esp_err_t HTTP_Config_Handler(httpd_req_t *req)"
+    ]
+  },
+  "WiFi Driver": {
+    "functions": [
+      "void WiFi_Init(void)",
+      "void WiFi_Connect(const tsbyte *ssid, const tsbyte *password)",
+      "void WiFi_Enable(void)",
+      "void WiFi_Disable(void)",
+      "void WiFi_SetTxMode(t_tx_mode mode)",
+      "tsword WiFi_Check_Connection(void)",
+      "int WiFi_Check_Internet(void)"
+    ]
+  },
+  "DTC_driver": {
+    "functions": [
+      "void DTC_Init()",
+      "void DTC_EnableSource(uint8_t source_id, uint8_t channel)",
+      "void DTC_DisableSource(uint8_t source_id)",
+      "void DTC_Start(void)",
+      "void DTC_Stop(void)",
+      "void DTC_ConfigChannel(uint8_t channel, uint16_t src_addr, uint16_t dst_addr, uint8_t block_size, uint8_t transfer_count, uint8_t mode, uint8_t data_size, uint8_t src_inc, uint8_t dst_inc, uint8_t rpt_sel, uint8_t rpt_int)"
+    ]
+  }
+}
