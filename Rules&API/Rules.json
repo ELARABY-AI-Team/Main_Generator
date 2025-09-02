@@ -100,6 +100,30 @@
       "source": "MCAL.h"
     },
 
+    "pointer_variable_consistency": {
+      "description": "Enforce consistent use of pointers and variables in MCAL layers across all MCUs and peripherals.",
+      "rules": [
+        "Static helper functions (private, declared `static` in .c) may use pointers internally to access hardware registers directly.",
+        "Public API functions (declared in MCAL.h) must use variables/enums to identify peripherals (e.g., t_port, t_adc, t_timer), not pointers.",
+        "Do not expose pointer types in public API signatures.",
+        "All conversions from variables/enums to pointers must happen inside the public API functions using a generic mapping function (e.g., `get_peripheral_ptr(peripheral_enum)`), not in the helper functions.",
+        "Static helpers should only be called internally from public APIs; never called directly from outside the MCAL layer.",
+        "Document the convention clearly in MCAL.h for maintainability and consistency.",
+        "This rule applies to all types of peripherals (GPIO, ADC, UART, SPI, I2C, timers, etc.) and is MCU-independent."
+      ],
+      "example": {
+        "static_helper": [
+          "static void MCAL_RCC_EnableClock(void *peripheral_ptr);",
+          "static void Peripheral_SetDirection(void *peripheral_ptr, uint32_t pin, uint8_t dir);"
+        ],
+        "api_function": [
+          "void GPIO_Output_Init(t_port port, t_pin pin, tbyte value);",
+          "void ADC_Enable(t_adc adc);",
+          "void TIMER_Start(t_timer timer);"
+        ]
+      }
+    },
+
     "I2C_rules": {
       "rules": [
         "Addressing Mode equals Device Address",
@@ -179,6 +203,7 @@
     }
   }
 }
+
 
 
 
