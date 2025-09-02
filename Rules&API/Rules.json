@@ -82,13 +82,13 @@
     },
 
     "typedef_naming": {
-      "description": "Typedefs in MCAL.h and MCAL.c must exactly match the names defined in api.json. No deviations or renaming are allowed.",
+      "description": "Typedefs in MCAL.h and MCAL.c must exactly match the names defined in API.json. No deviations or renaming are allowed.",
       "require_exact_match": true,
-      "source": "api.json"
+      "source": "API.json"
     },
 
     "enum_naming": {
-      "description": "Enum constants must follow UPPERCASE_WITH_UNDERSCORE style. Names are auto-derived from registers.json whenever possible.",
+      "description": "Enum constants must follow UPPERCASE_WITH_UNDERSCORE style. Names are auto-derived from register_json whenever possible.",
       "style": "UPPERCASE_WITH_UNDERSCORE",
       "derive_from": "register_json",
       "auto_prefix": true
@@ -173,4 +173,5 @@
     }
   }
 }
+
 
