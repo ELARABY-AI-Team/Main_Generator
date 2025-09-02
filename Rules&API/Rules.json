@@ -93,6 +93,12 @@
       "derive_from": "register_json",
       "auto_prefix": true
     },
+    
+    "cross_file_consistency": {
+      "description": "MCAL.c must use typedefs, enums, macros, and prototypes exactly as they are declared in MCAL.h. No redefinitions or deviations are allowed.",
+      "require_match": true,
+      "source": "MCAL.h"
+    },
 
     "I2C_rules": {
       "rules": [
@@ -173,5 +179,6 @@
     }
   }
 }
+
 
 
