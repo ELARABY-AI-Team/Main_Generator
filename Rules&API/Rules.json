@@ -88,8 +88,8 @@
     },
 
     "enum_naming": {
-      "description": "Enum constants must follow UPPERCASE_WITH_UNDERSCORE style. Names are auto-derived from register_json whenever possible.",
-      "style": "UPPERCASE_WITH_UNDERSCORE",
+      "description": "Enum constants must follow LOWERCASE_WITH_UNDERSCORE style. Names are auto-derived from register_json whenever possible.",
+      "style": "LOWERCASE_WITH_UNDERSCORE",
       "derive_from": "register_json",
       "auto_prefix": true
     },
@@ -203,6 +203,7 @@
     }
   }
 }
+
 
 
 
