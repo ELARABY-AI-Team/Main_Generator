@@ -901,10 +901,8 @@ void TT_ISR(void);
 tbyte TT_Add_task(void (*task)(void), const tword period, const tword delay);
 void TT_Delete_task(const tbyte task_index);
 
-// MCAL_OUTPUT_BUZZER
-void BUZZER_OUTPUT_Init(tbyte buzzer_number);
-void BUZZER_OUTPUT_Start(tbyte NUMBER_BUZZER);
-void BUZZER_OUTPUT_Stop(tbyte NUMBER_BUZZER);
+// MCAL_OUTPUT_BUZZER not supported on STM32F401RC
+
 
 // WDT
 void WDT_Init(void);
