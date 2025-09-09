@@ -2268,7 +2268,7 @@ void ADC_Init(t_adc_channel adc_channel, t_adc_mode_t adc_mode)
     // For a given channel, set its sample time. Each channel has 3 bits.
     // Example: Set 3 cycles for the selected channel (000 in SMPR)
     uint32_t smpr_reg_idx = ((uint32_t)adc_channel > 9) ? 1 : 2; // SMPR1 for channels 10-18, SMPR2 for channels 0-9
-    uint33_t smpr_bit_shift = ((uint33_t)adc_channel % 10) * 3; // Shift by 3 bits per channel
+    uint32_t smpr_bit_shift = ((uint32_t)adc_channel % 10) * 3; // Shift by 3 bits per channel
 
     if (smpr_reg_idx == 2) // SMPR2 for channels 0-9
     {
